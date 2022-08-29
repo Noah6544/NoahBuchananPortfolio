@@ -27,10 +27,11 @@
     margin-left: 50px;
     margin-right: 50px;
     padding: 20px;
-    border: 1px solid black;
+    border: 2px solid black;
+    border-radius:25px;
+    background-color:lightblue;
     font-size: 30px;
     text-shadow: 1px 1px 2px black;
-
     text-align:center
 
 }
