@@ -1,21 +1,42 @@
 #webpage {
     text-shadow: .5px .5px 2px grey;
+    font-family: 'Roboto';font-size: 17px;
+    /*font: 17px Verdana;*/
+    margin: 50px;
+    padding: 100px;
+    border-radius: 25px;
 
-    margin-left: 5px;
-    font: 17px Verdana;
+
+}
+
+#remarks {
+    font-size: 30px;
+    text-align: center;
 }
 
 #contactinfo {
-    font-size: 12px
+    font-size: 18px
 }
+
+.entirelist{
+
+    box-radius: 100px;
+    box-shadow: 2px 2px 15px;
+    margin: 75px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
 
 .list {
     font: Verdana;
     font-size: 15px;
 
+
 }
 
 .listtitle {
+    margin-left: 23px;
     font-size: 17px;
     font-weight:bold;
 
@@ -23,18 +44,34 @@
 
 .title {
 
-    margin: 200px;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 450px;
+    margin-right: 450px;
+    margin-bottom: 75px;
     padding: 20px;
     border: 2px solid black;
     border-radius:25px;
     background-color:lightblue;
     font-size: 30px;
-    text-shadow: 1px 1px 2px black;
-    text-align:center
+    text-shadow: 1px 1px px black;
+    text-align:center;
+    box-shadow: 1px 1px 25px;
+}
+
+.box {
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-bottom: 75px;
+    padding: 50px;
+    border: 1px none black;
+    border-radius: 50px;
+    background-color: lightblue;
+    box-shadow: 10px 10px 25px;
 
 }
+
+
+
+
 
 #smalltitle {
     font-size: 23px
@@ -54,11 +91,37 @@ a:link{
 a:hover {
     text-decoration: underline;
     color:darkblue;
-    font-size: 17px;
+    font-size: 22px;
 }
 
-a:visited{
+a:visited {
     text-decoration: none;
     font-weight: bold;
     color: blue;
 }
+
+div:hover {
+    font-size: 22px;
+    text-decoration: bold;
+}
+
+div.title:hover {
+    font-size: 40px;
+    text-decoration: bold;
+    box-shadow: 1px 1px 25px;
+
+
+}
+
+#fineprint {
+    text-align:center;
+    font-size: 5px;
+}
+
+#fineprint:hover{
+    font-size: 30px;
+    text-decoration: underline;
+
+}
+
+
