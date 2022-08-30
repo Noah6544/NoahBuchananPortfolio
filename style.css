@@ -2,13 +2,6 @@
     text-shadow: .5px .5px 15px #E6BBAD;
     font: 17px Verdana;
     background-image: radial-gradient(circle,#E6BBAD , #EDE3C2 , white );
-
-
-}
-
-#remarks {
-    font-size: 30px;
-    text-align: center;
 }
 
 #contactinfo {
@@ -19,21 +12,17 @@
 .list {
     font: Verdana;
     font-size: 18px;
-
-
 }
 
 .listtitle {
-    margin-left: 23px;
+    margin-left: 20px;
     font-size: 20px;
     font-weight:bold;
-
 }
 
 .title {
-
-    margin-left: 150px;
-    margin-right: 150px;
+    margin-left: 100px;
+    margin-right: 100px;
     margin-bottom: 200px;
     margin-top: 200px;
     padding: 20px;
@@ -51,8 +40,7 @@
     margin-right: 25px;
     margin-bottom: 100px;
     padding: 20px;
-    border: 1px solid black;
-    border-radius: 25px;
+    border-radius: 35px;
     background-color: #add8e6;
     box-shadow: 10px 10px 25px;
 
@@ -115,4 +103,7 @@ div.title:hover {
 
 }
 
-
+#remarks {
+    font-size: 25px;
+    text-align: center;
+}
