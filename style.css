@@ -1,9 +1,8 @@
 #webpage {
     text-shadow: .5px .5px 2px grey;
     font: 17px Verdana;
-    margin: 50px;
-    padding: 100px;
-    border-radius: 25px;
+    margin: 25px;
+    padding: 75px;
 
 
 }
@@ -21,9 +20,9 @@
 
     box-radius: 100px;
     box-shadow: 2px 2px 15px;
-    margin: 75px;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin: 25px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 
@@ -43,8 +42,8 @@
 
 .title {
 
-    margin-left: 450px;
-    margin-right: 450px;
+    margin-left: 150px;
+    margin-right: 150px;
     margin-bottom: 75px;
     padding: 20px;
     border: 2px solid black;
@@ -57,10 +56,10 @@
 }
 
 .box {
-    margin-left: 200px;
-    margin-right: 200px;
+    margin-left: 50px;
+    margin-right: 50px;
     margin-bottom: 75px;
-    padding: 50px;
+    padding: 10px;
     border: 1px none black;
     border-radius: 50px;
     background-color: lightblue;
