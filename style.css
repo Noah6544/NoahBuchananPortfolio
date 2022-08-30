@@ -1,7 +1,7 @@
 #webpage {
     text-shadow: .5px .5px 2px grey;
-    font-family: 'Roboto';font-size: 17px;
-    /*font: 17px Verdana;*/
+    /*font-family: 'Roboto';font-size: 17px;*/
+    font: 17px Verdana;
     margin: 50px;
     padding: 100px;
     border-radius: 25px;
@@ -37,7 +37,7 @@
 
 .listtitle {
     margin-left: 23px;
-    font-size: 17px;
+    font-size: 20px;
     font-weight:bold;
 
 }
