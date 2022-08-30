@@ -1,6 +1,7 @@
 #webpage {
-    text-shadow: .5px .5px 2px grey;
+    text-shadow: .5px .5px 15px #E6BBAD;
     font: 17px Verdana;
+    background-image: radial-gradient(circle,#E6BBAD , #EDE3C2 , white );
 
 
 }
@@ -12,13 +13,6 @@
 
 #contactinfo {
     font-size: 18px
-}
-
-.entirelist{
-
-    box-shadow: 2px 2px 15px;
-    margin-left: 25px;
-    margin-right: 25px;
 }
 
 
@@ -45,7 +39,7 @@
     padding: 20px;
     border: 2px solid black;
     border-radius:25px;
-    background-color:lightblue;
+    background-color:#add8e6;
     font-size: 30px;
     text-shadow: 1px 1px px black;
     text-align:center;
@@ -57,15 +51,12 @@
     margin-right: 25px;
     margin-bottom: 100px;
     padding: 20px;
-    border: 1px none black;
-    border-radius: 50px;
-    background-color: lightblue;
+    border: 1px solid black;
+    border-radius: 25px;
+    background-color: #add8e6;
     box-shadow: 10px 10px 25px;
 
 }
-
-
-
 
 
 #smalltitle {
@@ -96,8 +87,12 @@ a:visited {
 }
 
 div:hover {
-    font-size: 24px;
+    font-size: 20px;
     text-decoration: bold;
+}
+
+div.listtitle:hover {
+    font-size: 22px;
 }
 
 div.title:hover {
@@ -114,7 +109,8 @@ div.title:hover {
 }
 
 #fineprint:hover{
-    font-size: 30px;
+    .box.margin-left:500px;
+    font-size: 22px;
     text-decoration: underline;
 
 }
