@@ -1,13 +1,16 @@
 #webpage {
     text-shadow: .5px .5px 15px #E6BBAD;
     font: 17px Verdana;
-    background-image: radial-gradient(circle,#E6BBAD , #EDE3C2 , #0000 );
+    background-image: radial-gradient(circle,#BBADE6 , #ADBCE6 , #ffffff );
+}
+
+hr {
+    border-top: 1px solid #ADBCE6;
 }
 
 #contactinfo {
     font-size: 18px
 }
-
 
 .list {
     font: Verdana;
@@ -75,7 +78,7 @@ a:visited {
 }
 
 div:hover {
-    font-size: 20px;
+    font-size: 16px;
     text-decoration: bold;
 }
 
@@ -115,14 +118,13 @@ div.title:hover {
 
 @media only screen and (max-width: 400px) {
     .box {
-        margin-left: 0px;
-        margin-right: 0px;
+        margin-left: 10px;
+        margin-right: 10px;
     }
     #webpage {
         text-shadow: .5px .5px 15px #E6BBAD;
         font: 10px Verdana;
-        background-image: radial-gradient(circle,#E6BBAD , #EDE3C2 , #0000 );
-    }
+        background-image: radial-gradient(circle,#BBADE6 , #ADBCE6 , #ffffff );    }
 
     #contactinfo {
         font-size: 10px
@@ -134,11 +136,12 @@ div.title:hover {
 
     .listtitle {
         margin-left: 20px;
-        font-size: 20px;
+        font-size: 16px;
         font-weight:bold;
     }
 
     .title {
+        border: 1px solid black;
         margin-left: 5px;
         margin-right: 5px;
         font-size: 20px;
@@ -164,10 +167,7 @@ div.title:hover {
         font-weight: bold;
         color: blue;
     }
-    a:hover {
-        text-decoration: underline;
-        color:darkblue;
-        font-size: 22px;
+
     }
 
     a:visited {
@@ -176,21 +176,21 @@ div.title:hover {
         color: blue;
     }
 
-    div:hover {
-        font-size: 20px;
-        text-decoration: bold;
+    a:hover {
+        text-decoration: underline;
+        color:darkblue;
+        font-size: 17px;
     }
 
+
     div.listtitle:hover {
-        font-size: 22px;
+        font-size: 17px;
     }
 
     div.title:hover {
-        font-size: 40px;
+        font-size: 21px;
         text-decoration: bold;
         box-shadow: 1px 1px 25px;
-
-
     }
 
     #fineprint {
@@ -198,16 +198,12 @@ div.title:hover {
         font-size: 5px;
     }
 
-    #fineprint:hover{
-        .box.margin-left:500px;
-        font-size: 22px;
-        text-decoration: underline;
-
-    }
 
     #remarks {
-        font-size: 25px;
+        font-size: 17px;
         text-align: center;
     }
+
+
 
 }
