@@ -1,8 +1,6 @@
 #webpage {
     text-shadow: .5px .5px 2px grey;
     font: 17px Verdana;
-    margin: 25px;
-    padding: 75px;
 
 
 }
@@ -18,11 +16,9 @@
 
 .entirelist{
 
-    box-radius: 100px;
     box-shadow: 2px 2px 15px;
-    margin: 25px;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 25px;
+    margin-right: 25px;
 }
 
 
@@ -44,7 +40,8 @@
 
     margin-left: 150px;
     margin-right: 150px;
-    margin-bottom: 75px;
+    margin-bottom: 200px;
+    margin-top: 200px;
     padding: 20px;
     border: 2px solid black;
     border-radius:25px;
@@ -56,10 +53,10 @@
 }
 
 .box {
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-bottom: 75px;
-    padding: 10px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 100px;
+    padding: 20px;
     border: 1px none black;
     border-radius: 50px;
     background-color: lightblue;
