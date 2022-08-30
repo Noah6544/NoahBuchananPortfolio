@@ -1,7 +1,7 @@
 #webpage {
     text-shadow: .5px .5px 15px #E6BBAD;
     font: 17px Verdana;
-    background-image: radial-gradient(circle,#E6BBAD , #EDE3C2 , white );
+    background-image: radial-gradient(circle,#E6BBAD , #EDE3C2 , #0000 );
 }
 
 #contactinfo {
@@ -106,4 +106,108 @@ div.title:hover {
 #remarks {
     font-size: 25px;
     text-align: center;
+}
+
+
+
+
+
+
+@media only screen and (max-width: 400px) {
+    .box {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    #webpage {
+        text-shadow: .5px .5px 15px #E6BBAD;
+        font: 10px Verdana;
+        background-image: radial-gradient(circle,#E6BBAD , #EDE3C2 , #0000 );
+    }
+
+    #contactinfo {
+        font-size: 10px
+    }
+
+    .list {
+        font-size: 15px;
+    }
+
+    .listtitle {
+        margin-left: 20px;
+        font-size: 20px;
+        font-weight:bold;
+    }
+
+    .title {
+        margin-left: 5px;
+        margin-right: 5px;
+        font-size: 20px;
+        text-shadow: 1px 1px px black;
+        text-align:center;
+        box-shadow: 1px 1px 25px;
+    }
+
+
+
+    #smalltitle {
+        font-size: 17px
+    }
+
+    body {
+        color:black;
+        background-color:white;
+    }
+
+    a:link{
+        text-decoration: none;
+        font: italic;
+        font-weight: bold;
+        color: blue;
+    }
+    a:hover {
+        text-decoration: underline;
+        color:darkblue;
+        font-size: 22px;
+    }
+
+    a:visited {
+        text-decoration: none;
+        font-weight: bold;
+        color: blue;
+    }
+
+    div:hover {
+        font-size: 20px;
+        text-decoration: bold;
+    }
+
+    div.listtitle:hover {
+        font-size: 22px;
+    }
+
+    div.title:hover {
+        font-size: 40px;
+        text-decoration: bold;
+        box-shadow: 1px 1px 25px;
+
+
+    }
+
+    #fineprint {
+        text-align:center;
+        font-size: 5px;
+    }
+
+    #fineprint:hover{
+        .box.margin-left:500px;
+        font-size: 22px;
+        text-decoration: underline;
+
+    }
+
+    #remarks {
+        font-size: 25px;
+        text-align: center;
+    }
+
 }
