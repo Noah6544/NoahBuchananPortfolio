@@ -6,27 +6,101 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" media="screen and (min-width:401px)" href="styles.css">
-    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/182e289974.js" crossorigin="anonymous"></script>    <script src="script.js"></script>
     <title>Noah Buchanan</title>
 </head>
 <body>
     <div class="container" id="landingpagecontainer">
-        <div class="titletext">
-            <div id="hey">
+        <div class="titletext" id="landingpage">
+            <div id="hey" data-duration="3s" data-delay="0s">
                 Hey!
             </div>
-            <div id="myname">
+            <div id="myname" data-duration="3s" data-delay="1s">
                 I'm Noah Buchanan!
             </div>
             <hr>
-            <div id="description">
-                I'm an 11th grader from Metro Atlanta. I'm pursuing a career in Computer Science, and I plan on doing big things. 
+            <div id="description" data-duration="4s" data-delay="1s">
+                I'm an 11th grader from Metro Atlanta. I'm pursuing a career in Computer Science, and I plan on doing big things!
             </div>
         </div>
-        <div class="imgdiv" id="portraitimg"><img src="images/PortraitTransparent.png"></div>
-      
+        <div class="Portrait" id="noneditedPortrait" data-duration="3s" data-delay="0s"><img src="images/PortraitTransparent.png"></div>
+
     </div>
-    <div class="container" id="funfacts">
+
+    <div class="titletext" id="my-projects-title">
+        A few of my Favorite Projects
+    </div>
+   
+    <div class="container" id="my-projects-container">
+        <div class="container left-inactive" id="project-django">
+            <div class="project-card" id="1" data-is-clicked="False">
+                <div class="project-title" id="1">
+                    Django Webapp
+                </div>
+                <div class="project-description" id="1">
+                    I built an education web-course using Django!
+                </div>
+            </div>
+        </div>
+        <div class="container" id="project-IT">
+            <div class="project-card active-card" id="2" data-is-clicked="False">
+                <div class="project-title" id="2">
+                    Project Inspire Technology
+                </div>
+                <div class="project-description" id="2">
+                    I had an amazing opportunity to teach a class of 5th graders about programming!
+                </div>
+            </div>
+        </div>
+        <div class="container" id="project-Facial">
+            <div class="project-card right-inactive" id="3" data-is-clicked="False">
+                <div class="project-title" id="3">
+                    Facial Recognition Research
+                </div>
+                <div class="project-description" id="3">
+                    I investigated the effect of facial recognition on racial bias. 
+                </div>
+            </div>
+        </div>
+        <div class="container" id="project-ImageAligner">
+            <div class="project-card inactive-card" id="4"data-is-clicked="False">
+                <div class="project-title" id="4">
+                    Picture Image Aligner Automation
+                </div>
+                <div class="project-description" id="4">
+                    Work in progress.
+                </div>
+            </div>
+        </div>
+        <div class="container" id="project-IT">
+            <div class="project-card inactive-card" id="4" data-is-clicked="False">
+                <div class="project-title" id="2">
+                    [COMING SOON]
+                </div>
+                <div class="project-description" id="2">
+                    I had an amazing opportunity to teach a class of 5th graders about programming!
+                </div>
+            </div>
+        </div>
+        <div class="container" id="project-IT">
+            <div class="project-card inactive-card" id="5"data-is-clicked="False">
+                <div class="project-title" id="2">
+                    Another project
+                </div>
+                <div class="project-description" id="2">
+                    I had an amazing opportunity to teach a class of 5th graders about programming!
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="arrows">
+        <i class="fa-solid fa-arrow-left previousArrow"></i>
+        <i class="fa-solid fa-arrow-right nextArrow"></i>
+    </div>
+    <div class="container" id="contact">
+        Feel free to reach out!
+    </div>
+    <div class="container" id="funfacts-container">
         <div class="titletext" id="funfactstitle">
             Fun facts about me:
         </div>
@@ -48,8 +122,16 @@
         </div>
       
     </div>
-   
-
-    
+    <div class="containter" id="skills">
+        <div class="titletext" id="skillstitle">
+            Skills:
+        </div>
+        <div class="list" id="skills-list">
+            <ul>
+                <li class="skill-item">Advanced Python Application</li>
+                <li class="skill-item" id="skills-webdev">Intermediate Web Development (Django, Html, CSS, JS)</li>       
+            </ul>
+        </div>
+    </div> 
 </body>
 </html>
