@@ -2,7 +2,7 @@
     --font-color: 255, 255, 255;
     --rem: 16px;
     --text-shadow: 2px 3px 5px rgb(0, 0, 0);
-    --primary-color: #9bd8ff; 
+    --primary-color: #232e35; 
     --heymyname-animation-duration: 3s;
     --myname-description-delay: 1s;
     --myname-delay: 0s;
@@ -43,7 +43,7 @@
 @keyframes textreveal {
     from {
         opacity: 0;
-        filter: blur(5rem);
+        filter: blur(5em);
     }
     to {
         opacity: 1;
@@ -100,9 +100,9 @@ body{
 
 .Portrait img {
     z-index: 2;
-     filter: blur(1.5vw);
+    filter: blur(1.5vw);
     transform: translateX(-400%);
-    height: clamp(5px, 21.5vw, 500px);
+    height: clamp(100px, 21.5vw, 500px);
     animation: 3s ease forwards 0s 1 slidein; 
     border-radius: 100%;
     border: solid rgb(255, 255, 255) .2vw;
@@ -115,8 +115,6 @@ body{
 
 }
 
-
-
 .titletext {
     color: rgb(var(--font-color));
     font-size: 3.5em;
@@ -126,14 +124,14 @@ body{
 }
 #hey {
     transform: translateX(-200%);
-    font-size: 4vw;
+    font-size: clamp(.5em,4vw,6em);
     animation: 3s ease forwards 0s 1 slidein;
     transition: filter 1s ease;
 }
 
 #myname {
     transform: translateX(-200%);
-    font-size: 4vw;
+    font-size: clamp(.5em,4vw,6em);
     animation: 3s ease forwards 1s 1 slidein;
 }
 
@@ -186,74 +184,76 @@ body{
     padding: 1em;
 }
 
+#my-projects-container {
+    flex-wrap: wrap;
+    gap: 1em;
+    border: 3em;
+
+}
+
+
 .project-card {
     justify-content: center;
     align-items: center;
-    font-size: clamp(1em,2.2em,3em);
-    overflow: hidden;
-    aspect-ratio: 9/12;
-    width: clamp(10vw,12vw,250px);
-    background-color: rgb(209, 209, 248);
-    text-align: center;
-    padding: 1em;
+    aspect-ratio: 10/12;
+    width: clamp(5em,12vw,11em);
+    background-color: rgb(209, 209, 248,0.6);
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-    margin: .7em;
     border-radius: 5%;
     transition: all 1s ease;
-
-}
-
-.my-projects-container:hover {
-    color: white;
-    color:  #092E20
-    position: relative;
+    font-size: 2em;
+    border: solid 1px (255,255,255,.1);
 }
 
 
+.project-card-clicked {
+    order: -1;
+    z-index: 1;
+}
 .project-card:hover {
-    border: none;
     position: initial;
     background-color: var(--primary-color);
-    transform: scale(1.02);
     filter: blur(0);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px , rgba(0, 0, 0, 0.3) 0px 18px 36px -18px ;
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px , rgba(0, 0, 0, 0.3) 0px 18px 36px -18px ; */
     cursor: pointer;
-
 }
 
+.project-title {
+    padding: .5 5px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 15px;
+    font-size: clamp(.02em,.9em,3em);
+}
 
-
-.project-card:hover .html{
-    filter: blur(20zpx);
+.project-image {
+    
+    opacity: .25;
 }
 .project-description{
     display: none;
+    font-size: clamp(.02em,.8em,2em);
+    font-style: italic;
+    padding: 50px 5px;
 }
 
-.active-card {
-    color: blue;
+.project-card#project-django{
+    order:1;    
+}
+.project-card#project-IT{
+    order:2;    
+}
+.project-card#project-django{
+    order:3;    
+}
+.project-card#project-django{
+    order:4;    
+}
+.project-card#project-django{
+    order:5;    
 }
 
-.left-inactive {
-    display: block;
-
-    opacity: .5;
-    transform: scale(.9);
-}
-
-.right-inactive {
-    display: block;
-    opacity: .5;
-    transform: scale(.9);
-}
-
-.inactive-card {
-    display: none;
-    transform: scale(.9);
-    position: absolute;
-    left: 40%;
-    top: 123%;
-}
 
 #funfacts-container {
     color: rgb(var(--font-color));
@@ -262,11 +262,11 @@ body{
     flex-direction: column;
     padding: 1vw;
     text-shadow: var(--text-shadow);
+    
 }
 
 .funfact-item { 
     font-size: 2em;
-    filter: blur
     margin-left: 1.2vw;
     padding: 1vw;
     opacity: 0;

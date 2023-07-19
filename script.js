@@ -62,16 +62,23 @@ function setInactiveCards(card,index){
 function Click_projectcard(card){
 
   if(card.dataset.isClicked == "False"){
-    card.style.cssText = "transform: scale(2);";
+    card.classList.add("project-card-clicked");
     card.dataset.isClicked = "True";
+    console.log("clicked!");
+        card.dataset.isClicked = "True";
+
   }
   else{
-    card.style.cssText = "transform: scale(1);";
+    console.log("not clicked!");
+    card.classlist.remove("project-card-clicked");
     card.dataset.isClicked = "False";
   }
 }
 
+
 function onscroll() {
+  console.log("asdf");
+
   const viewportHeight = window.innerHeight; //check height of window.
   //checking for fact list stuff
   for(let i=0;i<factlist.length;i++){
@@ -101,46 +108,17 @@ function onscroll() {
     }
   }  
 }
-
-
-
+ 
 //RUNNING CODE
 let projectCardIndex = 1;
 
 for(let i = 0; i<projectcardlist.length; i++){
   const card = projectcardlist[i]; //must have "LET/const CARD" not just card. if not doesn't work.
   card.addEventListener('click', () => Click_projectcard(card));
-  card.innerHTML  += projectCardIndex;
+  
 }                        // U NEED THIS ANONYMOUS FUNCTION ARROW.
 
 
-//moves the carosel in the clockwise direction
-previousArrow.addEventListener('click', () => { //messin with arrow functions shorthadnd
-  setLeftCard(projectcardlist[projectCardIndex]);
-  projectCardIndex-= 1;
-  if(projectCardIndex < 0){
-    projectCardIndex = (projectcardlist.length - 1); // minus 1 because lists start from 0 so the length is actually 1 shorter than we'd expect
-  }
-  setActiveCard(projectcardlist[projectCardIndex]);
-  setRightCard(projectcardlist[projectCardIndex-1]);  
-  setInactiveCards(projectcardlist,projectCardIndex);
-    // something about like manually setting hte positions and cases if
-    // the index = 0 or if index = the last one.
-
-})
- 
-
-//this has a carosel moving counterclockwise
-nextArrow.addEventListener('click',() =>{ //messin with arrow functions shorthadnd
-  setRightCard((projectcardlist[projectCardIndex]));
-  projectCardIndex+= 1;
-  if(projectCardIndex >= projectcardlist.length){
-    projectCardIndex = 0;
-  }
-  setActiveCard(projectcardlist[projectCardIndex]);
-  setLeftCard(projectcardlist[projectCardIndex+1]);
-  setInactiveCards(projectcardlist,projectCardIndex);
-})
 
 window.addEventListener('scroll', onscroll);
 
