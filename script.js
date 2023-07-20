@@ -26,7 +26,7 @@ const facttitle = document.getElementById("funfactstitle");
 const factlist = document.getElementsByClassName('funfact-item');
 
 //for projects_list
-const projectcardlist = document.querySelectorAll(".project-card");
+const projectCardList = document.querySelectorAll(".project-card");
 const previousArrow = document.querySelector(".previousArrow");
 const nextArrow = document.querySelector(".nextArrow");
 
@@ -59,26 +59,33 @@ function setInactiveCards(card,index){
   card[index].innerHTML = index;
 }
 
-function Click_projectcard(card){
-
-  if(card.dataset.isClicked == "False"){
-    card.classList.add("project-card-clicked");
-    card.dataset.isClicked = "True";
-    console.log("clicked!");
-        card.dataset.isClicked = "True";
-
+function Click_projectcard(card){ 
+  //find the first card in the list
+  //get that cards position
+  //move the clicked card to that cards position
+  //move all other cards to the position of the one after it.
+    //for the card before clicked card, move it to cards position...hmm
+    
+  projectCardList.forEach(tempcard =>{
+    if(tempcard.style.order == 1){
+      let firstCardPosition = tempcard.getBoundingClientRect;
+      console.log(firstCardPosition);
   }
-  else{
-    console.log("not clicked!");
-    card.classlist.remove("project-card-clicked");
-    card.dataset.isClicked = "False";
-  }
+  }) 
+
+  projectCardList.forEach(checkcard => { 
+    if(checkcard != card){
+      checkcard.style.order ++;
+    }
+  })
+  card.style.cssText = "order: 1; z-index: 1;";
+
+  //checks all other cards, and if it's not the clicked card, then it shifts down one.
+  
 }
 
 
 function onscroll() {
-  console.log("asdf");
-
   const viewportHeight = window.innerHeight; //check height of window.
   //checking for fact list stuff
   for(let i=0;i<factlist.length;i++){
@@ -112,15 +119,12 @@ function onscroll() {
 //RUNNING CODE
 let projectCardIndex = 1;
 
-for(let i = 0; i<projectcardlist.length; i++){
-  const card = projectcardlist[i]; //must have "LET/const CARD" not just card. if not doesn't work.
+for(let i = 0; i<projectCardList.length; i++){
+  let card = projectCardList[i]; //must have "LET/const CARD" not just card. if not doesn't work.
+  card.style.order = (i+1);
   card.addEventListener('click', () => Click_projectcard(card));
-  
-}                        // U NEED THIS ANONYMOUS FUNCTION ARROW.
-
-
+};                      // U NEED THIS ANONYMOUS FUNCTION ARROW.
 
 window.addEventListener('scroll', onscroll);
-
 });
 

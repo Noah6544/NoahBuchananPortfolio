@@ -142,28 +142,6 @@ body{
     font-size: 2.5vw;
     animation: 4s ease forwards 1s 1 slidein;
 }
-.fa-solid {
-    padding: .2vw;
-    font-size: 3em;
-    border-radius: 10%;
-    transition: all .2s ease;
-}
-
-.fa-solid:hover {
-    cursor: pointer;
-}
-
-
-#arrows {
-    justify-content: space-evenly;
-    padding: 5vh;
-}
-
-.nextArrow:hover {
-}
-
-.previousArrow:hover {
-}
 
 #my-projects-container {
     color: rgb(var(--font-color));
@@ -197,20 +175,25 @@ body{
     align-items: center;
     aspect-ratio: 10/12;
     width: clamp(5em,12vw,11em);
-    background-color: rgb(209, 209, 248,0.6);
+    background-color: rgba(209, 242, 248, 0.6);
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     border-radius: 5%;
-    transition: all 1s ease;
     font-size: 2em;
     border: solid 1px (255,255,255,.1);
+    transition: background-color .25s ease;
+    transition: transform 0.5s;
+
+}
+
+.project-card-active {
+    transform: translateX(calc(-100% * var(--index)));
+    transition: transform 0.5s;
+
 }
 
 
-.project-card-clicked {
-    order: -1;
-    z-index: 1;
-}
 .project-card:hover {
+    transition: all .25s;
     position: initial;
     background-color: var(--primary-color);
     filter: blur(0);
@@ -236,22 +219,6 @@ body{
     font-size: clamp(.02em,.8em,2em);
     font-style: italic;
     padding: 50px 5px;
-}
-
-.project-card#project-django{
-    order:1;    
-}
-.project-card#project-IT{
-    order:2;    
-}
-.project-card#project-django{
-    order:3;    
-}
-.project-card#project-django{
-    order:4;    
-}
-.project-card#project-django{
-    order:5;    
 }
 
 
