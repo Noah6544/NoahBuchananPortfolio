@@ -67,9 +67,14 @@ function Click_projectcard(card){
     //for the card before clicked card, move it to cards position...hmm
     
   projectCardList.forEach(tempcard =>{
-    if(tempcard.style.order == 1){
-      let firstCardPosition = tempcard.getBoundingClientRect;
-      console.log(firstCardPosition);
+    if(tempcard.style.order == 1){ 
+      console.log(tempcard);
+      let firstCardPosition = tempcard.getBoundingClientRect();
+      let x = firstCardPosition.top;
+      let y = firstCardPosition.left;
+      card.left = x + 100;
+      card.top = y-100;
+      console.log("cards x and y: " + x+ card.top);
   }
   }) 
 
@@ -81,9 +86,12 @@ function Click_projectcard(card){
   card.style.cssText = "order: 1; z-index: 1;";
 
   //checks all other cards, and if it's not the clicked card, then it shifts down one.
-  
+
 }
 
+function onMouseMove(mouse){
+  // console.log(mouse.x +  mouse.y);
+}
 
 function onscroll() {
   const viewportHeight = window.innerHeight; //check height of window.
@@ -117,6 +125,7 @@ function onscroll() {
 }
  
 //RUNNING CODE
+
 let projectCardIndex = 1;
 
 for(let i = 0; i<projectCardList.length; i++){
@@ -126,5 +135,8 @@ for(let i = 0; i<projectCardList.length; i++){
 };                      // U NEED THIS ANONYMOUS FUNCTION ARROW.
 
 window.addEventListener('scroll', onscroll);
+window.addEventListener("mousemove",onMouseMove)
+
+
 });
 

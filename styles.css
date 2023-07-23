@@ -43,7 +43,7 @@
 @keyframes textreveal {
     from {
         opacity: 0;
-        filter: blur(5em);
+        filter: blur(5rem);
     }
     to {
         opacity: 1;
@@ -70,6 +70,14 @@
       transform: translateY(0);
     }
   }
+
+html {
+    font-size: 16px;
+
+
+}
+
+
 
 body{ 
     margin: 0;
@@ -111,13 +119,11 @@ body{
 }
 
 
-.Portrait img:hover {
 
-}
 
 .titletext {
     color: rgb(var(--font-color));
-    font-size: 3.5em;
+    font-size: 3.5rem;
     text-shadow: var(--text-shadow);
     /*text-align: center;*/
 
@@ -171,21 +177,26 @@ body{
 
 
 .project-card {
+ 
+    backdrop-filter: blur(10px);
     justify-content: center;
+    text-overflow: ellipsis;
     align-items: center;
+    font-size: 2rem;
+    overflow: hidden;
+    z-index: 2;
     aspect-ratio: 10/12;
-    width: clamp(5em,12vw,11em);
-    background-color: rgba(209, 242, 248, 0.6);
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-    border-radius: 5%;
-    font-size: 2em;
-    border: solid 1px (255,255,255,.1);
-    transition: background-color .25s ease;
-    transition: transform 0.5s;
+    width: clamp(5em,15rem,20rem);
+    background-color: rgba(125, 125, 125, .2);
+    box-shadow: rgba(255, 255, 255, .1) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
+    border-radius: 4%;
+    border: solid .5px rgba(194, 194, 194, 0.9);
+    transition: background-color .5s ease;
+    transition: transform .5s ease;
 
 }
 
-.project-card-active {
+.project-card-clicked {
     transform: translateX(calc(-100% * var(--index)));
     transition: transform 0.5s;
 
@@ -193,12 +204,12 @@ body{
 
 
 .project-card:hover {
-    transition: all .25s;
+    transform: scale(1.2);
     position: initial;
-    background-color: var(--primary-color);
     filter: blur(0);
-    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px , rgba(0, 0, 0, 0.3) 0px 18px 36px -18px ; */
+    box-shadow: rgba(255, 255, 255, .5) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
     cursor: pointer;
+
 }
 
 .project-title {
@@ -206,19 +217,24 @@ body{
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 15px;
-    font-size: clamp(.02em,.9em,3em);
+    padding: 2rem;
+    font-size: clamp(1.5rem,2rem,3rem);
 }
 
 .project-image {
-    
+
     opacity: .25;
 }
+
 .project-description{
     display: none;
     font-size: clamp(.02em,.8em,2em);
     font-style: italic;
-    padding: 50px 5px;
+    padding: 50px 5px;   
+}
+
+.popup-Project {
+    display: none;
 }
 
 
