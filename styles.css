@@ -1,12 +1,7 @@
 :root {
     --font-color: 255, 255, 255;
-    --rem: 16px;
     --text-shadow: 2px 3px 5px rgb(0, 0, 0);
     --primary-color: #232e35; 
-    --heymyname-animation-duration: 3s;
-    --myname-description-delay: 1s;
-    --myname-delay: 0s;
-    --description-duration: 4s;
 
 }
 
@@ -71,6 +66,23 @@
     }
   }
 
+
+@keyframes scaleXY {
+    0% {
+        height: 0vh;
+        width: 0;
+    }
+    40% {
+        height: 0vh;
+        width: 70vw;
+    }
+    100% {
+        height: 85vh;
+        width: 70vw;
+    }
+}
+
+
 html {
     font-size: 16px;
 
@@ -79,7 +91,7 @@ html {
 
 
 
-body{ 
+body { 
     margin: 0;
     background: var(--primary-color); /*rgb(162, 201, 240);*/
     /*rgb(41, 42, 43);*/
@@ -89,6 +101,8 @@ body{
     font-smooth: always;
 
 }
+
+
 
 .container {
     display: flex;
@@ -175,37 +189,56 @@ body{
 
 }
 
+.project-card-popup {
+    
+    height: 0;
+    width: 0;
+    position: absolute;
+    backdrop-filter: blur(7px);
+    justify-content: center;
+    text-overflow: ellipsis;
+    align-items: center;
+    padding: clamp(10px, 50px, 100px);
+    overflow: hidden;   
+    background-color: rgba(125, 125, 125, 0.027);
+    box-shadow: rgba(255, 255, 255, .1) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
+    border-radius: 1%;
+    border: solid .02px rgba(241, 238, 238, 0.9);
+    animation: 3s cubic-bezier(.76,0,.29,1) forwards 1s 1 scaleXY;
+
+}
+
+.project-card-popup .title {
+}
 
 .project-card {
- 
     backdrop-filter: blur(10px);
     justify-content: center;
     text-overflow: ellipsis;
     align-items: center;
     font-size: 2rem;
     overflow: hidden;
-    z-index: 2;
     aspect-ratio: 10/12;
     width: clamp(5em,15rem,20rem);
     background-color: rgba(125, 125, 125, .2);
     box-shadow: rgba(255, 255, 255, .1) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
     border-radius: 4%;
-    border: solid .5px rgba(194, 194, 194, 0.9);
+    border: solid .02px rgba(194, 194, 194, 0.9);
     transition: background-color .5s ease;
     transition: transform .5s ease;
-
 }
 
 .project-card-clicked {
-    transform: translateX(calc(-100% * var(--index)));
-    transition: transform 0.5s;
+    transform: scale(.8);
+    color: blue;
 
 }
+
+
 
 
 .project-card:hover {
     transform: scale(1.2);
-    position: initial;
     filter: blur(0);
     box-shadow: rgba(255, 255, 255, .5) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
     cursor: pointer;
@@ -234,7 +267,7 @@ body{
 }
 
 .popup-Project {
-    display: none;
+    display:none;
 }
 
 
@@ -267,6 +300,11 @@ hr {
     background-color: rgb(245, 244, 244);
     animation: 2s cubic-bezier(.14,.03,.26,1.01) forwards 4s 1 openhr;
 }
+
+.fa-xmark {
+    display: none;
+}
+
 
 a {
     font-style: italic;

@@ -22,70 +22,29 @@ const titletext = document.querySelector('.titletext');
 const landingpagediv_rect = landingpagediv.getBoundingClientRect();
 
 // for the fun fact animations
-const facttitle = document.getElementById("funfactstitle");
 const factlist = document.getElementsByClassName('funfact-item');
 
 //for projects_list
 const projectCardList = document.querySelectorAll(".project-card");
-const previousArrow = document.querySelector(".previousArrow");
-const nextArrow = document.querySelector(".nextArrow");
+projectPopup = document.querySelector(".popup-Project");
+const xmark = document.querySelector(".fa-xmark");
 
 
 //Event Listener Functions:
-function setActiveCard(card){
-  card.classList.remove("inactive-card","left-inactive","right-inactive");
-  card.classList.add("active-card");
-}
-
-function setLeftCard(card){
-  card.classList.remove("active-card","right-inactive","inactive-card");
-  card.classList.add("left-inactive");
-}
-
-function setRightCard(card){
-  card.classList.remove("active-card","left-inactive","inactive-card");
-  card.classList.add("right-inactive");
-}
-
-function setInactiveCards(card,index){
-  if (index + 2 < card.length) {
-    card[index+2].classList.remove("active-card","left-inactive","right-inactive");
-    card[index+2].classList.add("inactive-card");
-  }
-  if (index - 2 >= 0) {
-    card[index-2].classList.remove("active-card","left-inactive","right-inactive");
-    card[index-2].classList.add("inactive-card");
-  }
-  card[index].innerHTML = index;
-}
 
 function Click_projectcard(card){ 
-  //find the first card in the list
-  //get that cards position
-  //move the clicked card to that cards position
-  //move all other cards to the position of the one after it.
-    //for the card before clicked card, move it to cards position...hmm
-    
-  projectCardList.forEach(tempcard =>{
-    if(tempcard.style.order == 1){ 
-      console.log(tempcard);
-      let firstCardPosition = tempcard.getBoundingClientRect();
-      let x = firstCardPosition.top;
-      let y = firstCardPosition.left;
-      card.left = x + 100;
-      card.top = y-100;
-      console.log("cards x and y: " + x+ card.top);
+  id = card.id;
+  projectTitle = document.getElementById(id).getElementsByClassName("project-title")[0];
+  projectDescription =  document.getElementById(id).getElementsByClassName("project-description")[0];
+  projectPopup.classList.remove("popup-Project");  
+  projectPopup.classList.add("project-card-popup");
+  if(card.getAttribute("data-is-clicked") == false){
+    card.style.cssText = "transform: scale(.85);"
+    card.getAttribute(Boolean("data-is-clicked")) == true;
   }
-  }) 
 
-  projectCardList.forEach(checkcard => { 
-    if(checkcard != card){
-      checkcard.style.order ++;
-    }
-  })
-  card.style.cssText = "order: 1; z-index: 1;";
 
-  //checks all other cards, and if it's not the clicked card, then it shifts down one.
+  
 
 }
 
@@ -129,9 +88,10 @@ function onscroll() {
 let projectCardIndex = 1;
 
 for(let i = 0; i<projectCardList.length; i++){
+  console.log(projectCardList[i]);
   let card = projectCardList[i]; //must have "LET/const CARD" not just card. if not doesn't work.
-  card.style.order = (i+1);
   card.addEventListener('click', () => Click_projectcard(card));
+  
 };                      // U NEED THIS ANONYMOUS FUNCTION ARROW.
 
 window.addEventListener('scroll', onscroll);
