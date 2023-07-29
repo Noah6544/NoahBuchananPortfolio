@@ -22,6 +22,15 @@
 
 }
 
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 @keyframes slidein-reverse {
 
     from {
@@ -70,14 +79,14 @@
 @keyframes scaleXY {
     0% {
         height: 0vh;
-        width: 0;
+        width: 0vw;
     }
     40% {
         height: 0vh;
         width: 70vw;
     }
     100% {
-        height: 85vh;
+        height: 70vh;
         width: 70vw;
     }
 }
@@ -190,25 +199,40 @@ body {
 }
 
 .project-card-popup {
-    
-    height: 0;
-    width: 0;
+    overflow: hidden;   
+    height: 0vh;
+    width: 0vw;
     position: absolute;
     backdrop-filter: blur(7px);
     justify-content: center;
     text-overflow: ellipsis;
     align-items: center;
-    padding: clamp(10px, 50px, 100px);
-    overflow: hidden;   
-    background-color: rgba(125, 125, 125, 0.027);
+    padding: clamp(30px, 70px, 100px);
+    background-color: rgba(0, 0, 0, 0.281);
     box-shadow: rgba(255, 255, 255, .1) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
-    border-radius: 1%;
-    border: solid .02px rgba(241, 238, 238, 0.9);
-    animation: 3s cubic-bezier(.76,0,.29,1) forwards 1s 1 scaleXY;
+    border-radius: 0;
+    border: solid .02px rgba(107, 148, 169, 0.648);
+    animation: 2s cubic-bezier(.76,0,.29,1) forwards 1s 1 scaleXY;
 
 }
 
 .project-card-popup .title {
+    font-size: clamp(1rem, 3rem,5rem);
+    text-align:center;
+    transform: translateX(-300%);
+    filter: blur(10px);
+    animation: 3s ease forwards 2s slidein;
+    padding: clamp(20px, 40px, 50px) 0px clamp(20px, 40px, 50px)  0px;
+}
+
+.project-card-popup .project-description{
+    display: block;
+    transform: translateX(-100%);
+    filter: blur(10px);
+    font-size: clamp(1rem,1.5rem,3rem);
+    padding: clamp(10px, 20px,30px) 0px clamp(10px, 20px,30px) 0px;
+    animation: 3s ease forwards 3s slidein;
+
 }
 
 .project-card {
@@ -222,7 +246,7 @@ body {
     width: clamp(5em,15rem,20rem);
     background-color: rgba(125, 125, 125, .2);
     box-shadow: rgba(255, 255, 255, .1) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
-    border-radius: 4%;
+    border-radius: 5%;
     border: solid .02px rgba(194, 194, 194, 0.9);
     transition: background-color .5s ease;
     transition: transform .5s ease;
@@ -233,9 +257,6 @@ body {
     color: blue;
 
 }
-
-
-
 
 .project-card:hover {
     transform: scale(1.2);
@@ -252,18 +273,24 @@ body {
     text-align: center;
     padding: 2rem;
     font-size: clamp(1.5rem,2rem,3rem);
+    
 }
 
 .project-image {
-
     opacity: .25;
 }
 
-.project-description{
+
+.project-description {
     display: none;
-    font-size: clamp(.02em,.8em,2em);
-    font-style: italic;
-    padding: 50px 5px;   
+}
+
+.extended-description {
+    transform: translateX(-200%);
+    filter: blur(10px);
+    animation: 3s ease forwards 3s slidein;
+    font-size: clamp(1rem, 1.3rem, 3rem);
+    padding: clamp(10px, 20px,30px) 0px clamp(10px, 20px,30px) 0px;
 }
 
 .popup-Project {
@@ -291,7 +318,6 @@ body {
 
 
 /* specific class stuff */
-
 hr {
     transform-origin: left;
     transform: scaleX(0);

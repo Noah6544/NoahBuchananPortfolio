@@ -25,26 +25,49 @@ const landingpagediv_rect = landingpagediv.getBoundingClientRect();
 const factlist = document.getElementsByClassName('funfact-item');
 
 //for projects_list
+const ignoredDivs = ['popup-Project-Description','popup-Project-Title','popup-Project-Extended-Description','my-projects-container'];
 const projectCardList = document.querySelectorAll(".project-card");
 projectPopup = document.querySelector(".popup-Project");
+
 const xmark = document.querySelector(".fa-xmark");
 
+function BlurEverythingExcept(exceptionObject){
+  allDivs = document.querySelectorAll("div");
+  allDivs.forEach(element => {
+    if(element == exceptionObject){
+      element.style.cssText = "filter: blur(0px); z-index: 1;"
+    }
+    else if(ignoredDivs.includes(element.id)){
+      let spec = document.getElementById(element.id); 
+      spec.style.cssText = "filter: blur(0px); z-index: 1;"
+    }
+    else{
+      element.style.cssText = "transition: all 2s ease;filter: blur(3px);"
+    }  
+    exceptionObject.style.cssText = "filter: blur(0px);"
+  });
+}
 
 //Event Listener Functions:
 
 function Click_projectcard(card){ 
   id = card.id;
+  //getting elements to insert into div
   projectTitle = document.getElementById(id).getElementsByClassName("project-title")[0];
-  projectDescription =  document.getElementById(id).getElementsByClassName("project-description")[0];
+  projectDescription = document.getElementById(id).getElementsByClassName("project-description")[0];
+  //getting the popupcard divs that will modified (no need to make variables)
+  document.getElementById("popup-Project-Title").innerHTML = projectTitle.innerHTML;
+  document.getElementById("popup-Project-Description").innerHTML = projectDescription.innerHTML;
+
   projectPopup.classList.remove("popup-Project");  
   projectPopup.classList.add("project-card-popup");
+  BlurEverythingExcept(projectPopup);
+
   if(card.getAttribute("data-is-clicked") == false){
     card.style.cssText = "transform: scale(.85);"
     card.getAttribute(Boolean("data-is-clicked")) == true;
   }
-
-
-  
+ 
 
 }
 
