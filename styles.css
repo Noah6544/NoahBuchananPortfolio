@@ -76,18 +76,23 @@
   }
 
 
-@keyframes scaleXY {
+@keyframes scaleXY { /* lets go, figured out padding needs to be animated too */
     0% {
-        height: 0vh;
+        height: 0px;
         width: 0vw;
+
     }
     40% {
         height: 0vh;
         width: 70vw;
+        padding: 0;
+
     }
     100% {
         height: 70vh;
         width: 70vw;
+        padding: clamp(30px, 70px, 100px);
+
     }
 }
 
@@ -200,21 +205,21 @@ body {
 
 .project-card-popup {
     overflow: hidden;   
-    height: 0vh;
-    width: 0vw;
+    height: 0;
+    width: 0;
     position: absolute;
     backdrop-filter: blur(7px);
     justify-content: center;
-    text-overflow: ellipsis;
+    overflow: hidden;
     align-items: center;
-    padding: clamp(30px, 70px, 100px);
     background-color: rgba(0, 0, 0, 0.281);
     box-shadow: rgba(255, 255, 255, .1) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
     border-radius: 0;
     border: solid .02px rgba(107, 148, 169, 0.648);
-    animation: 2s cubic-bezier(.76,0,.29,1) forwards 1s 1 scaleXY;
+    animation: 2s cubic-bezier(.76,0,.29,1) forwards scaleXY;
 
 }
+
 
 .project-card-popup .title {
     font-size: clamp(1rem, 3rem,5rem);
@@ -284,6 +289,9 @@ body {
 .project-description {
     display: none;
 }
+.project-extended-description{
+    display: none;
+}
 
 .extended-description {
     transform: translateX(-200%);
@@ -328,9 +336,23 @@ hr {
 }
 
 .fa-xmark {
+    position: absolute;
     display: none;
+    opacity: 0; /*display: none; doesn't work for these items*/
+    transition: all 1s ;
+
+} 
+
+.fa-xmark:hover{
+    cursor: pointer;
+    transform: scale(1.3);
+
 }
 
+.fa-xmark-clicked{
+    display: block;
+    opacity: 1;
+}
 
 a {
     font-style: italic;

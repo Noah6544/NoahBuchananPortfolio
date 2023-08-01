@@ -25,20 +25,21 @@ const landingpagediv_rect = landingpagediv.getBoundingClientRect();
 const factlist = document.getElementsByClassName('funfact-item');
 
 //for projects_list
-const ignoredDivs = ['popup-Project-Description','popup-Project-Title','popup-Project-Extended-Description','my-projects-container'];
+const ignoredDivs = ['xmark','popup-Project-Description','popup-Project-Title','popup-Project-Extended-Description','my-projects-container'];
 const projectCardList = document.querySelectorAll(".project-card");
 projectPopup = document.querySelector(".popup-Project");
 
 const xmark = document.querySelector(".fa-xmark");
+xmark.style.right = projectPopup.style.right;
 
 function BlurEverythingExcept(exceptionObject){
-  allDivs = document.querySelectorAll("div");
   allDivs.forEach(element => {
     if(element == exceptionObject){
       element.style.cssText = "filter: blur(0px); z-index: 1;"
     }
     else if(ignoredDivs.includes(element.id)){
-      let spec = document.getElementById(element.id); 
+      let  allDivs = document.querySelectorAll("div");
+ spec = document.getElementById(element.id); 
       spec.style.cssText = "filter: blur(0px); z-index: 1;"
     }
     else{
@@ -48,6 +49,11 @@ function BlurEverythingExcept(exceptionObject){
   });
 }
 
+function UnblurEverything(){
+  allDivs.forEach(element => {    
+    element.style.cssText = "transition: all 2s ease;filter: blur(0px);";
+  });
+}
 //Event Listener Functions:
 
 function Click_projectcard(card){ 
@@ -62,13 +68,19 @@ function Click_projectcard(card){
   projectPopup.classList.remove("popup-Project");  
   projectPopup.classList.add("project-card-popup");
   BlurEverythingExcept(projectPopup);
-
+  xmark.classList.add("fa-xmark-clicked");
   if(card.getAttribute("data-is-clicked") == false){
     card.style.cssText = "transform: scale(.85);"
     card.getAttribute(Boolean("data-is-clicked")) == true;
   }
- 
+}
 
+function Click_Xmark(){
+  projectPopup.classList.remove("project-card-popup");
+
+  projectPopup.style.cssText = "animation: 2s cubic-bezier(.76,0,.29,1) reverse scaleXY;";
+  projectPopup.classList.add("popup-Project");  
+  UnblurEverything;
 }
 
 function onMouseMove(mouse){
@@ -119,6 +131,7 @@ for(let i = 0; i<projectCardList.length; i++){
 
 window.addEventListener('scroll', onscroll);
 window.addEventListener("mousemove",onMouseMove)
+xmark.addEventListener('click', () => Click_Xmark());
 
 
 });
