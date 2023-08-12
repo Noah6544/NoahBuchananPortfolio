@@ -25,6 +25,7 @@ const landingpagediv_rect = landingpagediv.getBoundingClientRect();
 const factlist = document.getElementsByClassName('funfact-item');
 
 //for projects_list
+const allDivs = document.querySelectorAll("div");
 const ignoredDivs = ['xmark','popup-Project-Description','popup-Project-Title','popup-Project-Extended-Description','my-projects-container'];
 const projectCardList = document.querySelectorAll(".project-card");
 projectPopup = document.querySelector(".popup-Project");
@@ -34,16 +35,15 @@ xmark.style.right = projectPopup.style.right;
 
 function BlurEverythingExcept(exceptionObject){
   allDivs.forEach(element => {
-    if(element == exceptionObject){
-      element.style.cssText = "filter: blur(0px); z-index: 1;"
+    if(element == exceptionObject){ // Ithink this might be redundant because of the next else if, but whatever.
+      element.style.cssText = "filter: blur(0px); z-index: 2;"
     }
     else if(ignoredDivs.includes(element.id)){
-      let  allDivs = document.querySelectorAll("div");
- spec = document.getElementById(element.id); 
-      spec.style.cssText = "filter: blur(0px); z-index: 1;"
+      ignoredElement = document.getElementById(element.id); 
+      ignoredElement.style.cssText = "filter: blur(0px); z-index: 2;"
     }
     else{
-      element.style.cssText = "transition: all 2s ease;filter: blur(3px);"
+      element.style.cssText = "filter: blur(3px); transition: all 2s ease;;"
     }  
     exceptionObject.style.cssText = "filter: blur(0px);"
   });
@@ -64,10 +64,10 @@ function Click_projectcard(card){
   //getting the popupcard divs that will modified (no need to make variables)
   document.getElementById("popup-Project-Title").innerHTML = projectTitle.innerHTML;
   document.getElementById("popup-Project-Description").innerHTML = projectDescription.innerHTML;
-
   projectPopup.classList.remove("popup-Project");  
   projectPopup.classList.add("project-card-popup");
   BlurEverythingExcept(projectPopup);
+  xmark.style.cssText = 'transition: opacity 1s 0s;' // need to add this cuz it resets every click.
   xmark.classList.add("fa-xmark-clicked");
   if(card.getAttribute("data-is-clicked") == false){
     card.style.cssText = "transform: scale(.85);"
@@ -76,11 +76,19 @@ function Click_projectcard(card){
 }
 
 function Click_Xmark(){
-  projectPopup.classList.remove("project-card-popup");
-
+  let delay = 0;
+  subDivList = document.getElementById('popup-Project').getElementsByTagName("div");
+  console.log(subDivList);
+  console.log(subDivList[1]);
+  for(let i = 0;i<subDivList.length;i++){ 
+    subDivList[i].style['animation-delay'] = delay + 's';
+    subDivList[i].style.cssText = 'animation .5s ease reverse 2s staggerdown;';
+    delay += .1;
+  }
   projectPopup.style.cssText = "animation: 2s cubic-bezier(.76,0,.29,1) reverse scaleXY;";
-  projectPopup.classList.add("popup-Project");  
-  UnblurEverything;
+  UnblurEverything();
+  xmark.style.cssText = 'transition: opacity 1s;'
+  xmark.classList.remove('fa-xmark-clicked');
 }
 
 function onMouseMove(mouse){
