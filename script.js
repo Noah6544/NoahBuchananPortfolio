@@ -8,6 +8,10 @@ function CheckItemInView(item){
   );
 }
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 //GETTING ITEMS
 // const rootStyles = getComputedStyle(document.head);
 
@@ -26,12 +30,11 @@ const factlist = document.getElementsByClassName('funfact-item');
 
 //for projects_list
 const allDivs = document.querySelectorAll("div");
-const ignoredDivs = ['xmark','popup-Project-Description','popup-Project-Title','popup-Project-Extended-Description','my-projects-container'];
+const ignoredDivs = ['xmark','popup-Project-Description','popup-Project-Title','popup-Project-Extended-Description','my-projects-container','popup-subelement','Label'];
 const projectCardList = document.querySelectorAll(".project-card");
-projectPopup = document.querySelector(".popup-Project");
+projectPopup = document.querySelector("#popup-Project");
 
 const xmark = document.querySelector(".fa-xmark");
-xmark.style.right = projectPopup.style.right;
 
 function BlurEverythingExcept(exceptionObject){
   allDivs.forEach(element => {
@@ -40,55 +43,93 @@ function BlurEverythingExcept(exceptionObject){
     }
     else if(ignoredDivs.includes(element.id)){
       ignoredElement = document.getElementById(element.id); 
-      ignoredElement.style.cssText = "filter: blur(0px); z-index: 2;"
+      ignoredElement.style.cssText = "filter: blur(0px); z-index: 2;";
     }
     else{
-      element.style.cssText = "filter: blur(3px); transition: all 2s ease;;"
+      element.style.cssText = "filter: blur(3px); transition: all 2s ease;";
     }  
     exceptionObject.style.cssText = "filter: blur(0px);"
   });
 }
 
 function UnblurEverything(){
-  allDivs.forEach(element => {    
-    element.style.cssText = "transition: all 2s ease;filter: blur(0px);";
+  allDivs.forEach(element => { 
+    if(ignoredDivs.includes(element.id)){
+      ;
+    } 
+    else {
+      element.style.cssText = "filter: blur(0px);";
+
+    }  
   });
 }
 //Event Listener Functions:
 
 function Click_projectcard(card){ 
+  projectPopup.dataset.isopen = true;
+  console.log(projectPopup.dataset);
+
+  projectPopup.classList.add('popup-Project');
   id = card.id;
+  let delay = 0;
+  //I tried to make this cleaner by getting all sub elements, but it wouldn't work, so we're going for functionality > being fancy
+  const subDivList = document.querySelectorAll('.popup-subelement');
+
   //getting elements to insert into div
   projectTitle = document.getElementById(id).getElementsByClassName("project-title")[0];
   projectDescription = document.getElementById(id).getElementsByClassName("project-description")[0];
   //getting the popupcard divs that will modified (no need to make variables)
   document.getElementById("popup-Project-Title").innerHTML = projectTitle.innerHTML;
   document.getElementById("popup-Project-Description").innerHTML = projectDescription.innerHTML;
-  projectPopup.classList.remove("popup-Project");  
+  projectPopup.classList.remove("popup-Project","reverse-project-card");  
   projectPopup.classList.add("project-card-popup");
   BlurEverythingExcept(projectPopup);
+  xmark.style.top = '0';
+
   xmark.style.cssText = 'transition: opacity 1s 0s;' // need to add this cuz it resets every click.
   xmark.classList.add("fa-xmark-clicked");
   if(card.getAttribute("data-is-clicked") == false){
     card.style.cssText = "transform: scale(.85);"
     card.getAttribute(Boolean("data-is-clicked")) == true;
   }
+
+
 }
 
 function Click_Xmark(){
   let delay = 0;
-  subDivList = document.getElementById('popup-Project').getElementsByTagName("div");
-  console.log(subDivList);
-  console.log(subDivList[1]);
-  for(let i = 0;i<subDivList.length;i++){ 
-    subDivList[i].style['animation-delay'] = delay + 's';
-    subDivList[i].style.cssText = 'animation .5s ease reverse 2s staggerdown;';
-    delay += .1;
-  }
-  projectPopup.style.cssText = "animation: 2s cubic-bezier(.76,0,.29,1) reverse scaleXY;";
+  //I tried to make this cleaner by getting all sub elements, but it wouldn't work, so we're going for functionality > being fancy
+  const subDivList = document.querySelectorAll('.popup-subelement');
+  let projectPopup = document.getElementById('popup-Project');
+  projectPopup.classList.add('reverse-project-card');
+
   UnblurEverything();
-  xmark.style.cssText = 'transition: opacity 1s;'
+  xmark.style.cssText = 'opacity: 0; transition: opacity .2s;'
   xmark.classList.remove('fa-xmark-clicked');
+  subDivList.forEach(element => {
+    element.style.animationName = 'staggerup';
+    element.style.animationDuration = '1s';
+    element.style.animationDelay =  delay + 's';
+    element.style.animationTimingFunction = 'ease';
+    element.style.animationFillMode = 'forwards';
+    // element.style.cssText = 'opacity: 1; animation-delay: ' + delay.toString() + 's; animation: .5s ease forwards reverse staggerdown;';
+    delay += .05;
+  });
+  projectPopup.dataset.isopen = false;
+
+  function wasteoftime() {
+    if(projectPopup.getAttribute('data-is-open') == false){
+      projectPopup.classList.add('popup-Project');
+      console.log(projectPopup.dataset);
+
+      console.log("added class!");
+    }
+    else {
+      ;
+    }
+  }
+  setTimeout(wasteoftime,3000)
+  // projectPopup.classList.add('popup-Project');
 }
 
 function onMouseMove(mouse){
@@ -109,7 +150,6 @@ function onscroll() {
   }
 
   //for landingpage stuff
-  
   for(let i = 0; i<landingpagesubdivs.length;i++){
     let scrollAmount = window.scrollY;
     let landingpageitem = landingpagesubdivs[i];

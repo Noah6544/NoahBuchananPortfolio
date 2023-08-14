@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" media="screen and (min-width:401px)" href="styles.css">
     <script src="https://kit.fontawesome.com/182e289974.js" crossorigin="anonymous"></script>    
-    <script src="script1.js"></script>
+    <script src="script.js"></script>
     <title>Noah Buchanan</title>
 </head>
 <body>
@@ -81,13 +81,13 @@
                 Portfolios extended description.
             </div>
         </div>
-        <div class="popup-Project" id="popup-Project">
-            <div class="title" id="popup-Project-Title" >Lorem ipsum</div>
-            Tl:DR:
-            <div class="project-description" id="popup-Project-Description">
+        <div class="popup-Project" id="popup-Project" data-is-open=false>
+            <div class="title popup-subelement" id="popup-Project-Title" >Lorem ipsum</div>
+            <div class="popup-subelement" id="Label">Tl:DR:</div>
+            <div class="project-description popup-subelement" id="popup-Project-Description">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sollicitudin ultrices sapien non consequat. Cras. </div>
-            Extended Description:
-            <div class="extended-description" id="popup-Project-Extended-Description">
+            <div class="popup-subelement" id="Label">Extended Description:</div>
+            <div class="extended-description popup-subelement" id="popup-Project-Extended-Description">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit fringilla diam ac fermentum. Aenean eu viverra dui, vel sollicitudin augue. Morbi a nisi nec dolor pellentesque aliquet in et magna. Ut urna ligula, consequat vitae posuere id, aliquam vel dui. In vel interdum neque, non fermentum sem. Nullam non posuere sem. Donec consectetur dui ut magna convallis, nec mattis tellus porta. Phasellus consectetur iaculis nunc. </div>
         </div>
     </div>

@@ -25,10 +25,29 @@
 @keyframes staggerdown {
     from {
         transform: translateY(-45%);
+        filter: blur(10px);
         opacity: 0;
     }
     to {
         transform: translateY(0);
+        filter: blur(0px);
+
+        opacity: 1;
+    }
+}
+
+@keyframes staggerup { /* NEEDS to be transformed by pixel amount, not % because they go out of order that way */
+    100% {
+        transform: translateY(-200px);
+        filter: blur(10px);
+        opacity: 0;
+    }
+    25%{
+        opacity: .1;
+    }
+    0% {
+        transform: translateY(0);
+        filter: blur(0px);
         opacity: 1;
     }
 }
@@ -89,10 +108,20 @@
 
 @keyframes scaleXY { /* lets go, figured out padding needs to be animated too */
     0% {
+       opacity: 0;
+       display: none;
+       height: 0px;
+       width: 0vw;
+       padding: 0; 
+    }
+    1%{
+        display: block;
+        opacity: 1;
         height: 0px;
         width: 0vw;
-
+        padding: 0; 
     }
+    
     40% {
         height: 0vh;
         width: 70vw;
@@ -123,7 +152,6 @@ body {
     font-family: 'Noto Sans SC', sans-serif;
     height: 100vh;
     overflow-x: hidden;
-    font-smooth: always;
 
 }
 
@@ -231,26 +259,46 @@ body {
 
 }
 
+.reverse-project-card{
+    position: absolute;
+    height: 70vh;
+    width: 70vw;
+    padding: clamp(30px, 70px, 100px);
+    animation: 3s cubic-bezier(.76,0,.29,1) 2s reverse forwards scaleXY; /*needs this delay for some reason even tho it doesn't do anything*/
+}
+
 
 .project-card-popup .title {
     font-size: clamp(1rem, 3rem,5rem);
-    text-align:center;
-    transform: translateX(-300%);
-    filter: blur(10px);
-    animation: .5s ease forwards 2s staggerdown;
+    text-align: center;
+    /* opacity: 0; */
     padding: clamp(20px, 40px, 50px) 0px clamp(20px, 40px, 50px)  0px;
+    transition: all 1s ease;
+    /* animation: .5s ease forwards 2s staggerdown; */
+
 }
 
-.testing {
-    animation: .5s ease reverse 2s staggerdown;}
 
 .project-card-popup .project-description{
     display: block;
-    transform: translateX(-100%);
-    filter: blur(10px);
+    /* opacity: 0; */
     font-size: clamp(1rem,1.5rem,3rem);
     padding: clamp(10px, 20px,30px) 0px clamp(10px, 20px,30px) 0px;
-    animation: .5s ease forwards 2.2s staggerdown;
+    /* animation: .5s ease forwards 2.2s staggerdown; */
+
+}
+
+.project-extended-description{
+    display: none;
+}
+
+.extended-description {
+    /* opacity: 0; */
+    filter: blur(10px);
+    font-size: clamp(1rem, 1.3rem, 3rem);
+    padding: clamp(10px, 20px,30px) 0px clamp(10px, 20px,30px) 0px;
+    animation-iteration-count: 1;
+    /* animation: .5s ease forwards 2.4s staggerdown; */
 
 }
 
@@ -268,7 +316,7 @@ body {
     border-radius: 5%;
     border: solid .02px rgba(194, 194, 194, 0.9);
     transition: background-color .5s ease;
-    transition: transform .5s ease;
+    transition: transform .45s ease;
 }
 
 .project-card-clicked {
@@ -303,17 +351,7 @@ body {
 .project-description {
     display: none;
 }
-.project-extended-description{
-    display: none;
-}
 
-.extended-description {
-    transform: translateX(-200%);
-    filter: blur(10px);
-    animation: .5s ease forwards 2.4s staggerdown;
-    font-size: clamp(1rem, 1.3rem, 3rem);
-    padding: clamp(10px, 20px,30px) 0px clamp(10px, 20px,30px) 0px;
-}
 
 .popup-Project {
     display:none;
@@ -365,7 +403,6 @@ hr {
 
 
 .fa-xmark-clicked{
-    display: block;
     opacity: 1;
     z-index: 1;
 }
