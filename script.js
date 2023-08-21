@@ -8,11 +8,22 @@ function CheckItemInView(item){
   );
 }
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 //GETTING ITEMS
 // const rootStyles = getComputedStyle(document.head);
 
 // const heymynameAnimationDuration = rootStyles.getPropertyValue('--heymyname-animation-duration');
 // const mynameDescriptionDelay = rootStyles.getPropertyValue('--');
+
+//for icons
+const linkedinLogo = document.getElementById('linkedininfo');
+const githublogo = document.getElementById('githublogo');
+const emailLogo = document.getElementById('emailinfo');
+const iconLogoList = [linkedinLogo,githublogo,emailLogo];
+
 
 //for the landing page scroll down animations
 const landingpagediv = document.querySelector('#landingpagecontainer');
@@ -22,52 +33,67 @@ const titletext = document.querySelector('.titletext');
 const landingpagediv_rect = landingpagediv.getBoundingClientRect();
 
 // for the fun fact animations
-const factlist = document.getElementsByClassName('funfact-item');
+const factlist = document.getElementsByClassName('list-item');
 
 //for projects_list
-const ignoredDivs = ['xmark','popup-Project-Description','popup-Project-Title','popup-Project-Extended-Description','my-projects-container'];
+const allDivs = document.querySelectorAll("div");
+const ignoredDivs = ['xmark','popup-Project-Description','popup-Project-Title','popup-Project-Extended-Description','my-projects-container','popup-subelement','Label'];
 const projectCardList = document.querySelectorAll(".project-card");
-projectPopup = document.querySelector(".popup-Project");
+projectPopup = document.querySelector("#popup-Project");
 
 const xmark = document.querySelector(".fa-xmark");
-xmark.style.right = projectPopup.style.right;
 
 function BlurEverythingExcept(exceptionObject){
   allDivs.forEach(element => {
-    if(element == exceptionObject){
-      element.style.cssText = "filter: blur(0px); z-index: 1;"
+    if(element == exceptionObject){ // Ithink this might be redundant because of the next else if, but whatever.
+      element.style.cssText = "filter: blur(0px); z-index: 2;"
     }
     else if(ignoredDivs.includes(element.id)){
-      let  allDivs = document.querySelectorAll("div");
- spec = document.getElementById(element.id); 
-      spec.style.cssText = "filter: blur(0px); z-index: 1;"
+      ignoredElement = document.getElementById(element.id); 
+      ignoredElement.style.cssText = "filter: blur(0px); z-index: 2;";
     }
     else{
-      element.style.cssText = "transition: all 2s ease;filter: blur(3px);"
+      element.style.cssText = "filter: blur(3px); transition: all 2s ease;";
     }  
     exceptionObject.style.cssText = "filter: blur(0px);"
   });
 }
 
 function UnblurEverything(){
-  allDivs.forEach(element => {    
-    element.style.cssText = "transition: all 2s ease;filter: blur(0px);";
+  allDivs.forEach(element => { 
+    if(ignoredDivs.includes(element.id)){
+      ;
+    } 
+    else {
+      element.style.cssText = "filter: blur(0px);";
+
+    }  
   });
 }
 //Event Listener Functions:
 
 function Click_projectcard(card){ 
+  projectPopup.dataset.isopen = true;
+  console.log(projectPopup.dataset);
+
+  projectPopup.classList.add('popup-Project');
   id = card.id;
+  let delay = 0;
+  //I tried to make this cleaner by getting all sub elements, but it wouldn't work, so we're going for functionality > being fancy
+  const subDivList = document.querySelectorAll('.popup-subelement');
+
   //getting elements to insert into div
   projectTitle = document.getElementById(id).getElementsByClassName("project-title")[0];
   projectDescription = document.getElementById(id).getElementsByClassName("project-description")[0];
   //getting the popupcard divs that will modified (no need to make variables)
   document.getElementById("popup-Project-Title").innerHTML = projectTitle.innerHTML;
   document.getElementById("popup-Project-Description").innerHTML = projectDescription.innerHTML;
-
-  projectPopup.classList.remove("popup-Project");  
+  projectPopup.classList.remove("popup-Project","reverse-project-card");  
   projectPopup.classList.add("project-card-popup");
   BlurEverythingExcept(projectPopup);
+  xmark.style.top = '0';
+
+  xmark.style.cssText = 'transition: opacity 1s 0s;' // need to add this cuz it resets every click.
   xmark.classList.add("fa-xmark-clicked");
   if(card.getAttribute("data-is-clicked") == false){
     card.style.cssText = "transform: scale(.85);"
@@ -76,11 +102,39 @@ function Click_projectcard(card){
 }
 
 function Click_Xmark(){
-  projectPopup.classList.remove("project-card-popup");
+  let delay = 0;
+  //I tried to make this cleaner by getting all sub elements, but it wouldn't work, so we're going for functionality > being fancy
+  const subDivList = document.querySelectorAll('.popup-subelement');
+  let projectPopup = document.getElementById('popup-Project');
+  projectPopup.classList.add('reverse-project-card');
 
-  projectPopup.style.cssText = "animation: 2s cubic-bezier(.76,0,.29,1) reverse scaleXY;";
-  projectPopup.classList.add("popup-Project");  
-  UnblurEverything;
+  UnblurEverything();
+  xmark.style.cssText = 'opacity: 0; transition: opacity .2s;'
+  xmark.classList.remove('fa-xmark-clicked');
+  subDivList.forEach(element => {
+    element.style.animationName = 'staggerup';
+    element.style.animationDuration = '1s';
+    element.style.animationDelay =  delay + 's';
+    element.style.animationTimingFunction = 'ease';
+    element.style.animationFillMode = 'forwards';
+    // element.style.cssText = 'opacity: 1; animation-delay: ' + delay.toString() + 's; animation: .5s ease forwards reverse staggerdown;';
+    delay += .05;
+  });
+  projectPopup.dataset.isopen = false;
+
+  function wasteoftime() {
+    if(projectPopup.getAttribute('data-is-open') == false){
+      projectPopup.classList.add('popup-Project');
+      console.log(projectPopup.dataset);
+
+      console.log("added class!");
+    }
+    else {
+      ;
+    }
+  }
+  setTimeout(wasteoftime,3000)
+  // projectPopup.classList.add('popup-Project');
 }
 
 function onMouseMove(mouse){
@@ -99,9 +153,15 @@ function onscroll() {
       factitem.style.cssText = "opacity: 0; filter: blur(20px); transform: translateX(-50%);letter-spacing: -2px;"; //neccesary for effect to reset on scroll up
     }
   }
+  projectCardList.forEach(element => {
+    if(CheckItemInView(element)){
+      element.classList.add('project-card');
+
+    }
+    
+  });
 
   //for landingpage stuff
-  
   for(let i = 0; i<landingpagesubdivs.length;i++){
     let scrollAmount = window.scrollY;
     let landingpageitem = landingpagesubdivs[i];
@@ -111,11 +171,15 @@ function onscroll() {
     }
     //this is some ratio I found for the top to the point at which  I want it to animation something else
     // heyDiv.style.animation = "3s ease reverse 0s 1 slidein;";
-
     else {
       landingpageitem.style.cssText = "filter: blur(0px);";
     }
   }  
+}
+
+function onIconHover(event){  
+  let hiddendiv = document.getElementById('hiddeninfo-show');
+  this.innerHTML = "chicken";
 }
  
 //RUNNING CODE
@@ -132,7 +196,9 @@ for(let i = 0; i<projectCardList.length; i++){
 window.addEventListener('scroll', onscroll);
 window.addEventListener("mousemove",onMouseMove)
 xmark.addEventListener('click', () => Click_Xmark());
-
+iconInfoList.forEach(element => {
+  element.addEventListener('mouseover',onIconHover);  
+});
 
 });
 
