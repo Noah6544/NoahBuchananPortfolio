@@ -1,10 +1,35 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+function please(element){
+  const observer = new IntersectionObserver((entires) =>
+  entires.forEach((entry) => {
+    if(entry.isIntersecting){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  );
+}
+
+  const CheckItemInViewnew = new IntersectionObserver((entries) => { //figure out this issue and why it's not working
+  entries.forEach(element => {
+    if(element.isIntersecting){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
+  
+});
+
 function CheckItemInView(item){
   const rectangle = item.getBoundingClientRect();
   return (
-    rectangle.top >= 0 &&
-    rectangle.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+    rectangle.top + 30 >= 0 &&
+    rectangle.bottom - 60<= (window.innerHeight || document.documentElement.clientHeight)
   );
 }
 
@@ -19,9 +44,9 @@ function sleep(ms) {
 // const mynameDescriptionDelay = rootStyles.getPropertyValue('--');
 
 //for icons
-const linkedinLogo = document.getElementById('linkedininfo');
+const linkedinLogo = document.getElementById('linkedinlogo');
 const githublogo = document.getElementById('githublogo');
-const emailLogo = document.getElementById('emailinfo');
+const emailLogo = document.getElementById('imessagelogo');
 const iconLogoList = [linkedinLogo,githublogo,emailLogo];
 
 
@@ -38,10 +63,11 @@ const factlist = document.getElementsByClassName('list-item');
 //for projects_list
 const allDivs = document.querySelectorAll("div");
 const ignoredDivs = ['xmark','popup-Project-Description','popup-Project-Title','popup-Project-Extended-Description','my-projects-container','popup-subelement','Label'];
-const projectCardList = document.querySelectorAll(".project-card");
-projectPopup = document.querySelector("#popup-Project");
+const projectCardList = document.querySelectorAll('.project-card-hidden'); //finally, don't do get elements by classname - AND DON'T USE DOUBLE QUOTES
+const djangoWebapp = document.querySelector('#project-django-container');
+projectPopup = document.querySelector('#popup-Project');
 
-const xmark = document.querySelector(".fa-xmark");
+const xmark = document.querySelector('.fa-xmark');
 
 function BlurEverythingExcept(exceptionObject){
   allDivs.forEach(element => {
@@ -75,7 +101,6 @@ function UnblurEverything(){
 function Click_projectcard(card){ 
   projectPopup.dataset.isopen = true;
   console.log(projectPopup.dataset);
-
   projectPopup.classList.add('popup-Project');
   id = card.id;
   let delay = 0;
@@ -92,7 +117,7 @@ function Click_projectcard(card){
   projectPopup.classList.add("project-card-popup");
   BlurEverythingExcept(projectPopup);
   xmark.style.top = '0';
-
+  xmark.style.right = '0'
   xmark.style.cssText = 'transition: opacity 1s 0s;' // need to add this cuz it resets every click.
   xmark.classList.add("fa-xmark-clicked");
   if(card.getAttribute("data-is-clicked") == false){
@@ -133,7 +158,6 @@ function Click_Xmark(){
       ;
     }
   }
-  setTimeout(wasteoftime,3000)
   // projectPopup.classList.add('popup-Project');
 }
 
@@ -141,7 +165,30 @@ function onMouseMove(mouse){
   // console.log(mouse.x +  mouse.y);
 }
 
-function onscroll() {
+function staggerAnimation(elementlist,hiddenclass,showclass,delay,delayincrement){
+  elementlist.forEach(element => {
+    element.classList.remove(hiddenclass);
+    element.classList.add(showclass);
+    delay += delayincrement;
+    element.style.cssText = 'transition-delay: ' + delay + 's';
+  })
+
+}
+
+let isFirstScroll = true;
+
+function onscroll(){
+  if(CheckItemInView(djangoWebapp) && isFirstScroll){
+    staggerAnimation(projectCardList,'project-card-hidden','project-card',0.1,0.1);
+    isFirstScroll = false;
+  }
+  else{
+    projectCardList.forEach(element => {
+      element.style.cssText = 'transition-delay: 0s';
+    })
+  }
+ 
+
   const viewportHeight = window.innerHeight; //check height of window.
   //checking for fact list stuff
   for(let i=0;i<factlist.length;i++){
@@ -151,15 +198,9 @@ function onscroll() {
     }    
     else { // keep this in an else statement so that the effect doesn't reset every
       factitem.style.cssText = "opacity: 0; filter: blur(20px); transform: translateX(-50%);letter-spacing: -2px;"; //neccesary for effect to reset on scroll up
-    }
-  }
-  projectCardList.forEach(element => {
-    if(CheckItemInView(element)){
-      element.classList.add('project-card');
+  }}
 
-    }
-    
-  });
+
 
   //for landingpage stuff
   for(let i = 0; i<landingpagesubdivs.length;i++){
@@ -196,9 +237,9 @@ for(let i = 0; i<projectCardList.length; i++){
 window.addEventListener('scroll', onscroll);
 window.addEventListener("mousemove",onMouseMove)
 xmark.addEventListener('click', () => Click_Xmark());
-iconInfoList.forEach(element => {
-  element.addEventListener('mouseover',onIconHover);  
-});
-
+// iconLogoList.forEach(element => {
+//   element.addEventListener('mouseover',onIconHover);  
+// });
+staggerAnimation(iconLogoList,'icon-hidden','icon',5,.2);
 });
 

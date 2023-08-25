@@ -11,9 +11,7 @@
 }
 
 @keyframes slidein {
-
     from {
-
         transform: translateX(0);
 
     }
@@ -134,7 +132,9 @@
         height: 0px;
         width: 0vw;
         padding: 0; 
+        padding: 0; 
     }
+    
     
     40% {
         height: 0vh;
@@ -164,6 +164,8 @@ body {
     font-family: 'Noto Sans SC', sans-serif;
     height: 100vh;
     overflow-x: hidden;
+    font-smooth: always;
+
 }
 
 
@@ -217,17 +219,17 @@ body {
 
 #description {
     text-align: left;
-    /* transform: translateX(-200%); */
+    transform: translateX(-200%);
     max-width: 45vw;
     font-size: 2.5vw;
-    /* animation: 4s ease forwards 1s 1 slidein; */
+    animation: 4s ease forwards 1s 1 slidein;
 }
 
 #my-projects-container {
     color: rgb(var(--font-color));
     text-shadow: var(--text-shadow);
     margin: 0 auto;
-    width: clamp(700px, 60vw, 1000px);
+    width: clamp(700px, 70vw, 1275px);
     border-radius: 3%;
     flex-direction: row;
     padding: 2vw;
@@ -274,12 +276,24 @@ body {
     animation: 3s cubic-bezier(.76,0,.29,1) 2s reverse forwards scaleXY; /*needs this delay for some reason even tho it doesn't do anything*/
 }
 
+.reverse-project-card{
+    position: absolute;
+    height: 70vh;
+    width: 70vw;
+    padding: clamp(30px, 70px, 100px);
+    animation: 3s cubic-bezier(.76,0,.29,1) 2s reverse forwards scaleXY; /*needs this delay for some reason even tho it doesn't do anything*/
+}
+
 
 .project-card-popup .title {
     font-size: clamp(1rem, 3rem,5rem);
     text-align: center;
     /* opacity: 0; */
+    text-align: center;
+    /* opacity: 0; */
     padding: clamp(20px, 40px, 50px) 0px clamp(20px, 40px, 50px)  0px;
+    transition: all 1s ease;
+    /* animation: .5s ease forwards 2s staggerdown; */
     transition: all 1s ease;
     /* animation: .5s ease forwards 2s staggerdown; */
 
@@ -292,12 +306,13 @@ body {
     font-size: clamp(1rem,1.5rem,3rem);
     padding: clamp(10px, 20px,30px) 0px clamp(10px, 20px,30px) 0px;
     /* animation: .5s ease forwards 2.2s staggerdown; */
-
 }
+
 
 .project-extended-description{
     display: none;
 }
+
 
 .extended-description {
     /* opacity: 0; */
@@ -306,8 +321,8 @@ body {
     padding: clamp(10px, 20px,30px) 0px clamp(10px, 20px,30px) 0px;
     animation-iteration-count: 1;
     /* animation: .5s ease forwards 2.4s staggerdown; */
-
 }
+
 
 .project-card-hidden {
     justify-content: center;
@@ -316,8 +331,8 @@ body {
     font-size: 2rem;
     overflow: hidden;
     opacity: 0;
-    transform:translateX(-50%);
     aspect-ratio: 10/12;
+    transform: translateX(-15%);
     width: clamp(5em,15rem,20rem);
     background-color: rgba(125, 125, 125, .2);
     box-shadow: rgba(255, 255, 255, .1) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
@@ -326,6 +341,7 @@ body {
     transition: background-color .5s ease;
     transition: transform .45s ease;
 }
+
 
 .project-card  {
     backdrop-filter: blur(10px);
@@ -342,9 +358,7 @@ body {
     box-shadow: rgba(255, 255, 255, .1) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
     border-radius: 5%;
     border: solid .02px rgba(194, 194, 194, 0.9);
-    transition: background-color .5s ease;
-    transition: transform .45s ease;
-    transition: opacity .45s ease;
+    transition: all .45s ease;
 }
 
 
@@ -371,6 +385,7 @@ body {
     font-size: clamp(1.5rem,2rem,3rem);
 }
 
+
 .project-image {
     opacity: .25;
 }
@@ -385,9 +400,11 @@ body {
     display:none;
 }
 
+
 .list{
     flex-direction: column;
 }
+
 
 #list-container {
     margin-left: 10vw;
@@ -422,6 +439,7 @@ hr {
     display: none;
     opacity: 0; /*display: none; doesn't work for these items*/
     transition: opacity 1s 0s; /* 1s transition, 5s delay */
+    transition: opacity 1s 0s; /* 1s transition, 5s delay */
 
 } 
 
@@ -441,11 +459,19 @@ hr {
 #icon-container {
     gap: 12px;
     margin-top: 25px;
-    height: 45px;
+    height: clamp(25px, 5vw, 55px);
 }
 
 .icon{
     display: flex; 
+    opacity: 1;
+    transform: translateX(0);
+    transition: all .8s ease;
+}
+
+.icon-hidden {
+    opacity: 0;
+    transform: translateX(-15%);
 }
 
 .icon:hover{
@@ -475,7 +501,7 @@ hr {
     align-items: center;
     justify-content: center;
 }
-
+    
 .hiddeninfo-hidden {
     opacity:0;
     position: absolute;
@@ -485,7 +511,11 @@ hr {
 .hiddeninfo-show{
     background-color: blue;
     animation: gogo 5s ease;
+}
 
+#contact{
+    padding: 2px;
+    display: flex;
 
 }
 a {
