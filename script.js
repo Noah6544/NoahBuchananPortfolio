@@ -13,7 +13,7 @@ function sleep(ms) {
 }
 
 //GETTING ITEMS
-// const rootStyles = getComputedStyle(document.head);
+/// const rootStyles = getComputedStyle(document.head);
 
 // const heymynameAnimationDuration = rootStyles.getPropertyValue('--heymyname-animation-duration');
 // const mynameDescriptionDelay = rootStyles.getPropertyValue('--');
