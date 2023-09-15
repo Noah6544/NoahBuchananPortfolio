@@ -1,10 +1,15 @@
 :root {
     --font-color: 255, 255, 255;
     --text-shadow: 2px 3px 5px rgb(0, 0, 0);
-    --primary-color: #232e35; 
-    --shadow-color: #232c31;
+    --primary-color: #242d37; 
+    --t1: #95BBE6;
+    --t2: #2b4d85ff;
+    --t3: #5788beff;
+    --t4: #9bcaf4ff;
+    --t5: #e1eaf7ff;
 
 }
+
 
 *, *::selection, *::-moz-selection {
     user-select: none;
@@ -12,7 +17,6 @@
 
 @keyframes slidein {
     from {
-        transform: translateX(0);
 
     }
     to {
@@ -150,6 +154,37 @@
     }
 }
 
+@keyframes navbarLoadinAndHover {
+    0% {
+        opacity:0;
+        transform: translateX(-50%)
+    }
+    /* ... */
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    90%, 100% {
+        transform: translateX(100px);
+    }
+}
+@keyframes navbarLoadin {
+    0% {
+        opacity:0;
+        transform: translateX(-50%)
+    }
+    45%{
+        transform: translateX(5%);
+    }
+    55%{
+        transform: translateX(5%);
+
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 
 html {
     font-size: 16px;
@@ -172,6 +207,52 @@ body {
 .container {
     display: flex;
 }
+
+
+.navbar {
+    color: rgba(255, 255, 255, 0.153);
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    transition: all 1s ease;
+    left: -40px;
+}
+
+.navbar-item-hidden {
+    opacity: 0;
+    transform: translateX(-20%);
+    padding: 15px; /*  padding: top right bottom left; */
+}
+
+.navbar-item {
+    opacity: 1;
+    border-radius: 3px;
+    padding: 15px; /*  padding: top right bottom left; */
+    background-color: var(--t1);  
+    transform: tranlateX(0);
+    transition: all cubic-bezier(0.22, 0, 0.11, 1) .5s;
+    box-shadow: var(--t2) 0px 2px 8px;
+}
+
+.navbar-item:hover  {
+    transform: translateX(40px);
+    box-shadow: var(--t2) 5px 0px 10px;
+
+}
+
+.navbar-item:hover img {
+    opacity: 1;
+}
+
+.navbar-item img {
+    width: 35px;
+    opacity: 0;
+    transition: all 1s ease;
+
+}
+
 
 
 #landingpagecontainer {
@@ -325,6 +406,8 @@ body {
 
 
 .project-card-hidden {
+    backdrop-filter: blur(10px);
+
     justify-content: center;
     text-overflow: ellipsis;
     align-items: center;
@@ -338,18 +421,20 @@ body {
     box-shadow: rgba(255, 255, 255, .1) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
     border-radius: 5%;
     border: solid .02px rgba(194, 194, 194, 0.9);
-    transition: background-color .5s ease;
     transition: transform .45s ease;
 }
 
 
 .project-card  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     backdrop-filter: blur(10px);
     justify-content: center;
     text-overflow: ellipsis;
     align-items: center;
     font-size: 2rem;
-    overflow: hidden;
+    overflow: hidden; 
     aspect-ratio: 10/12;
     transform: translateX(0%);
     opacity: 1;
@@ -369,12 +454,21 @@ body {
 
 
 .project-card:hover {
-    transform: scale(1.2);
+    transform: scale(1.05);
     filter: blur(0);
     box-shadow: rgba(255, 255, 255, .5) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
     cursor: pointer;
 }
 
+.project-card-image img{
+    z-index: -1;
+    position:absolute;
+    top:-2% ;
+    left: -70%;
+
+    width: 250%; 
+    /* width: 175%; */  
+}
 
 .project-title {
     padding: .5 5px;
@@ -396,19 +490,29 @@ body {
 }
 
 
-.popup-Project {
+.popup-Project-initial {
     display:none;
 }
 
+#close-project{
+  
+    text-decoration: underline;
+}
+
+#close-project:hover{
+    cursor: pointer;
+    font-style: italic;
+}
 
 .list{
     flex-direction: column;
 }
 
 
+
 #list-container {
     margin-left: 10vw;
-    margin-top: 15vh;
+    margin-top: clamp(20px,1vw,50px);
     flex-direction: column;
     padding: 1vw;
     text-shadow: var(--text-shadow);
@@ -420,6 +524,18 @@ body {
     margin-left: 1.2vw;
     padding: 1vw;
     opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-5%);
+    transition: all 1s ease;
+}
+
+.list-item-hidden {
+    font-size: 1.5em;
+    margin-left: 1.2vw;
+    padding: 1vw;
+    opacity: .2; 
+    filter: blur(20px);
+    transform: translateX(-2%);
     transition: all 1s ease;
 }
 
@@ -437,16 +553,16 @@ hr {
 .fa-xmark {
     position: absolute;
     display: none;
+    top: 0;
     opacity: 0; /*display: none; doesn't work for these items*/
-    transition: opacity 1s 0s; /* 1s transition, 5s delay */
-    transition: opacity 1s 0s; /* 1s transition, 5s delay */
+    transition: opacity 1s 5s; /* 1s transition, 5s delay */
+    transition: opacity 1s 5s; /* 1s transition, 5s delay */
 
 } 
 
 .fa-xmark:hover{
     cursor: pointer;
     transform: scale(1.3);
-
 }
 
 
@@ -459,10 +575,10 @@ hr {
 #icon-container {
     gap: 12px;
     margin-top: 25px;
-    height: clamp(25px, 5vw, 55px);
+    height: clamp(25px, 4vw, 50px);
 }
 
-.icon{
+.icon{ 
     display: flex; 
     opacity: 1;
     transform: translateX(0);
@@ -509,11 +625,11 @@ hr {
 }
 
 .hiddeninfo-show{
-    background-color: blue;
-    animation: gogo 5s ease;
+    justify-content: center;
+    font-size: 15px;
 }
 
-#contact{
+#contact {
     padding: 2px;
     display: flex;
 
