@@ -1,0 +1,726 @@
+:root {
+    --font-color: 255, 255, 255;
+    --text-shadow: 2px 3px 5px rgb(0, 0, 0);
+    --primary-color: #242d37; 
+    --t1: #95BBE6;
+    --t2: #2b4d85ff;
+    --t3: #5788beff;
+    --t4: #9bcaf4ff;
+    --t5: #e1eaf7ff;
+
+}
+
+
+*, *::selection, *::-moz-selection {
+    user-select: none;
+}
+
+@keyframes slidein {
+    from {
+
+    }
+    to {
+        filter: blur(0);
+        transform: translateX(0);
+
+    }
+
+}
+
+@keyframes gogo {
+
+   from{
+    transform: scaleX(0px);
+   }
+   to{
+    transform: scaleX(100px);
+
+   }
+}
+
+@keyframes staggerdown {
+    from {
+        transform: translateY(-45%);
+        filter: blur(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        filter: blur(0px);
+
+        opacity: 1;
+    }
+}
+
+@keyframes staggerup { /* NEEDS to be transformed by pixel amount, not % because they go out of order that way */
+    100% {
+        transform: translateY(-200px);
+        filter: blur(10px);
+        opacity: 0;
+    }
+    25%{
+        opacity: .1;
+    }
+    0% {
+        transform: translateY(0);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slidein-reverse {
+
+    from {
+
+    }
+    to {
+        filter: blur(15px);
+        transform: translateX(-200%);
+
+    }
+
+}
+
+@keyframes textreveal {
+    from {
+        opacity: 0;
+        filter: blur(5rem);
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes openhr {
+    from {
+        transform: scaleX(0);
+
+    }
+    to {
+        transform: scaleX(1);
+  }
+}
+@keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+
+@keyframes scaleXY { /* lets go, figured out padding needs to be animated too */
+    0% {
+       opacity: 0;
+       display: none;
+       height: 0px;
+       width: 0vw;
+       padding: 0; 
+    }
+    1%{
+        display: block;
+        opacity: 1;
+        height: 0px;
+        width: 0vw;
+        padding: 0; 
+        padding: 0; 
+    }
+    
+    
+    40% {
+        height: 0vh;
+        width: 70vw;
+        padding: 0;
+
+    }
+    100% {
+        height: 70vh;
+        width: 70vw;
+        padding: clamp(30px, 70px, 100px);
+
+    }
+}
+
+@keyframes navbarLoadinAndHover {
+    0% {
+        opacity:0;
+        transform: translateX(-50%)
+    }
+    /* ... */
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    90%, 100% {
+        transform: translateX(100px);
+    }
+}
+@keyframes navbarLoadin {
+    0% {
+        opacity:0;
+        transform: translateX(-50%)
+    }
+    45%{
+        transform: translateX(5%);
+    }
+    55%{
+        transform: translateX(5%);
+
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scroll {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+
+html {
+    font-size: 16px;
+}
+
+
+
+body { 
+    margin: 0;
+    background: var(--primary-color); /*rgb(162, 201, 240);*/
+    /*rgb(41, 42, 43);*/
+    font-family: 'Noto Sans SC', sans-serif;
+    height: 100vh;
+    overflow-x: hidden;
+    font-smooth: always;
+
+}
+
+
+.container {
+    display: flex;
+}
+
+
+.navbar {
+    color: rgba(255, 255, 255, 0.153);
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    transition: all 1s ease;
+    left: -40px;
+}
+
+.navbar-item-hidden {
+    opacity: 0;
+    transform: translateX(-20%);
+    padding: 15px; /*  padding: top right bottom left; */
+}
+
+.navbar-item {
+    opacity: 1;
+    border-radius: 3px;
+    padding: 15px; /*  padding: top right bottom left; */
+    background-color: var(--t1);  
+    transform: tranlateX(0);
+    transition: all cubic-bezier(0.22, 0, 0.11, 1) .5s;
+    box-shadow: var(--t2) 0px 2px 8px;
+}
+
+.navbar-item:hover  {
+    transform: translateX(40px);
+    box-shadow: var(--t2) 5px 0px 10px;
+
+}
+
+.navbar-item:hover img {
+    opacity: 1;
+}
+
+.navbar-item img {
+    width: 35px;
+    opacity: 0;
+    transition: all 1s ease;
+
+}
+
+/* HOME PAGE STUFF */
+
+#landingpagecontainer {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    gap: clamp(5px, 7vw, 50px);
+}
+
+
+.Portrait img {
+    z-index: 2;
+    filter: blur(1.5vw);
+    transform: translateX(-400%);
+    height: clamp(100px, 21.5vw, 500px);
+    animation: 3s ease forwards 0s 1 slidein; 
+    border-radius: 100%;
+    border: solid rgb(255, 255, 255) .2vw;
+    transition: height .1s ease;
+    
+}
+
+
+.titletext {
+    color: rgb(var(--font-color));
+    font-size: 35px;
+    text-shadow: var(--text-shadow);
+    /*text-align: center;*/
+
+}
+#hey {
+    transform: translateX(-200%);
+    font-size: clamp(.5em,4vw,6em);
+    animation: 3s ease forwards 0s 1 slidein;
+    transition: filter 1s ease;
+}
+
+#myname {
+    transform: translateX(-200%);
+    font-size: clamp(.5em,4vw,6em);
+    animation: 3s ease forwards 1s 1 slidein;
+}
+
+#description {
+    text-align: left;
+    transform: translateX(-200%);
+    max-width: 45vw;
+    font-size: 2.5vw;
+    animation: 4s ease forwards 1s 1 slidein;
+}
+
+/* ABOUT PAGE STUFF */
+
+#about-container{
+    justify-content: center;
+    height: 100vh;
+    gap: 300px;
+    /* overflow: hidden; */
+}
+
+#about-text-container{
+    height: 100vh;
+    width: 500px;
+    padding: 50px;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+#about-image-gallery{
+    flex-direction: column;
+    justify-content: flex-start;
+    /* align-items: flex-start; */
+    gap: 20px;
+ 
+}
+
+.imageWrapper {
+    position: relative; /*LETS GO, this needs to stay here so that the absolutely positioned description has something to base the top postiion on!!! this one took me a second */
+    display: flex;
+}
+
+.aboutimage {
+    width: 400px;
+    height: auto;    
+    border-radius: 25px;
+    border: 1.5px solid white;
+    transition: all .5s ease;
+}
+
+
+.aboutimage:hover {
+    opacity: .6;
+}
+
+.imageDescription {
+    position: absolute;
+    color: white;
+    opacity: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,0%);
+    text-align: center;
+    word-wrap: break-word;
+    transition: all .5s ease;
+}
+
+.aboutimage:hover + .imageDescription {
+    opacity: 1;
+}
+
+
+
+
+/*PROJECTS PAGE STUFF */
+
+#my-projects-container {
+    color: rgb(var(--font-color));
+    text-shadow: var(--text-shadow);
+    margin: 0 auto;
+    width: clamp(700px, 70vw, 1275px);
+    border-radius: 3%;
+    flex-direction: row;
+    padding: 2vw;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#my-projects-title {
+    text-align: center;
+    flex: 100%;
+    padding: 1em;
+}
+
+#my-projects-container {
+    flex-wrap: wrap;
+    gap: 1em;
+    border: 3em;
+
+}
+
+.project-card-popup {
+    overflow: hidden;   
+    height: 0;
+    width: 0;
+    position: absolute;
+    backdrop-filter: blur(7px);
+    justify-content: center;
+    overflow: hidden;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.281);
+    box-shadow: rgba(255, 255, 255, .1) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
+    border-radius: 0;
+    border: solid .02px rgba(107, 148, 169, 0.648);
+    animation: 2s cubic-bezier(.76,0,.29,1) forwards scaleXY;
+
+}
+
+.reverse-project-card{
+    position: absolute;
+    height: 70vh;
+    width: 70vw;
+    padding: clamp(30px, 70px, 100px);
+    animation: 3s cubic-bezier(.76,0,.29,1) 2s reverse forwards scaleXY; /*needs this delay for some reason even tho it doesn't do anything*/
+}
+
+.reverse-project-card{
+    position: absolute;
+    height: 70vh;
+    width: 70vw;
+    padding: clamp(30px, 70px, 100px);
+    animation: 3s cubic-bezier(.76,0,.29,1) 2s reverse forwards scaleXY; /*needs this delay for some reason even tho it doesn't do anything*/
+}
+
+
+.project-card-popup .title {
+    font-size: clamp(1rem, 3rem,5rem);
+    text-align: center;
+    /* opacity: 0; */
+    text-align: center;
+    /* opacity: 0; */
+    padding: clamp(20px, 40px, 50px) 0px clamp(20px, 40px, 50px)  0px;
+    transition: all 1s ease;
+    /* animation: .5s ease forwards 2s staggerdown; */
+    transition: all 1s ease;
+    /* animation: .5s ease forwards 2s staggerdown; */
+
+}
+
+
+.project-card-popup .project-description{
+    display: block;
+    /* opacity: 0; */
+    font-size: clamp(1rem,1.5rem,3rem);
+    padding: clamp(10px, 20px,30px) 0px clamp(10px, 20px,30px) 0px;
+    /* animation: .5s ease forwards 2.2s staggerdown; */
+}
+
+
+.project-extended-description{
+    display: none;
+}
+
+
+.extended-description {
+    /* opacity: 0; */
+    filter: blur(10px);
+    font-size: clamp(1rem, 1.3rem, 3rem);
+    padding: clamp(10px, 20px,30px) 0px clamp(10px, 20px,30px) 0px;
+    animation-iteration-count: 1;
+    /* animation: .5s ease forwards 2.4s staggerdown; */
+}
+
+
+.project-card-hidden {
+    backdrop-filter: blur(10px);
+
+    justify-content: center;
+    text-overflow: ellipsis;
+    align-items: center;
+    font-size: 2rem;
+    overflow: hidden;
+    opacity: 0;
+    aspect-ratio: 10/12;
+    transform: translateX(-15%);
+    width: clamp(5em,15rem,20rem);
+    background-color: rgba(125, 125, 125, .2);
+    box-shadow: rgba(255, 255, 255, .1) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
+    border-radius: 5%;
+    border: solid .02px rgba(194, 194, 194, 0.9);
+    transition: transform .45s ease;
+}
+
+
+.project-card  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    text-overflow: ellipsis;
+    align-items: center;
+    font-size: 2rem;
+    overflow: hidden; 
+    aspect-ratio: 10/12;
+    transform: translateX(0%);
+    opacity: 1;
+    width: clamp(5em,15rem,20rem);
+    background-color: rgba(125, 125, 125, .2);
+    box-shadow: rgba(255, 255, 255, .1) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
+    border-radius: 5%;
+    border: solid .02px rgba(194, 194, 194, 0.9);
+    transition: all .45s ease;
+}
+
+
+.project-card-clicked {
+    transform: scale(.8);
+    color: blue;
+}
+
+
+.project-card:hover {
+    transform: scale(1.05);
+    filter: blur(0);
+    box-shadow: rgba(255, 255, 255, .5) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
+    cursor: pointer;
+}
+
+.project-card-image img{
+    z-index: -1;
+    position:absolute;
+    top:-2% ;
+    left: -70%;
+
+    width: 250%; 
+    /* width: 175%; */  
+}
+
+.project-title {
+    padding: .5 5px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    font-size: clamp(1.5rem,2rem,3rem);
+}
+
+
+.project-image {
+    opacity: .25;
+}
+
+
+.project-description {
+    display: none;
+}
+
+
+.popup-Project-initial {
+    display:none;
+}
+
+#close-project{
+  
+    text-decoration: underline;
+}
+
+#close-project:hover{
+    cursor: pointer;
+    font-style: italic;
+}
+
+.list{
+    flex-direction: column;
+}
+
+
+
+#list-container {
+    margin-left: 10vw;
+    margin-top: clamp(20px,1vw,50px);
+    flex-direction: column;
+    padding: 1vw;
+    text-shadow: var(--text-shadow);
+    
+}
+
+.list-item { 
+    font-size: 1.5em;
+    margin-left: 1.2vw;
+    padding: 1vw;
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-5%);
+    transition: all 1s ease;
+}
+
+.list-item-hidden {
+    font-size: 1.5em;
+    margin-left: 1.2vw;
+    padding: 1vw;
+    opacity: .2; 
+    filter: blur(20px);
+    transform: translateX(-2%);
+    transition: all 1s ease;
+}
+
+
+/* specific class stuff */
+hr {
+    transform-origin: left;
+    transform: scaleX(0);
+    border: none;
+    height: 2px;
+    background-color: rgb(245, 244, 244);
+    animation: 2s cubic-bezier(.14,.03,.26,1.01) forwards 4s 1 openhr;
+}
+
+.fa-xmark {
+    position: absolute;
+    display: none;
+    top: 0;
+    opacity: 0; /*display: none; doesn't work for these items*/
+    transition: opacity 1s 5s; /* 1s transition, 5s delay */
+    transition: opacity 1s 5s; /* 1s transition, 5s delay */
+
+} 
+
+.fa-xmark:hover{
+    cursor: pointer;
+    transform: scale(1.3);
+}
+
+
+.fa-xmark-clicked{
+    opacity: 1;
+    z-index: 1;
+}
+
+
+#icon-container {
+    gap: 12px;
+    margin-top: 25px;
+    height: clamp(25px, 4vw, 50px);
+}
+
+.icon{ 
+    display: flex; 
+    opacity: 1;
+    transform: translateX(0);
+    transition: all .8s ease;
+}
+
+.icon-hidden {
+    opacity: 0;
+    transform: translateX(-15%);
+}
+
+.icon:hover{
+    cursor: pointer;
+    opacity: 80%;
+}
+
+.icon img {
+    height: 100%; /* set this to be 100% of the #icon-container div so it fully fills it*/
+    filter: grayscale(30%);
+}
+#linkedinlogo img {
+    border-radius: 20%;
+    box-shadow: 5px 10px 20px var(--shadow-color);
+}
+#githublogo img {
+    border-radius: 20%;
+}
+
+.hovericons {
+    display: none;
+    position: absolute;
+    background-color: gray;
+    border-radius: 2%;
+    padding-top: 10px;
+    font-size: 10px;
+    align-items: center;
+    justify-content: center;
+}
+    
+.hiddeninfo-hidden {
+    opacity:0;
+    position: absolute;
+    animation: gogo 10s ease;
+}
+
+.hiddeninfo-show{
+    justify-content: center;
+    font-size: 15px;
+}
+
+#contact {
+    padding: 2px;
+    display: flex;
+
+}
+a {
+    font-style: italic;
+}
+ul {
+    list-style: none;
+    padding: 0;
+  }
+
+li{
+    color: rgb(var(--font-color));
+}
+  
+li:before {
+    content: "- ";
+}
+
