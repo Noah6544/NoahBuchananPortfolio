@@ -210,7 +210,7 @@ projectPopup = document.querySelector('#popup-Project');
   const homeIcon = document.querySelector('#home-icon');
   const navbarIcons = [aboutIcon,projectsIcon,experienceIcon,funfactsIcon,homeIcon];
 
-  staggerAnimation(navbarIcons,'navbar-item-hidden','navbar-item',5,.2,1,'transition');
+  staggerAnimation(navbarIcons,'navbar-item-hidden','navbar-item',2,.2,1,'transition');
   
 
 
@@ -271,10 +271,43 @@ if (currentPage == 'home.html'){ //do all the homepage stuff
   iconLogoList.forEach(element => {
     element.addEventListener('mouseover',onIconHover);  
   });
-  staggerAnimation(iconLogoList,'icon-hidden','icon',5,.2,'transition');
+  staggerAnimation(iconLogoList,'icon-hidden','icon',5,.2,1,'transition');
 
 } else if (currentPage == 'about.html'){ //do all the about page stuff
-  
+ 
+  let scrollAmount = 0;
+  let scrollSpeed = 0.01;
+  const scrollSpeedInitial = 0.06; // Initial speed to reset back to later on
+  const maxSpeed = .5; // Maximum speed
+  const growthRate = 1.05; // RATE of acceleratoin
+  let isHovering = false;
+  const imageGallery = document.querySelector('#about-image-gallery');
+  const imageGallerImages = document.getElementsByClassName('aboutimage');
+  const imageDescriptions = document.getElementsByClassName('about-image-description');
+  console.log(imageGallerImages);
+  Array.from(imageGallerImages).forEach(element => {
+    element.addEventListener('mouseenter', function() {
+      currentImageDescription = document.getElementById(element.id+"1");
+      isHovering = true;
+      element.style.cssText = "opacity: .6;";
+    })
+    element.addEventListener('mouseleave', function() {
+      element.style.cssText = "opacity: 1;";
+      isHovering = false;
+    })
+  });
+  function scrollGallery() {
+    imageGallery.style.cssText = "transform: translateY(-"+scrollAmount+"px);";
+    scrollAmount += scrollSpeed;
+    if(isHovering){
+      scrollSpeed = Math.max(scrollSpeedInitial, scrollSpeed / growthRate);}
+    else {
+      scrollSpeed = Math.min(maxSpeed, scrollSpeed * growthRate);
+    }
+    requestAnimationFrame(scrollGallery);
+  }
+  scrollGallery();
+
 }
 
 });
