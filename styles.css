@@ -186,6 +186,23 @@
     }
 }
 
+@keyframes scroll {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+
+@keyframes imageLooper {
+    from{
+        transform: translateY(0);
+    }
+    to{
+        translateY(100%);
+    }
+}
 html {
     font-size: 16px;
 }
@@ -233,12 +250,10 @@ body {
     background-color: var(--t1);  
     transform: tranlateX(0);
     transition: all cubic-bezier(0.22, 0, 0.11, 1) .5s;
-    box-shadow: var(--t2) 0px 2px 8px;
 }
 
 .navbar-item:hover  {
     transform: translateX(40px);
-    box-shadow: var(--t2) 5px 0px 10px;
 
 }
 
@@ -253,7 +268,7 @@ body {
 
 }
 
-
+/* HOME PAGE STUFF */
 
 #landingpagecontainer {
     flex-wrap: wrap;
@@ -280,7 +295,7 @@ body {
 
 .titletext {
     color: rgb(var(--font-color));
-    font-size: 3.5rem;
+    font-size: 35px;
     text-shadow: var(--text-shadow);
     /*text-align: center;*/
 
@@ -305,6 +320,73 @@ body {
     font-size: 2.5vw;
     animation: 4s ease forwards 1s 1 slidein;
 }
+
+/* ABOUT PAGE STUFF */
+
+#about-container{
+    justify-content: center;
+    gap: 300px;
+    /* overflow: hidden; */
+}
+
+#about-text-container{
+    height: 100vh;
+    width: 500px;
+    padding: 50px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#about-image-gallery{
+    height: 200vh;
+    flex-direction: column;
+    /* justify-content: flex-start; */
+    /* align-items: flex-start; */
+    gap: 20px;
+
+
+}
+
+.imageWrapper {
+    position: relative; /*LETS GO, this needs to stay here so that the absolutely positioned description has something to base the top postiion on!!! this one took me a second */
+    display: flex;
+}
+
+.aboutimage {
+    width: 400px;
+    height: auto;    
+    border-radius: 25px;
+    border: 1.5px solid white;
+    transition: all .5s ease;
+}
+
+.aboutimage:hover {
+    opacity: .6;
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,0.8743698162858894) 0%, rgba(0,0,0,0.5382353625043768) 100%); 
+}
+
+.imageDescription {
+    position: absolute;
+    color: white;
+    opacity: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 80%; /* for some reason padding this doesn't work boss */
+    text-align: center;
+    word-wrap: break-word;
+    transition: all .5s ease;
+    pointer-events: none; /* need this so that when you hover the image, it doesn't unhover by hovering the description u know */
+}
+
+.aboutimage:hover + .imageDescription {
+    opacity: 1;
+}
+
+
+
+/*PROJECTS PAGE STUFF */
 
 #my-projects-container {
     color: rgb(var(--font-color));
