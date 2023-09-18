@@ -9,15 +9,18 @@
     <script src="https://kit.fontawesome.com/182e289974.js" crossorigin="anonymous"></script>    
     <script src="../javascript/script.js"></script>
     <title>About Noah Buchanan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&family=Nanum+Myeongjo&family=Neucha&family=PT+Sans&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="navbar-container">
         <div class="navbar">
-            <div class="navbar-item-hidden" id="abouticon"><img src="../images/icons/personFilled.png"></div> 
-            <div class="navbar-item-hidden" id="projects-icon"><img src="../images/icons/folder_open.png"></div> 
-            <div class="navbar-item-hidden" id="experience-icon"><img src="../images/icons/description.png"></div> 
-            <div class="navbar-item-hidden" id="funfacts-icon"><img src="../images/icons/rocket.png"></div> 
+            <div class="navbar-item-hidden" id="abouticon"><a href="about.html"></a><img src="../images/icons/person.png"></div> 
+            <div class="navbar-item-hidden" id="projects-icon"><a href="home.html"></a><img src="../images/icons/folder_open.png"></div> 
+            <div class="navbar-item-hidden" id="experience-icon"><a href="home.html"></a><img src="../images/icons/description.png"></div> 
+            <div class="navbar-item-hidden" id="funfacts-icon"><a href="home.html"></a><img src="../images/icons/rocket.png"></div> 
             <div class="navbar-item-hidden" id="home-icon"><a href="home.html"><img src="../images/icons/homeFilled.png"></a></div> 
         </div>
     </div>
@@ -25,14 +28,27 @@
 
 <div class="container" id="about-container">
 
+    
     <div class="container" id="about-text-container">
-        <div class="titletext">About Me:</div>
-        Hey, I'm Noah Buchanan; I'm a senior attending Rockdale Magnet School (somehow...seriously, where did the time go?).
+        <div class="titletext" id="aboutme-title">About Me:<hr></div>
+        <div class="description-text">
+            Hey, I'm Noah Buchanan; I'm a senior attending Rockdale Magnet School for Science and Technology
+            <br><br>
+            I'm a nerd.
+            <br><br>
+            you can find my resume <a href="../assets/NoahBuchananResume.pdf" target="_blank">here</a>
+
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus pulvinar elementum integer enim neque volutpat ac tincidunt. Aliquam ultrices sagittis orci a scelerisque. Cursus mattis molestie a iaculis at erat pellentesque. Aliquet nec ullamcorper sit amet risus. Sodales ut etiam sit amet nisl purus in. In vitae turpis massa sed elementum tempus. Sociis natoque penatibus et magnis dis parturient. Commodo ullamcorper a lacus vestibulum sed. In nulla posuere sollicitudin aliquam ultrices sagittis orci. Imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Consectetur libero id faucibus nisl tincidunt eget. Condimentum lacinia quis vel eros donec ac odio tempor. Tempus quam pellentesque nec nam aliquam sem et. Tellus integer feugiat scelerisque varius morbi enim nunc. Id donec ultrices tincidunt arcu. Sed adipiscing diam donec adipiscing tristique risus nec. Viverra adipiscing at in tellus integer feugiat scelerisque varius. In arcu cursus euismod quis viverra nibh cras pulvinar.
+            <br><br>
+
+        </div>
+        
+        
     </div>
 
     <div class="container" id="about-image-gallery"> 
 
-        <div class="imageWrapper">
+        <div class="imageWrapper" id="standing">
             <img class="aboutimage"src="../images/aboutme/crosscountry.jpg">
             <div class="imageDescription">
                 August 13, 2022. First cross country race of the season. I ran 22:39, which was a PR at the time.
@@ -40,7 +56,7 @@
             </div>
         </div>
 
-        <div class="imageWrapper">
+        <div class="imageWrapper"  id="runby">
             <img class="aboutimage"src="../images/aboutme/runby.png">
             <div class="imageDescription">
                 April 4, 2023. After a tough track workout that left me feeling like I had nothing left, 
@@ -49,40 +65,138 @@
             </div>
         </div>
 
-        <div class="imageWrapper">
+        <div class="imageWrapper" id="weddingpic">
             <img class="aboutimage" id="wedding" src="../images/aboutme/weddingpicture.jpg">
             <div class="imageDescription">
                 An offguard picture my mom took at a wedding, doesn't look offguard, but I promise it was.
             </div>
         </div>
-        <div class="imageWrapper">
-            <img class="aboutimage"src="../images/aboutme/crosscountry.jpg">
+        
+
+        <div class="imageWrapper"  id="endofrace">
+            <img class="aboutimage"src="../images/aboutme/endofrace.png">
+
             <div class="imageDescription">
-                August 13, 2022. First cross country race of the season. I ran 22:39, which was a PR at the time.
-                I was happy with it after coming back from a 6 month injury. Picture by James Miller.
+                Update the description.
+            </div>
+        </div>
+        
+
+        <div class="imageWrapper"  id="luffy">
+             <img class="aboutimage"src="../images/aboutme/LUFFY.PNG">
+
+            <div class="imageDescription">
+                Update the description.
             </div>
         </div>
 
-        <div class="imageWrapper">
-            <img class="aboutimage"src="../images/aboutme/runby.png">
+        <div class="imageWrapper"  id="meandrod">
+            <img class="aboutimage"src="../images/aboutme/meandroderick.jpg"> 
             <div class="imageDescription">
-                April 4, 2023. After a tough track workout that left me feeling like I had nothing left, 
-                we stopped with the rest of the family and I somehow ran 2.5 more miles. 
-                I thought, <i>'I'm capable of so much more aren't I'</i> 
+                Update the description.
             </div>
         </div>
 
-        <div class="imageWrapper">
-            <img class="aboutimage" id="wedding" src="../images/aboutme/weddingpicture.jpg">
+        <div class="imageWrapper"  id="meandrod">
+            <img class="aboutimage"src="../images/aboutme/campingtrip.jpg"> 
             <div class="imageDescription">
-                An offguard picture my mom took at a wedding, doesn't look offguard, but I promise it was.
+                Update the description.
             </div>
         </div>
 
-<!-- 
-         <img class="aboutimage"src="../images/aboutme/endofrace.png">
-         <img class="aboutimage"src="../images/aboutme/weddingpicture.jpg">
-         <img class="aboutimage"src="../images/aboutme/meandroderick.jpg"> -->
+        <div class="imageWrapper"  id="meandrod">
+            <img class="aboutimage"src="../images/aboutme/DC.jpg"> 
+            <div class="imageDescription">
+                Update the description.
+            </div>
+        </div>
+
+        <div class="imageWrapper"  id="meandrod">
+            <img class="aboutimage"src="../images/aboutme/fallball.JPG"> 
+            <div class="imageDescription">
+                DDD the DDDD.
+            </div>
+        </div>
+        
+        <div class="imageWrapper"  id="meandrod">
+            <img class="aboutimage"src="../images/aboutme/guitars.jpg"> 
+            <div class="imageDescription">
+                UpdDription.
+            </div>
+        </div>
+        <div class="imageWrapper"  id="meandrod">
+            <img class="aboutimage"src="../images/aboutme/hill.jpg"> 
+            <div class="imageDescription">
+                UpdaDcription.
+            </div>
+        </div>
+        <div class="imageWrapper"  id="meandrod">
+            <img class="aboutimage"src="../images/aboutme/beach.PNG"> 
+            <div class="imageDescription">
+                Update tGscription.
+            </div>
+        </div>
+        <div class="imageWrapper"  id="meandrod">
+            <img class="aboutimage"src="../images/aboutme/meandcolin.JPG"> 
+            <div class="imageDescription">
+             DAFcription.
+            </div>
+        </div>
+        <div class="imageWrapper"  id="meandrod">
+            <img class="aboutimage"src="../images/aboutme/meandcolin2.JPG"> 
+            <div class="imageDescription">
+                Update the description.
+            </div>
+        </div>
+        <div class="imageWrapper"  id="opendtuning">
+            <img class="aboutimage"src="../images/aboutme/opendtuning.png"> 
+            <div class="imageDescription">
+                Update the description.
+            </div>
+        </div>
+        <div class="imageWrapper"  id="meandrod">
+            <img class="aboutimage"src="../images/aboutme/rainrunning.JPG"> 
+            <div class="imageDescription">
+                Update the description.
+            </div>
+        </div>
+        <div class="imageWrapper"  id="meandrod">
+            <img class="aboutimage"src="../images/aboutme/regions.jpg"> 
+            <div class="imageDescription">
+                Update the description.
+            </div>
+        </div>
+        <div class="imageWrapper"  id="meandrod">
+            <img class="aboutimage"src="../images/aboutme/tobyinblankets.jpg"> 
+            <div class="imageDescription">
+                Update the description.
+            </div>
+        </div>
+        <div class="imageWrapper"  id="meandrod">
+            <img class="aboutimage"src="../images/aboutme/tobyinhat.jpg"> 
+            <div class="imageDescription">
+                Update the description.
+            </div>
+        </div>
+
+        <div class="imageWrapper"  id="meandrod">
+            <img class="aboutimage"src="../images/aboutme/tobysleep.jpg"> 
+                <div class="imageDescription">
+                    Update the description.
+                </div>
+        </div>
+
+        <div class="imageWrapper"  id="meandrod">
+            <img class="aboutimage"src="../images/aboutme/youthretreat.jpg"> 
+            <div class="imageDescription">
+                Update the description.
+            </div>
+        </div>
+     
+
+        
+        
+        
 
     </div>  
 </div>

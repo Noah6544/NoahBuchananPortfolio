@@ -1,5 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', function() {
+  console.log("Height is: " +document.documentElement.clientHeight);   
 
 function CheckItemInView(item){
   const rectangle = item.getBoundingClientRect();
@@ -8,6 +9,7 @@ function CheckItemInView(item){
     rectangle.bottom - 60<= (window.innerHeight || document.documentElement.clientHeight)
   );
 }
+
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -218,15 +220,7 @@ let currentPage = (((window.location.pathname).split('/'))).pop() //omits the pa
 if (currentPage == 'home.html'){ //do all the homepage stuff
   
   function onscroll(){ //this is a page specific function. needs to be included under this home.html section.
-    if(CheckItemInView(djangoWebapp) && isFirstScroll){
-      staggerAnimation(projectCardList,'project-card-hidden','project-card',0.1,0.1);
-      isFirstScroll = false;
-    }
-    else{
-      projectCardList.forEach(element => {
-        element.style.cssText = 'transition-delay: 0s';
-      })
-    }
+    
    
   
     const viewportHeight = window.innerHeight; //check height of window.
@@ -257,13 +251,7 @@ if (currentPage == 'home.html'){ //do all the homepage stuff
     }  
   }
 
-  let isFirstScroll = true;
-  let projectCardIndex = 1;
-  for(let i = 0; i<projectCardList.length; i++){
-    console.log(projectCardList[i]);
-    let card = projectCardList[i]; //must have "LET/const CARD" not just card. if not doesn't work.
-    card.addEventListener('click', Click_projectcard);
-  };                      // U NEED THIS ANONYMOUS FUNCTION ARROW.
+
   window.addEventListener('scroll', onscroll);
   window.addEventListener("mousemove",onMouseMove)
   xmark.addEventListener('click', () => Click_Xmark());
@@ -277,15 +265,14 @@ if (currentPage == 'home.html'){ //do all the homepage stuff
   let scrollAmount = 0;
   let scrollSpeed = 0.01;
   const scrollSpeedInitial = 0.06; // Initial speed to reset back to later on
-  const maxSpeed = 5; // Maximum speed
-  const growthRate = 1.05; // RATE of acceleratoin
+  const maxSpeed = 1 // Maximum speed
+  const growthRate = 1.04; // RATE of acceleratoin
   let isHovering = false;
   let imageGallery = document.querySelector('#about-image-gallery');
-  const imageGallerImages = document.getElementsByClassName('aboutimage');
-  const imageDescriptions = document.getElementsByClassName('about-image-description');
-  console.log(imageGallerImages);
-  Array.from(imageGallerImages).forEach(element => {
+  let imageGalleryImages = document.getElementsByClassName('aboutimage');
+  Array.from(imageGalleryImages).forEach(element => {
     element.addEventListener('mouseenter', function() {
+      element.style.cssText = "transform: translateY(0px);";
       // currentImageDescription = document.getElementById(element.id+"1");
       isHovering = true;
     })
@@ -293,36 +280,74 @@ if (currentPage == 'home.html'){ //do all the homepage stuff
       isHovering = false;
     })
   });
+
   function scrollGallery() {
     let currentTopImage = document.querySelector('.imageWrapper');
     let currentTopImageRect = currentTopImage.getBoundingClientRect();
 
 
-    // imageGallery.style.cssText = "transform: translateY(-"+scrollAmount+"px);";
-    scrollAmount += scrollSpeed;
-
-
-    if(isHovering){
-      scrollSpeed = Math.max(scrollSpeedInitial, scrollSpeed / growthRate);}
-    else {
-      scrollSpeed = Math.min(maxSpeed, scrollSpeed * growthRate);
+    // console.log("current top Image: "+ currentTopImageRect.bottom);
+    if(scrollSpeed == maxSpeed) {
+      scrollAmount += parseFloat(scrollSpeed.toFixed(1));
+    }
+    else{
+      scrollAmount += scrollSpeed;
     }
 
-    if (Math.abs(currentTopImageRect.bottom) >= document.documentElement.clientHeight) {
-      console.log(currentTopImageRect);
-      console.log(document.documentElement.clientHeight);
-      imageGallery.removeChild(currentTopImage);
-      // Remove it from the start of the gallery
-      imageGallery.appendChild(currentTopImage);
-  }
+    count = 1;
+
+    Array.from(imageGalleryImages).forEach(element => {
+      if (currentTopImageRect.bottom <= 0) {
+        // // actualElement = document.querySelector('.aboutimage #'+ );
+        let parentDiv = currentTopImage;
+
+        imageGallery.appendChild(parentDiv);
+        Array.from(imageGalleryImages).forEach(img => {
+          let imageGallery = document.querySelector('#about-image-gallery');
+
+          imageGallery.style.cssText = "transform: translateY(" + (scrollAmount + window.scrollY + 20)  + "px);"; /* FIRST TRY WITH THE SCROLL Y LETS GO IT WORKED IM...not that smart.. BUT ALMOST!!!!*/
+        });
+      }
+      else
+      {
+       element.parentElement.style.cssText = "transform: translateY(-"+scrollAmount+"px);";    
+
+      }
+      });
+
+   
+    if(isHovering){
+      scrollSpeed = Number(Math.max(scrollSpeedInitial, scrollSpeed / growthRate));}
+    else {
+      scrollSpeed = Number(Math.min(maxSpeed, scrollSpeed * growthRate));
+    }
   
+
   requestAnimationFrame(scrollGallery);
 
 }
 
   scrollGallery();
 
+
 }
+  else if (currentPage == 'projects.html'){
+    let isFirstScroll = true;
+    let projectCardIndex = 1;
+    for(let i = 0; i<projectCardList.length; i++){
+      console.log(projectCardList[i]);
+      let card = projectCardList[i]; //must have "LET/const CARD" not just card. if not doesn't work.
+      card.addEventListener('click', Click_projectcard);
+    };                      // U NEED THIS ANONYMOUS FUNCTION ARROW.
+      staggerAnimation(projectCardList,'project-card-hidden','project-card',.1,0.1,10,'transition');
+      isFirstScroll = true;
+  
+
+      // projectCardList.forEach(element => {
+      //   element.style.cssText = 'transition-delay: 0s';
+      // })
+    
+  }
 
 });
 

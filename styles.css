@@ -1,6 +1,6 @@
 :root {
     --font-color: 255, 255, 255;
-    --text-shadow: 2px 3px 5px rgb(0, 0, 0);
+    --text-shadow: 2px 3px 5px rgba(0, 0, 0,.7);
     --primary-color: #242d37; 
     --t1: #95BBE6;
     --t2: #2b4d85ff;
@@ -195,14 +195,7 @@
     }
   }
 
-@keyframes imageLooper {
-    from{
-        transform: translateY(0);
-    }
-    to{
-        translateY(100%);
-    }
-}
+
 html {
     font-size: 16px;
 }
@@ -213,7 +206,8 @@ body {
     margin: 0;
     background: var(--primary-color); /*rgb(162, 201, 240);*/
     /*rgb(41, 42, 43);*/
-    font-family: 'Noto Sans SC', sans-serif;
+    font-family: 'Neucha', sans-serif;
+    font-weight: 400;
     height: 100vh;
     overflow-x: hidden;
     font-smooth: always;
@@ -245,10 +239,11 @@ body {
 
 .navbar-item {
     opacity: 1;
-    border-radius: 3px;
+    border-radius: 300px;
     padding: 15px; /*  padding: top right bottom left; */
     background-color: var(--t1);  
     transform: tranlateX(0);
+    border: 1px solid black;
     transition: all cubic-bezier(0.22, 0, 0.11, 1) .5s;
 }
 
@@ -297,7 +292,7 @@ body {
     color: rgb(var(--font-color));
     font-size: 35px;
     text-shadow: var(--text-shadow);
-    /*text-align: center;*/
+    font-family: 'Almarai',sans-serif;
 
 }
 #hey {
@@ -324,23 +319,23 @@ body {
 /* ABOUT PAGE STUFF */
 
 #about-container{
+
     justify-content: center;
-    gap: 300px;
-    /* overflow: hidden; */
+    gap: clamp(0px,20vw,300px);
+    overflow:hidden;
 }
 
 #about-text-container{
     height: 100vh;
     width: 500px;
-    padding: 50px;
+    padding-left: 50px;
     flex-direction: column;
     justify-content: center;
 }
 
 #about-image-gallery{
-    height: 200vh;
     flex-direction: column;
-    /* justify-content: flex-start; */
+    justify-content: flex-start;
     /* align-items: flex-start; */
     gap: 20px;
 
@@ -349,11 +344,12 @@ body {
 
 .imageWrapper {
     position: relative; /*LETS GO, this needs to stay here so that the absolutely positioned description has something to base the top postiion on!!! this one took me a second */
-    display: flex;
+    
+    
 }
 
 .aboutimage {
-    width: 400px;
+    width: clamp(150px, 25vw, 450px);
     height: auto;    
     border-radius: 25px;
     border: 1.5px solid white;
@@ -384,7 +380,15 @@ body {
     opacity: 1;
 }
 
+.description-text {
+    color: white;
+    text-shadow: var(--text-shadow);
+    font-size: clamp(12px,1.2em,300px);
+}
 
+#aboutme-title {
+
+}
 
 /*PROJECTS PAGE STUFF */
 
