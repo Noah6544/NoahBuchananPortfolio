@@ -1,6 +1,6 @@
 :root {
     --font-color: 255, 255, 255;
-    --text-shadow: 2px 3px 5px rgb(0, 0, 0);
+    --text-shadow: 2px 3px 5px rgba(0, 0, 0,.7);
     --primary-color: #242d37; 
     --t1: #95BBE6;
     --t2: #2b4d85ff;
@@ -195,6 +195,7 @@
     }
   }
 
+
 html {
     font-size: 16px;
 }
@@ -205,7 +206,8 @@ body {
     margin: 0;
     background: var(--primary-color); /*rgb(162, 201, 240);*/
     /*rgb(41, 42, 43);*/
-    font-family: 'Noto Sans SC', sans-serif;
+    font-family: 'Almarai', sans-serif;
+    font-weight: 100;
     height: 100vh;
     overflow-x: hidden;
     font-smooth: always;
@@ -237,17 +239,16 @@ body {
 
 .navbar-item {
     opacity: 1;
-    border-radius: 3px;
+    border-radius: 300px;
     padding: 15px; /*  padding: top right bottom left; */
     background-color: var(--t1);  
     transform: tranlateX(0);
+    border: 1px solid black;
     transition: all cubic-bezier(0.22, 0, 0.11, 1) .5s;
-    box-shadow: var(--t2) 0px 2px 8px;
 }
 
 .navbar-item:hover  {
     transform: translateX(40px);
-    box-shadow: var(--t2) 5px 0px 10px;
 
 }
 
@@ -291,7 +292,7 @@ body {
     color: rgb(var(--font-color));
     font-size: 35px;
     text-shadow: var(--text-shadow);
-    /*text-align: center;*/
+    font-family: 'Almarai',sans-serif;
 
 }
 #hey {
@@ -316,27 +317,24 @@ body {
 }
 
 /* ABOUT PAGE STUFF */
+
 #about-container{
-    justify-content: center;
-    height: 100vh;
-    gap: 300px;
-    /* overflow: hidden; */
+
+    /* gap: clamp(0px,10vw,300px); */
+    justify-content: space-evenly;
+    overflow:hidden;
 }
 
 #about-text-container{
     height: 100vh;
     width: 500px;
-    padding: 50px;
+    padding-left: 50px;
     flex-direction: column;
     justify-content: center;
-
-}
-.aboutimage {
-    transition: all .5s ease;
-
 }
 
 #about-image-gallery{
+    height: 100vh; /* lets go, overflow-hidden doesn't work to disable scroll, so just make the height 100%! */
     flex-direction: column;
     justify-content: flex-start;
     /* align-items: flex-start; */
@@ -344,50 +342,83 @@ body {
 
 
 }
-#about-image-gallery img {
-    width: 400px;
-    height: auto;
-    border-radius: 15px;
-    border: 3px solid white;
+
+.imageWrapper {
+    position: relative; /*LETS GO, this needs to stay here so that the absolutely positioned description has something to base the top postiion on!!! this one took me a second */
+    
+    
 }
 
-.about-image-description {
-    display: none;
+.aboutimage {
+    width: clamp(150px, 27vw, 450px);
+    height: auto;    
+    border-radius: 25px;
+    border: 2px solid var(--t5);
+    transition: all .5s ease;
 }
 
-.overlay {
+.aboutimage:hover {
+    opacity: .6;
+   
+    background: linear-gradient(0deg, rgba(0,0,0,0.8743698162858894) 0%, rgba(0,0,0,0.5382353625043768) 100%); 
+}
+
+.imageDescription {
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: .5s ease;
-    background-color: #212121;
-  }
-  
-  .overlay .text {
     color: white;
-    font-size: 20px;
-    position: absolute;
-    top: 50%;
+    opacity: 0;
     left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  .image-container:hover .overlay {
-    opacity: .8;
-  }
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 80%; /* for some reason padding this doesn't work boss */
+    text-align: center;
+    word-wrap: break-word;
+    transition: all .5s ease;
+    pointer-events: none; /* need this so that when you hover the image, it doesn't unhover by hovering the description u know */
+}
+
+.aboutimage:hover + .imageDescription {
+    opacity: 1;
+}
+
+.description-text {
+    font-family: sans-serif;
+
+    color: white;
+    text-shadow: var(--text-shadow);
+    font-size: clamp(12px,1.1em,300px);
+}
+
+#aboutme-title {
+
+}
+
+.imageDescription {
+    font-family: 'Neucha',sans-serif;
+
+}
 /*PROJECTS PAGE STUFF */
 
+#projectspage-container{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: center;
+}
+
 #my-projects-container {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: .4em;
+    /* border: 3em; */
     color: rgb(var(--font-color));
     text-shadow: var(--text-shadow);
     margin: 0 auto;
-    width: clamp(700px, 70vw, 1275px);
+    /* width: clamp(700px, 70vw, 1275px); */
     border-radius: 3%;
     flex-direction: row;
-    padding: 2vw;
+    /* padding: 2vw; */
     justify-content: center;
     align-items: center;
 }
@@ -399,19 +430,14 @@ body {
     padding: 1em;
 }
 
-#my-projects-container {
-    flex-wrap: wrap;
-    gap: 1em;
-    border: 3em;
 
-}
 
 .project-card-popup {
     overflow: hidden;   
     height: 0;
     width: 0;
     position: absolute;
-    backdrop-filter: blur(7px);
+    backdrop-filter: blur(15px);
     justify-content: center;
     overflow: hidden;
     align-items: center;
@@ -471,8 +497,7 @@ body {
 
 .extended-description {
     /* opacity: 0; */
-    filter: blur(10px);
-    font-size: clamp(1rem, 1.3rem, 3rem);
+    font-size: clamp(1rem, 1.2rem, 3rem);
     padding: clamp(10px, 20px,30px) 0px clamp(10px, 20px,30px) 0px;
     animation-iteration-count: 1;
     /* animation: .5s ease forwards 2.4s staggerdown; */
@@ -493,13 +518,14 @@ body {
     width: clamp(5em,15rem,20rem);
     background-color: rgba(125, 125, 125, .2);
     box-shadow: rgba(255, 255, 255, .1) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
-    border-radius: 5%;
+    border-radius: 8%;
     border: solid .02px rgba(194, 194, 194, 0.9);
     transition: transform .45s ease;
 }
 
 
 .project-card  {
+    pointer-events: none; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -509,13 +535,14 @@ body {
     align-items: center;
     font-size: 2rem;
     overflow: hidden; 
-    aspect-ratio: 10/12;
+    aspect-ratio: 12/12;
     transform: translateX(0%);
     opacity: 1;
-    width: clamp(5em,15rem,20rem);
+    width: 25vw;
+    height: 20vw;
     background-color: rgba(125, 125, 125, .2);
     box-shadow: rgba(255, 255, 255, .1) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
-    border-radius: 5%;
+    border-radius: 3%;
     border: solid .02px rgba(194, 194, 194, 0.9);
     transition: all .45s ease;
 }
@@ -523,7 +550,6 @@ body {
 
 .project-card-clicked {
     transform: scale(.8);
-    color: blue;
 }
 
 
@@ -536,12 +562,14 @@ body {
 
 .project-card-image img{
     z-index: -1;
-    position:absolute;
-    top:-2% ;
-    left: -70%;
-
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* top:-2% ;
+    left: -50%;
     width: 250%; 
-    /* width: 175%; */  
+    width: 175%;   */
 }
 
 .project-title {
@@ -550,7 +578,7 @@ body {
     justify-content: center;
     text-align: center;
     padding: 2rem;
-    font-size: clamp(1.5rem,2rem,3rem);
+    font-size: clamp(1rem,1.4rem,3rem);
 }
 
 
@@ -707,6 +735,12 @@ hr {
     padding: 2px;
     display: flex;
 
+}
+
+/* Specific IMage Adjustments */
+
+#davisimage img{
+    object-fit: cover;
 }
 a {
     font-style: italic;
