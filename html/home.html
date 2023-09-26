@@ -5,21 +5,22 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" media="screen and (min-width:401px)" href="../styles.css">
+    <link rel="stylesheet" media="" href="../styles.css">
     <script src="https://kit.fontawesome.com/182e289974.js" crossorigin="anonymous"></script>    
     <script src="../javascript/script.js"></script>
     <title>Noah Buchanan</title>
 </head>
 <body>
     <div class="navbar-container">
-        <div class="navbar">
-            <div class="navbar-item-hidden" id="abouticon"><img src="../images/icons/personFilled.png"></div> 
-            <div class="navbar-item-hidden" id="projects-icon"><img src="../images/icons/folder_openFilled.png"></div> 
-            <div class="navbar-item-hidden" id="experience-icon"><img src="../images/icons/descriptionFilled.png"></div> 
-            <div class="navbar-item-hidden" id="funfacts-icon"><img src="../images/icons/personFilled.png"></div> 
-            <div class="navbar-item-hidden" id="home-icon"><a href="home.html"><img src="../images/icons/homeFilled.png"></a></div> 
+        <div class="navbar-container">
+            <div class="navbar">
+                <div class="navbar-item-hidden" id="abouticon"><a href="about.html"><img src="../images/icons/person.png"></a></div> 
+                <div class="navbar-item-hidden" id="projects-icon"><a href="projects.html"><img src="../images/icons/folder.png"></a></div> 
+                <div class="navbar-item-hidden" id="experience-icon"><a href="experience.html"><img src="../images/icons/description.png"></a></div> 
+                <div class="navbar-item-hidden" id="contact-icon"><a href="contact.html"><img src="../images/icons/email.png"></a></div> 
+                <div class="navbar-item-hidden" id="home-icon"><a href="home.html"><img src="../images/icons/homeFilled.png"></a></div> 
+            </div>
         </div>
-    </div>
     <div class="container" id="landingpagecontainer">
         <div class="titletext" id="landingpage">
             <div id="hey">
@@ -33,15 +34,15 @@
                 I'm an 12th grader from Metro Atlanta. I'm pursuing a career in Computer Science, and I plan on doing big things!
                 <div class="container" id="icon-container">
                     <div class="icon-hidden" id="linkedinlogo">
-                        <span><a href="https://linkedin.com" target="_blank"><img src="../images/linkedinlogo.png" href=""></a></span>
+                        <span><a href="https://linkedin.com" target="_blank"><img src="../images/logos/linkedinlogo.png"></a></span>
                         <div class="hovericons" id="linkedininfo">Noah Buchanan</div>
                     </div>
                     <div class="icon-hidden" id="githublogo">
-                        <span><a href="https://Github.com/Noah6544" target="_blank"><img src="../images/githublogo.jpg"></a></span>
+                        <span><a href="https://Github.com/Noah6544" target="_blank"><img src="../images/logos/githublogo.jpg"></a></span>
                         <div class="hovericons" id="githubinfo">Noah6544</div>
                     </div>
                     <div class="icon-hidden" id="imessagelogo">
-                        <span><a href="https://buchannoah100@gmail.com" target="_blank"><img src="../images/imessagelogo.png"></a></span>
+                        <span><a href="https://buchannoah100@gmail.com" target="_blank"><img src="../images/logos/imessagelogo.png"></a></span>
                         <div class="hovericons" id="emailinfo">BuchananNoah100@gmail.com</div>
                     </div>
                     <div class="hiddeninfo-show" id="hiddeninfo"></div>
@@ -51,128 +52,6 @@
         
         <div class="Portrait" id="noneditedPortrait" data-duration="3s" data-delay="0s"><img src="../images/PortraitTransparent.png"></div>
 
-    </div>
-    <div class="titletext" id="my-projects-title">
-        Notable Projects
-    </div>
-   
-    <div class="container" id="my-projects-container">
-        <div class="project-card-hidden" id="project-django-container" data-is-clicked="False">
-            <!-- <div class="project-card-image"><img src="images/djangologo.png"></div> -->
-
-            <div class="project-title" id="project-django">
-                Django Webapp
-            </div>
-            <div class="project-description" id="project-django">
-                I built an education web-course using Django!
-            </div>  
-        </div>
-        <div class="project-card-hidden" id="project-IT" data-is-clicked="False">
-            <div class="project-card-image" id="test"><img src="../images/3loyNM.gif"></div>
-            <div class="project-title" id="project-IT">
-                Project Inspire Technology
-            </div>
-            <div class="project-description" id="project-IT">
-                I had an amazing opportunity to teach a class of 5th graders about programming!
-            </div>
-        </div>
-        <div class="project-card-hidden" id="project-Facial" data-is-clicked="False">
-            <div class="project-title" id="project-Facial">
-                Facial Recognition Research
-            </div>
-            <div class="project-description" id="project-Facial">
-                I investigated the effect of facial recognition on racial bias. 
-            </div>
-        </div>
-        <div class="project-card-hidden" id="project-ImageAligner"data-is-clicked="False">
-            <div class="project-title" id="project-ImageAligner">
-                    Image Aligner Automation
-            </div>
-            <div class="project-description" id="project-ImageAligner">
-                Work in progress.
-            </div>
-            <div class="project-extended-description" id="project-ImageAligner">
-               ImageAligner extended description.
-            </div>
-        </div>
-        <i class="fa-solid fa-xmark fa-2xl" id="xmark"></i>
-
-        <div class="project-card-hidden" id="project-Portfolio" data-is-clicked="False">
-            <div class="project-title" id="project-Portfolio">
-                This Website!
-            </div>
-            <div class="project-description" id="project-Portfolio">
-                I learned HTML, CSS, and Javascript through creating this website.
-            </div>
-            <div class="project-extended-description" id="project-Portfolio">
-                I considered employing django for this webstie (not really), just to take advantage of the static templates so that I might be able to use something
-                for the navbar....
-            </div>
-        </div>
-        <div class="popup-Project-initial" id="popup-Project" data-is-open=false>
-            <div class="title popup-subelement" id="popup-Project-Title" >Lorem ipsum</div>
-            <div class="popup-subelement" id="Label">Tl:DR:</div>
-            <div class="project-description popup-subelement" id="popup-Project-Description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sollicitudin ultrices sapien non consequat. Cras. </div>
-            <div class="popup-subelement" id="Label">Extended Description:</div>
-            <div class="extended-description popup-subelement" id="popup-Project-Extended-Description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit fringilla diam ac fermentum. Aenean eu viverra dui, vel sollicitudin augue. Morbi a nisi nec dolor pellentesque aliquet in et magna. Ut urna ligula, consequat vitae posuere id, aliquam vel dui. In vel interdum neque, non fermentum sem. Nullam non posuere sem. Donec consectetur dui ut magna convallis, nec mattis tellus porta. Phasellus consectetur iaculis nunc. </div>
-            <div class="popup-subelement" id="close-project">Close Project</div>
-        </div>
-    </div>
-
-    <div class="container" id="list-container">
-        <div class="titletext">
-            Experience:
-        </div>
-        <div class="list" id="experience-list">
-            <ul>
-                <li class="year">2023:</li>
-                <li class="list-item">Currently Interning for Rockdale County Government Technology Services</li>
-                <li class="list-item">IT Apprentice for Rockdale Career Academy Intel Department (2022-2023)</li>
-                <li class="list-item">RCHS Youth Commission International Co-Leader (2022-Present)</li>
-                <li class="year">2022:</li>
-                <li class="list-item">Afterschool Program Leader for CJ Hicks Elementary Teaching Coding/Hardware To Students(2022) (See Notable Projects)</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="containter" id="list-container">
-        <div class="titletext" id="skillstitle">
-            Skills:
-        </div>
-        <div class="list" id="skills-list">
-            <ul>
-                <li class="list-item">Advanced Python Application (MatplotLib, OpenCv, Google Mediapipe, Python OOP, General problem)</li>
-                <li class="list-item">Advanced Computer Hardware Application (Building, fixing, and maintaining computers.)</li>
-                <li class="list-item">Intermediate Web Development (Django, Html, CSS, JS)</li>
-                <li class="list-item">Intermediate Java Application (AP Computer Science courses: 5 on AP exam)</li>
-            </ul>
-        </div>
-    </div> 
-    <a href="about.html">asdf</a>
-    <div class="container" id="list-container">
-        <div class="titletext" id="funfactstitle">
-            Fun facts about me:
-        </div>
-        <div class="list" id="funfacts-list">
-            <ul>
-                <li class="list-item">I play guitar &#127928;<sub>(electric and acoustic)</sub></li>
-                <li class="list-item">I run Cross Country and T&F <sub>(Personal Records: XC: 19:02 | 3000m: 9:50 | 1500m: 4:27 | Longest Run: 13.26 miles)</sub>
-                    <a href="https://www.strava.com/athletes/85598388" target="_blank">
-                        <sub><u>My Strava</u></sub></a></li>
-                <li class="list-item">I cut hair &#128136;
-                    <a href="https://www.instagram.com/noah_cutz/" target="_blank"><sub>Barber Page</sub></a></li>
-                <li class="list-item">I make 3d models and renders in blender</li>
-                <li class="list-item">I make edits</li>
-                <li class="list-item">I did vfx a few years ago</li>
-                <li class="list-item">I play rocket league (d3)</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="container titletext" id="contact">
-        Let's Talk!
     </div>
 
 
