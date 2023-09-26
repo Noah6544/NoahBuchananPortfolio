@@ -232,7 +232,7 @@ const homeIcon = document.querySelector('#home-icon');
 const contactIcon = document.querySelector('#contact-icon');
 const navbarIcons = [aboutIcon,projectsIcon,experienceIcon,contactIcon,homeIcon];
 
-staggerAnimation(navbarIcons,'navbar-item-hidden','navbar-item',0,.2,0,'transition');
+staggerAnimation(navbarIcons,'navbar-item-hidden','navbar-item',5,.2,0,'transition');
 
 
 let currentPage = (((window.location.pathname).split('/'))).pop() //omits the parent directory and just return the file name.
