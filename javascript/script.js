@@ -1,47 +1,61 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 
+
+
 function CheckItemInView(item){
   const rectangle = item.getBoundingClientRect();
   return (
     rectangle.top + 30 >= 0 &&
     rectangle.bottom - 60<= (window.innerHeight || document.documentElement.clientHeight)
   );
-}
+  
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+ 
 }
 
 function BlurEverythingExcept(exceptionObject){
-  allDivs.forEach(element => {
+  const navbarClassNames = ['navbar-item-hidden','navbar','navbar-container','navbar-item'];
+  let allDivs = document.querySelectorAll("div");
+  allDivs.forEach(element => {      
     if(element == exceptionObject){ // Ithink this might be redundant because of the next else if, but whatever.
-      element.style.cssText = "filter: blur(0px); z-index: 2;"  //the problem has to do with trying to blur a gif. it just goes away if you try to blur a gif.
+      element.style.cssText = "filter: blur(0px); z-index: 2;"   //the problem has to do with trying to blur a gif. it just goes away if you try to blur a gif.
+    }
+    else if(navbarClassNames.includes(element.className)){
+      ; /*do nothing for navbar, ignore it and don't even update CSS, cuz that ruins its abosolute pos */
     }
     else if(ignoredDivs.includes(element.id)){
       ignoredElement = document.getElementById(element.id); 
-      ignoredElement.style.cssText = "filter: blur(0px); z-index: 2;";
+      // ignoredElement.style.cssText = "filter: blur(0px); z-index: 2;";
+    }
+    else if(element.id =='project-django-image'){
+      // element.removeChild
     }
     else{
-      element.style.cssText = "filter: blur(3px); transition: all 2s ease;";
+     
+      element.style.cssText += "filter: blur(15px); transition: all 2s ease;";
     }  
     exceptionObject.style.cssText = "filter: blur(0px);"
   });
-}
-
+  }
+    
 function UnblurEverything(){
+  const navbarClassNames = ['navbar-item-hidden','navbar','navbar-container','navbar-item'];
+  let allDivs = document.querySelectorAll("div");
+
   allDivs.forEach(element => { 
     if(ignoredDivs.includes(element.id)){
       ;
     } 
+    else if(navbarClassNames.includes(element.className)){
+      ; /*do nothing for navbar, ignore it and don't even update CSS, cuz that ruins its abosolute pos */
+    }
     else {
-      element.style.cssText = "filter: blur(0px);";
-
+      element.style.cssText = "filter: blur(0px); transition: all 1s ease;";
     }  
   });
-}
-//Event Listener Functions:
-
+  }  
+   
 function Click_projectcard(){ 
   projectPopup.dataset.isopen = true;
   id = this.id;
@@ -51,43 +65,60 @@ function Click_projectcard(){
   //getting elements to insert into div
   let projectTitle = document.getElementById(id).getElementsByClassName("project-title")[0];
   let projectDescription = document.getElementById(id).getElementsByClassName("project-description")[0];
+  let extendedProjectDescription = document.getElementById(id).getElementsByClassName("project-extended-description")[0];
+
   let projectImage = document.getElementsByClassName('project-card-image')
   // let projectExtendedDescription = document.getElementById(id).getElementsByClassName("project-extended-description")[0];
 
   //getting the popupcard divs that will modified (no need to make variables)
   document.getElementById("popup-Project-Title").innerHTML = projectTitle.innerHTML;
   document.getElementById("popup-Project-Description").innerHTML = projectDescription.innerHTML;
+  document.getElementById("popup-Project-Extended-Description").innerHTML = extendedProjectDescription.innerHTML;
+
   projectPopup.classList.add("project-card-popup");
 
   projectPopup.classList.remove("popup-Project-initial","reverse-project-card");  
   BlurEverythingExcept(projectPopup);
+  Array.from(subDivList).forEach(element => {
+    element.style.animationName = 'staggerup';
+    element.style.animationDuration = '2s';
+    element.style.animationDelay =  delay + 's';
+    element.style.animationTimingFunction = 'ease';
+    element.style.animationFillMode = 'forwards';
+    element.style.animationDirection = 'reverse';
+    // element.style.cssText = 'opacity: 1; animation-delay: ' + delay.toString() + 's; animation: .5s ease forwards reverse staggerdown;';
+    delay += .1;
+  });
 
   xmark.style.cssText = 'transition: opacity 1s 0s;' // need to add this cuz it resets every click.
-  xmark.classList.add("fa-xmark-clicked");
-  if(this.getAttribute("data-is-clicked") == false){
-    this.style.cssText = "transform: scale(.85);"
-    this.getAttribute(Boolean("data-is-clicked")) == true;
-  }
+  xmark.classList.add("xmark-show");
+  // if(this.getAttribute("data-is-clicked") == false){
+  //   this.style.cssText = "transform: scale(.85);"
+  //   this.getAttribute(Boolean("data-is-clicked")) == true;
+  // }
 }
 
 function Click_Xmark(){
   let delay = 0;
   //I tried to make this cleaner by getting all sub elements, but it wouldn't work, so we're going for functionality > being fancy
-  const subDivList = document.querySelectorAll('.popup-subelement');
-  let projectPopup = document.getElementById('popup-Project');
-  projectPopup.classList.add('reverse-project-card','popup-Project-initial'); //LET'S GO, add the initial so it displays none, and then the animation works again. this took a lot of work to make the animation run more than once but we got it.
+  let subDivList = document.getElementsByClassName('popup-subelement');
+  // let projectPopup = document.getElementById('popup-Project');
   UnblurEverything();
-  xmark.style.cssText = 'opacity: 0; transition: opacity .2s;'
-  xmark.classList.remove('fa-xmark-clicked');
-  subDivList.forEach(element => {
-    element.style.animationName = 'staggerup';
+  xmark.style.cssText = 'opacity: 0; transition: opacity .2s ease;'
+  xmark.classList.remove('xmark-show');
+  Array.from(subDivList).forEach(element => {
+    element.style.animationName = 'staggerdown';
     element.style.animationDuration = '1s';
     element.style.animationDelay =  delay + 's';
     element.style.animationTimingFunction = 'ease';
     element.style.animationFillMode = 'forwards';
+    element.style.animationDirection = 'normal';
+
     // element.style.cssText = 'opacity: 1; animation-delay: ' + delay.toString() + 's; animation: .5s ease forwards reverse staggerdown;';
     delay += .1;
   });
+  projectPopup.classList.add('reverse-project-card','popup-Project-initial'); //LET'S GO, add the initial so it displays none, and then the animation works again. this took a lot of work to make the animation run more than once but we got it.
+
   projectPopup.dataset.isopen = false;
 
   // function wasteoftime() {
@@ -103,52 +134,50 @@ function Click_Xmark(){
   // }
   // ALL of thE ABOVE SEEMS TO BE UNNEEDED
   // projectPopup.classList.add('popup-Project');
+  }
+
+function onload(){ //changed it so that it loads all list items on load in conjunction with all other items.
+  const viewportHeight = window.innerHeight; //check height of window.
+  //checking for fact list stuff
+  let delay = 0; 
+  Array.from(factlist).forEach(factitem => {
+    factitem.style.cssText = "opacity: 1; filter: blur(0px); transform: translateX(0); transition-delay: " + delay + "s";
+      delay += .1; 
+  })
 }
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+//Event Listener Functions:
+
+
+
+
 
 function onMouseMove(mouse){
   // console.log(mouse.x +  mouse.y);
 }
 
-  function staggerAnimation(elementlist,hiddenclass,showclass,delay,delayincrement,duration,typeOfDelay){
-    elementlist.forEach(element => {
-      element.classList.remove(hiddenclass);
-      element.classList.add(showclass);
-      delay += delayincrement;
-      element.style.cssText = typeOfDelay +'-duration: ' + duration + 's'; 
-      element.style.cssText = typeOfDelay +'-delay: ' + delay + 's'; 
+function staggerAnimation(elementlist,hiddenclass,showclass,delay,delayincrement,duration,typeOfDelay){
+  elementlist.forEach(element => {
+    element.classList.remove(hiddenclass);
+    element.classList.add(showclass);
+    delay += delayincrement;
+    element.style.cssText = typeOfDelay +'-duration: ' + duration + 's'; 
+    element.style.cssText = typeOfDelay +'-delay: ' + delay + 's'; 
 
-      element.addEventListener('transitionend', function() {
-        // Reset the transition delay
-        element.style.cssText = typeOfDelay +'-delay: 0s';
-    });
+    element.addEventListener('transitionend', function() {
+      // Reset the transition delay
+      element.style.cssText += typeOfDelay +'-delay: 0s';
+      element.style.cssText += 'pointer-events: all;' /* this is needed for the projects card */
+  });
 
-    })
-  }
-
-
-function onIconHover(){  
-
-  let hiddendiv = document.querySelector('#hiddeninfo');
-  for(let i = 0;i<iconLogoList.length;i++){
-    icon = iconLogoList[i];
-    if(this==icon){
-      hiddendiv.innerHTML = "*"+ iconInfoList[i].innerHTML;
-    }
-    else{
-    }
-  }
-  hiddendiv.innerHtml = "";
-
+  })
 }
 
-function navbarIconHoverIn(){
-  this.style.cssText = 'position: absolute; transition: all 1s ease; left 55px;';
-}
-
-
-function navbarIconHoverOut(){
-  this.style.cssText = 'left: 0px;';
-}
 
 const CheckItemInViewnew = new IntersectionObserver((entries) => { //figure out this issue and why it's not working
   entries.forEach(element => {
@@ -161,9 +190,6 @@ const CheckItemInViewnew = new IntersectionObserver((entries) => { //figure out 
   });
   
 });
-
-  
-
 
 //GETTING ITEMS
 // const rootStyles = getComputedStyle(document.head);
@@ -183,94 +209,41 @@ const iconInfoList = [linkedininfo,githubinfo,emailinfo];
 
 
 
+
 //for the landing page scroll down animations
-const landingpagediv = document.querySelector('#landingpagecontainer');
 const landingpagesubdivs = document.querySelectorAll("#landingpagecontainer div");
-const titletext = document.querySelector('.titletext');
 
 // for the fun fact animations
 const factlist = document.getElementsByClassName('list-item');
+let allDivs = document.querySelectorAll("div");
 
 //for projects_list
-const allDivs = document.querySelectorAll("div");
-const xmark = document.querySelector('#close-project');
-const ignoredDivs = ['xmark','popup-Project-Description','popup-Project-Title','popup-Project-Extended-Description','my-projects-container','popup-subelement','Label','close-project'];
+const ignoredDivs = ['downarrow','project-image','projectspage-container','my-projects-container','xmark','popup-Project','popup-Project-Description','popup-Project-Title','popup-Project-Extended-Description','popup-subelement','Label'];    
 const projectCardList = document.querySelectorAll('.project-card-hidden'); //finally, don't do get elements by classname - AND DON'T USE DOUBLE QUOTES
-const djangoWebapp = document.querySelector('#project-django-container');
+const xmark = document.querySelector('#xmark');
 projectPopup = document.querySelector('#popup-Project');
-
-
 
 //RUNNING CODE
  //NAVBAR LOADING
-  const aboutIcon = document.querySelector('#abouticon');
-  const projectsIcon = document.querySelector('#projects-icon');
-  const experienceIcon = document.querySelector('#experience-icon');
-  const funfactsIcon = document.querySelector('#funfacts-icon');
-  const homeIcon = document.querySelector('#home-icon');
-  const navbarIcons = [aboutIcon,projectsIcon,experienceIcon,funfactsIcon,homeIcon];
+const aboutIcon = document.querySelector('#abouticon');
+const projectsIcon = document.querySelector('#projects-icon');
+const experienceIcon = document.querySelector('#experience-icon');
+const homeIcon = document.querySelector('#home-icon');
+const contactIcon = document.querySelector('#contact-icon');
+const navbarIcons = [aboutIcon,projectsIcon,experienceIcon,contactIcon,homeIcon];
 
-  staggerAnimation(navbarIcons,'navbar-item-hidden','navbar-item',2,.2,1,'transition');
-  
+staggerAnimation(navbarIcons,'navbar-item-hidden','navbar-item',0,.2,0,'transition');
 
 
 let currentPage = (((window.location.pathname).split('/'))).pop() //omits the parent directory and just return the file name.
+console.log(!currentPage);
+if (screen.width <= 699) {
+  document.location = 'mobile.html';
+}
+if (currentPage == 'index.html' || !currentPage){ //do all the homepage stuff. !currentPage checks basically if the string is empty. its 3am not sure about the logic of the boolean, it just works. sit down and shut up.
 
-if (currentPage == 'home.html'){ //do all the homepage stuff
-  
-  function onscroll(){ //this is a page specific function. needs to be included under this home.html section.
-    if(CheckItemInView(djangoWebapp) && isFirstScroll){
-      staggerAnimation(projectCardList,'project-card-hidden','project-card',0.1,0.1);
-      isFirstScroll = false;
-    }
-    else{
-      projectCardList.forEach(element => {
-        element.style.cssText = 'transition-delay: 0s';
-      })
-    }
-   
-  
-    const viewportHeight = window.innerHeight; //check height of window.
-    //checking for fact list stuff
-    for(let i=0;i<factlist.length;i++){
-      factitem = factlist[i];
-      if(CheckItemInView(factitem)){
-        factitem.style.cssText = "opacity: 1; filter: blur(0px); transform: translateX(0);";
-      }    
-      else { // keep this in an else statement so that the effect doesn't reset every
-        // factitem.style.cssText = "opacity: 0; filter: blur(20px); transform: translateX(-2%);"; //neccesary for effect to reset on scroll up
-      }}
-  
-  
-    //for landingpage stuff
-    for(let i = 0; i<landingpagesubdivs.length;i++){
-      let scrollAmount = window.scrollY;
-      let landingpageitem = landingpagesubdivs[i];
-      let origional = landingpageitem;
-      if(scrollAmount > 150){//(landingpagediv_rect.top / -20)<landingpageInitialHeight){ // if we're scrolled
-        // landingpageitem.style.cssText = "animation: " + landingpageitem.dataset.duration + " ease forwards reverse " + landingpageitem.dataset.delay + " 1 slidein;";
-      }
-      //this is some ratio I found for the top to the point at which  I want it to animation something else
-      // heyDiv.style.animation = "3s ease reverse 0s 1 slidein;";
-      else {
-        landingpageitem.style.cssText = "filter: blur(0px);";
-      }
-    }  
-  }
-
-  let isFirstScroll = true;
-  let projectCardIndex = 1;
-  for(let i = 0; i<projectCardList.length; i++){
-    console.log(projectCardList[i]);
-    let card = projectCardList[i]; //must have "LET/const CARD" not just card. if not doesn't work.
-    card.addEventListener('click', Click_projectcard);
-  };                      // U NEED THIS ANONYMOUS FUNCTION ARROW.
-  window.addEventListener('scroll', onscroll);
   window.addEventListener("mousemove",onMouseMove)
-  xmark.addEventListener('click', () => Click_Xmark());
-  iconLogoList.forEach(element => {
-    element.addEventListener('mouseover',onIconHover);  
-  });
+
   staggerAnimation(iconLogoList,'icon-hidden','icon',5,.2,1,'transition');
 
 } else if (currentPage == 'about.html'){ //do all the about page stuff
@@ -278,37 +251,104 @@ if (currentPage == 'home.html'){ //do all the homepage stuff
   let scrollAmount = 0;
   let scrollSpeed = 0.01;
   const scrollSpeedInitial = 0.06; // Initial speed to reset back to later on
-  const maxSpeed = .5; // Maximum speed
-  const growthRate = 1.05; // RATE of acceleratoin
+  const maxSpeed = 1 // Maximum speed, has to do with adding 20 to the scroll idk y.
+  const growthRate = 1.04; // RATE of acceleratoin
+  const slowRate = 1.02; //RATE of deceleration (idek how to spell that...)
   let isHovering = false;
-  const imageGallery = document.querySelector('#about-image-gallery');
-  const imageGallerImages = document.getElementsByClassName('aboutimage');
-  const imageDescriptions = document.getElementsByClassName('about-image-description');
-  console.log(imageGallerImages);
-  Array.from(imageGallerImages).forEach(element => {
+  let imageGallery = document.querySelector('#about-image-gallery');
+  let imageGalleryImages = document.getElementsByClassName('aboutimage');
+  Array.from(imageGalleryImages).forEach(element => {
     element.addEventListener('mouseenter', function() {
-      currentImageDescription = document.getElementById(element.id+"1");
+      element.style.cssText = "transform: translateY(0px);";
+      // currentImageDescription = document.getElementById(element.id+"1");
       isHovering = true;
-      element.style.cssText = "opacity: .6;";
     })
     element.addEventListener('mouseleave', function() {
-      element.style.cssText = "opacity: 1;";
       isHovering = false;
     })
   });
+
   function scrollGallery() {
-    imageGallery.style.cssText = "transform: translateY(-"+scrollAmount+"px);";
-    scrollAmount += scrollSpeed;
-    if(isHovering){
-      scrollSpeed = Math.max(scrollSpeedInitial, scrollSpeed / growthRate);}
-    else {
-      scrollSpeed = Math.min(maxSpeed, scrollSpeed * growthRate);
+    let currentTopImage = document.querySelector('.imageWrapper');
+    let currentTopImageRect = currentTopImage.getBoundingClientRect();
+
+    if(scrollSpeed == maxSpeed) {
+      scrollAmount += parseFloat(scrollSpeed.toFixed(1));
     }
-    requestAnimationFrame(scrollGallery);
-  }
-  scrollGallery();
+    else{
+      scrollAmount += scrollSpeed;
+    }
+
+    count = 1;
+
+    Array.from(imageGalleryImages).forEach(element => {
+      if (currentTopImageRect.bottom <= 0) {
+        // // actualElement = document.querySelector('.aboutimage #'+ );
+        let parentDiv = currentTopImage;
+
+        imageGallery.appendChild(parentDiv);
+        Array.from(imageGalleryImages).forEach(img => {
+          let imageGallery = document.querySelector('#about-image-gallery');
+
+          imageGallery.style.cssText = "transform: translateY(" + (scrollAmount + window.scrollY +20)  + "px);"; /* FIRST TRY WITH THE SCROLL Y LETS GO IT WORKED IM...not that smart.. BUT ALMOST!!!!*/
+        });
+      }
+      else
+      {
+       element.parentElement.style.cssText = "transform: translateY(-"+scrollAmount+"px);";    
+
+      }
+      });
+
+   
+    if(isHovering){
+      scrollSpeed = Number(Math.max(scrollSpeedInitial, scrollSpeed / slowRate));}
+    else {
+      scrollSpeed = Number(Math.min(maxSpeed, scrollSpeed * growthRate));
+    }
+  
+
+  requestAnimationFrame(scrollGallery);
 
 }
+
+  scrollGallery();
+
+
+}
+  else if (currentPage == 'projects.html'){
+    
+    let isFirstScroll = true;
+    let projectCardIndex = 1;
+
+    for(let i = 0; i<projectCardList.length; i++){
+      let card = projectCardList[i]; //must have "LET/const CARD" not just card. if not doesn't work.
+      card.addEventListener('click', Click_projectcard);
+    };                      // U NEED THIS ANONYMOUS FUNCTION ARROW.
+      staggerAnimation(projectCardList,'project-card-hidden','project-card',.2,0.1,10,'transition');
+      isFirstScroll = true;
+  
+
+      // projectCardList.forEach(element => {
+      //   element.style.cssText = 'transition-delay: 0s';
+      // })
+      xmark.addEventListener('click', () => Click_Xmark());
+
+  }
+  else if (currentPage == 'experience.html'){
+    window.addEventListener('load', onload());
+
+  }
+  else if (currentPage == 'funfacts.html'){
+
+    window.addEventListener('load', onload);
+
+  }
+
+  else if(currentPage =='contact.html'){
+    window.addEventListener('load', onload());
+
+  }
 
 });
 
