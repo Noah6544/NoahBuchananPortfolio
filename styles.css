@@ -247,13 +247,12 @@ body {
     justify-content: center;
     height: 100%;
     transition: all 1s ease;
-    left: -40px;
+    left: -35px;
 }
 
 .navbar-item-hidden {
     opacity: 0;
     transform: translateX(-20%);
-    padding: 15px; /*  padding: top right bottom left; */
 }
 
 .navbar-item {
@@ -267,7 +266,7 @@ body {
 }
 
 .navbar-item:hover  {
-    transform: translateX(40px);
+    transform: translateX(35px);
 
 }
 
