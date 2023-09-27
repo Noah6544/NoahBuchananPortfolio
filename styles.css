@@ -553,7 +553,6 @@ body {
 
 .project-card  {
     z-index: 3;
-    pointer-events: none; 
     display: flex;
     flex-direction: column;
     align-items: center;
