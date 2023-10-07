@@ -244,7 +244,7 @@ if (currentPage == 'index.html' || !currentPage){ //do all the homepage stuff. !
 
   window.addEventListener("mousemove",onMouseMove)
 
-  staggerAnimation(iconLogoList,'icon-hidden','icon',5,.2,1,'transition');
+  staggerAnimation(iconLogoList,'icon-hidden','icon',4,.2,1,'transition');
 
 } else if (currentPage == 'about.html'){ //do all the about page stuff
  
@@ -252,8 +252,8 @@ if (currentPage == 'index.html' || !currentPage){ //do all the homepage stuff. !
   let scrollSpeed = 0.01;
   const scrollSpeedInitial = 0.06; // Initial speed to reset back to later on
   const maxSpeed = 1 // Maximum speed, has to do with adding 20 to the scroll idk y.
-  const growthRate = 1.04; // RATE of acceleratoin
-  const slowRate = 1.02; //RATE of deceleration (idek how to spell that...)
+  const growthRate = 1.025; // RATE of acceleratoin
+  const slowRate = 1.015; //RATE of deceleration (idek how to spell that...)
   let isHovering = false;
   let imageGallery = document.querySelector('#about-image-gallery');
   let imageGalleryImages = document.getElementsByClassName('aboutimage');
@@ -262,11 +262,22 @@ if (currentPage == 'index.html' || !currentPage){ //do all the homepage stuff. !
       element.style.cssText = "transform: translateY(0px);";
       // currentImageDescription = document.getElementById(element.id+"1");
       isHovering = true;
+      element.dataset.hovered = true;
+      if(element.dataset.hovered){ //if they've hovered the picture before{
+        element.classList.add('aboutimage-hovered');
+      }
     })
     element.addEventListener('mouseleave', function() {
       isHovering = false;
     })
+   
   });
+  window.onscroll = function(e){
+    console.log("huh");
+  }
+  document.addEventListener('onscroll',function() {
+    console.log(window.scrollY);
+  })
 
   function scrollGallery() {
     let currentTopImage = document.querySelector('.imageWrapper');
