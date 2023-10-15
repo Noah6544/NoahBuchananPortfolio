@@ -1,7 +1,8 @@
 :root {
     --font-color: 255, 255, 255;
     --text-shadow: 2px 3px 5px rgba(0, 0, 0,.7);
-    --primary-color: #242d37; 
+    /* --primary-color: #589bff;  */
+    --primary-color: #242d37;
     --t1: #95BBE6;
     --t2: #2b4d85ff;
     --t3: #5788beff;
@@ -496,8 +497,8 @@ body {
     backdrop-filter: blur(50px);
     justify-content: center;
     align-items: center;
-    background-color: rgba(44, 52, 60, 0.5);
-    box-shadow: rgba(255, 255, 255, .1) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
+    background-color: rgba(50, 59, 68, 0.911); /* hey, this controls opacity if you're looking for it */
+    box-shadow: rgba(204, 88, 88, 0.1) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
     border-radius: 10px;
     border: solid .02px rgba(107, 148, 169, 0.648);
     animation: 2s cubic-bezier(.76,0,.29,1) forwards scaleXY .5s;
