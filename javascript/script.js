@@ -264,7 +264,7 @@ if (currentPage == 'index.html' || !currentPage){ //do all the homepage stuff. !
       isHovering = true;
       element.dataset.hovered = true;
       if(element.dataset.hovered){ //if they've hovered the picture before{
-        element.classList.add('aboutimage-hovered');
+        element.classList.add('aboutimage-hovered'); //hey!
       }
     })
     element.addEventListener('mouseleave', function() {
