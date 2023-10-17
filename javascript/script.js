@@ -251,7 +251,7 @@ if (currentPage == 'index.html' || !currentPage){ //do all the homepage stuff. !
   let scrollAmount = 0;
   let scrollSpeed = 0.01;
   const scrollSpeedInitial = 0.06; // Initial speed to reset back to later on
-  const maxSpeed = 5 // Maximum speed, has to do with adding 20 to the scroll idk y.
+  const maxSpeed = 1 // Maximum speed, has to do with adding 20 to the scroll idk y.
   const growthRate = 1.025; // RATE of acceleratoin
   const slowRate = 1.015; //RATE of deceleration (idek how to spell that...)
   let isHovering = false;
