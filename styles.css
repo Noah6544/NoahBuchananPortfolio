@@ -346,7 +346,7 @@ body {
 
     /* gap: clamp(0px,10vw,300px); */
     justify-content: space-evenly;
-    overflow:hidden;
+    overflow:hidden; /* keep it this way, trust */
 }
 
 #about-text-container{
@@ -420,7 +420,7 @@ body {
     font-weight: 400;
     color: var(--t5);
     text-shadow: var(--text-shadow);
-    font-size: clamp(12px,1.2em,300px);
+    font-size: clamp(12px,1vw,19.2px);
 }
 
 
