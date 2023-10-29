@@ -163,6 +163,9 @@ function onMouseMove(mouse){
 
 function staggerAnimation(elementlist,hiddenclass,showclass,delay,delayincrement,duration,typeOfDelay){
   elementlist.forEach(element => {
+    if( CheckItemInView(element)){ //todo: implement this feature when you get some time so that when they scroll ot the bottom it also will staagger again.
+      console.log("true!");
+    }
     element.classList.remove(hiddenclass);
     element.classList.add(showclass);
     delay += delayincrement;
@@ -251,7 +254,7 @@ if (currentPage == 'index.html' || !currentPage){ //do all the homepage stuff. !
   let scrollAmount = 0;
   let scrollSpeed = 0.01;
   const scrollSpeedInitial = 0.06; // Initial speed to reset back to later on
-  const maxSpeed = 1 // Maximum speed, has to do with adding 20 to the scroll idk y.
+  const maxSpeed = 10 // Maximum speed, has to do with adding 20 to the scroll idk y.
   const growthRate = 1.025; // RATE of acceleratoin
   const slowRate = 1.015; //RATE of deceleration (idek how to spell that...)
   let isHovering = false;

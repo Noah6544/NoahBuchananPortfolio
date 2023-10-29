@@ -6,7 +6,7 @@
     --t1: #95BBE6;
     --t2: #2b4d85ff;
     --t3: #5788beff;
-    --t4: #9bcaf4ff;
+    --t4: rgb(93, 171, 240);
     --t5: #e1eaf7ff;
 
 }
@@ -885,12 +885,17 @@ font-weight: 123321;
 
 a {
     font-family: 'Neucha',sans-serif;
+    font-weight: bold;
 }
 a:link {
     color: var(--t4)
 }
 a:visited {
     color: var(--t4)
+}
+a:hover {
+    opacity: .7;
+    transition: all .2s ease;
 }
 ul {
     list-style: none;
