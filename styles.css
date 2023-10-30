@@ -885,7 +885,6 @@ font-weight: 123321;
 
 a {
     font-family: 'Neucha',sans-serif;
-    font-weight: bold;
 }
 a:link {
     color: var(--t4)
