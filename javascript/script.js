@@ -243,13 +243,13 @@ console.log(!currentPage);
 if (screen.width <= 699) {
   document.location = 'mobile.html';
 }
-if (currentPage == 'index.html' || !currentPage){ //do all the homepage stuff. !currentPage checks basically if the string is empty. its 3am not sure about the logic of the boolean, it just works. sit down and shut up.
+if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all the homepage stuff. !currentPage checks basically if the string is empty. its 3am not sure about the logic of the boolean, it just works. sit down and shut up.
 
   window.addEventListener("mousemove",onMouseMove)
 
   staggerAnimation(iconLogoList,'icon-hidden','icon',4,.2,1,'transition');
 
-} else if (currentPage == 'about'){ //do all the about page stuff
+} else if (currentPage == 'about' || currentPage == 'about.html'){ //do all the about page stuff
  
   let scrollAmount = 0;
   let scrollSpeed = 0.01;
@@ -330,8 +330,7 @@ if (currentPage == 'index.html' || !currentPage){ //do all the homepage stuff. !
 
 
 }
-  else if (currentPage == 'projects'){
-    
+  else if (currentPage == 'projects.html' || currentpage == 'projects'){
     let isFirstScroll = true;
     let projectCardIndex = 1;
 
@@ -349,7 +348,7 @@ if (currentPage == 'index.html' || !currentPage){ //do all the homepage stuff. !
       xmark.addEventListener('click', () => Click_Xmark());
 
   }
-  else if (currentPage == 'experience'){
+  else if (currentPage == 'experience' || currentPage == 'experience.html'){
     window.addEventListener('load', onload());
 
   }
@@ -359,7 +358,7 @@ if (currentPage == 'index.html' || !currentPage){ //do all the homepage stuff. !
 
   }
 
-  else if(currentPage =='contact'){
+  else if(currentPage =='contact' || currentPage == 'contact.html'){
     window.addEventListener('load', onload());
 
   }
