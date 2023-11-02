@@ -249,7 +249,7 @@ if (currentPage == 'index.html' || !currentPage){ //do all the homepage stuff. !
 
   staggerAnimation(iconLogoList,'icon-hidden','icon',4,.2,1,'transition');
 
-} else if (currentPage == 'about.html'){ //do all the about page stuff
+} else if (currentPage == 'about'){ //do all the about page stuff
  
   let scrollAmount = 0;
   let scrollSpeed = 0.01;
@@ -330,7 +330,7 @@ if (currentPage == 'index.html' || !currentPage){ //do all the homepage stuff. !
 
 
 }
-  else if (currentPage == 'projects.html'){
+  else if (currentPage == 'projects'){
     
     let isFirstScroll = true;
     let projectCardIndex = 1;
@@ -349,17 +349,17 @@ if (currentPage == 'index.html' || !currentPage){ //do all the homepage stuff. !
       xmark.addEventListener('click', () => Click_Xmark());
 
   }
-  else if (currentPage == 'experience.html'){
+  else if (currentPage == 'experience'){
     window.addEventListener('load', onload());
 
   }
-  else if (currentPage == 'funfacts.html'){
+  else if (currentPage == 'funfacts'){
 
     window.addEventListener('load', onload);
 
   }
 
-  else if(currentPage =='contact.html'){
+  else if(currentPage =='contact'){
     window.addEventListener('load', onload());
 
   }
