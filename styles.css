@@ -916,3 +916,11 @@ li:before {
     font-size: clamp(15px,1vw,19.2px);
 
 }
+
+.slider {
+    margin: -2px;
+}
+
+.slider:hover{
+    cursor: pointer;
+}

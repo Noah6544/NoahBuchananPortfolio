@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
 
 
@@ -250,16 +249,20 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
   staggerAnimation(iconLogoList,'icon-hidden','icon',4,.2,1,'transition');
 
 } else if (currentPage == 'about' || currentPage == 'about.html'){ //do all the about page stuff
- 
+  
   let scrollAmount = 0;
   let scrollSpeed = 0.01;
-  const scrollSpeedInitial = 0.06; // Initial speed to reset back to later on
-  const maxSpeed = 1 // Maximum speed, has to do with adding 20 to the scroll idk y.
+  let scrollSpeedInitial = 0.06; // Initial speed to reset back to later on
+  let maxSpeed = 1 // Maximum speed, has to do with adding 20 to the scroll idk y.
   const growthRate = 1.025; // RATE of acceleratoin
   const slowRate = 1.015; //RATE of deceleration (idek how to spell that...)
   let isHovering = false;
   let imageGallery = document.querySelector('#about-image-gallery');
   let imageGalleryImages = document.getElementsByClassName('aboutimage');
+
+  let speedModifierSlider = document.getElementById('speedModifier')
+  let modifierText = document.getElementById('speedModifierDiv')
+
   Array.from(imageGalleryImages).forEach(element => {
     element.addEventListener('mouseenter', function() {
       element.style.cssText = "transform: translateY(0px);";
@@ -275,8 +278,37 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
     })
    
   });
+
+  timeStamp = 0 //simple binary checker thing to see if we go from 0 slider position to literally anything else.
+  speedModifierSlider.oninput = function(){
+    diceRoll = Math.random() //random number 0-1
+    modifierValue = speedModifierSlider.value;
+    modifierText.innerHTML = "Modify the scroll speed: " + modifierValue +"x.";
+    maxSpeed = modifierValue
+ 
+
+    if(timeStamp == 1){ //if the slider WAS at 0, then we need to encourage the speed to change a little.
+      timeStamp = 0;
+      scrollSpeed += .1;
+
+    }
+    if(maxSpeed == 0 ){ //if the user is on 0, and they increase it:
+      timeStamp = 1;
+    }
+    if(modifierValue == 10 && diceRoll > 0.66){ // 1/4 chance to show easter egg 
+      modifierText.innerHTML = "<a href='https://www.youtube.com/watch?t=117&v=SxlaQKLcQFs&feature=youtu.be' target='blank'>KAIO KEN " + modifierValue +"x!!! </a>"; //https://youtu.be/SxlaQKLcQFs?t=117
+    }
+    else if(modifierValue == 0 && diceRoll < .1){ // 1/10 chance to show easter egg
+      modifierText.innerHTML = "What are you wanting to look at so closely? 🤨";
+    }
+    else if(modifierValue == 7 && diceRoll < .5){ // 1/2 chance to show easter egg
+      modifierText.innerHTML = "Is 7 your favorite number??";
+    }
+
+
+
+  }
   window.onscroll = function(e){
-    console.log("huh");
   }
   document.addEventListener('onscroll',function() {
     console.log(window.scrollY);
@@ -316,10 +348,16 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
 
    
     if(isHovering){
+      if(speedModifierSlider.value == 0){ //if the user chooses 0, then when they hover it won't move
+      scrollSpeedInitial = 0;}
+      else{
+        scrollSpeedInitial = .06
+      }
       scrollSpeed = Number(Math.max(scrollSpeedInitial, scrollSpeed / slowRate));}
     else {
       scrollSpeed = Number(Math.min(maxSpeed, scrollSpeed * growthRate));
     }
+
   
 
   requestAnimationFrame(scrollGallery);
