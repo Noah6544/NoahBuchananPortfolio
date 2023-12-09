@@ -215,7 +215,29 @@
       transform: translateY(-100%);
     }
   }
+@keyframes goofyClick {
+    0%{
+        opacity: 1;
+    }
 
+    100%{
+        transform: translateY(80%);
+        opacity: 0;
+    }
+}
+
+@keyframes clickAboutImage {
+    0%{
+        
+    }
+    50%{
+        transform: scale(99%);
+
+    }
+    100%{
+        transform: scale(100%);
+    }
+}
 
 html {
     font-size: 16px;
@@ -390,6 +412,7 @@ body {
     background: linear-gradient(0deg, rgba(0,0,0,0.8743698162858894) 0%, rgba(0,0,0,0.5382353625043768) 100%); 
 }
 
+
 .aboutimage-hovered {
     filter: grayscale(0);
     opacity: 1;
@@ -426,6 +449,17 @@ body {
 
 .imageDescription {
     font-family: 'Neucha',sans-serif;
+
+}
+
+#goofyClick {
+    font-size: clamp(18px,1.2vw,25px);
+    font-weight: 0;
+    opacity: 0;
+    position: absolute;
+    animation: .6s linear forwards goofyClick;
+    text-shadow: 0px 0px 0px #000000,
+
 
 }
 /*PROJECTS PAGE STUFF */
@@ -918,9 +952,29 @@ li:before {
 }
 
 .slider {
-    margin: -2px;
+    appearance: none;
+    background-color: rgb(85, 85, 85);
+    border-radius: 50px;
+    border: 1px solid rgb(55, 55, 55);
+    width: 20%;
+    height: clamp(6px, 1.5%, 10px);
 }
 
 .slider:hover{
     cursor: pointer;
+    background-color: rgba(85, 85, 85, 0.474);
+
 }
+
+/* Chrome, Edge, Safari, Opera */
+input[type="range" i]::-webkit-slider-thumb {
+    background: rgb(106, 106, 106);
+    border: solid rgb(35, 35, 35) 1px;
+
+ }
+/* Firefox */
+input[type="range"]::-moz-range-thumb { 
+    background: rgb(106, 106, 106);
+    border: solid rgb(35, 35, 35) 1px;
+}
+

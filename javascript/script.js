@@ -13,6 +13,11 @@ function CheckItemInView(item){
  
 }
 
+function getRandomNumber(min, max) {
+    
+  return Math.random() * (max - min) + min;
+    
+}
 function BlurEverythingExcept(exceptionObject){
   const navbarClassNames = ['navbar-item-hidden','navbar','navbar-container','navbar-item'];
   let allDivs = document.querySelectorAll("div");
@@ -249,6 +254,13 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
   staggerAnimation(iconLogoList,'icon-hidden','icon',4,.2,1,'transition');
 
 } else if (currentPage == 'about' || currentPage == 'about.html'){ //do all the about page stuff
+  const winWidth = window.innerWidth;
+  const winHeight = window.innerHeight;
+
+  let hoverMeDiv = document.getElementById('hoverme');
+  let descriptionTextDiv = document.querySelector('.description-text')
+
+  let goofyClickDiv = document.getElementById('goofyClick')
   
   let scrollAmount = 0;
   let scrollSpeed = 0.01;
@@ -259,15 +271,39 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
   let isHovering = false;
   let imageGallery = document.querySelector('#about-image-gallery');
   let imageGalleryImages = document.getElementsByClassName('aboutimage');
+  let imageWrapperDivs = document.getElementsByClassName('imageWrapper');
 
   let speedModifierSlider = document.getElementById('speedModifier')
   let modifierText = document.getElementById('speedModifierDiv')
 
+  Array.from(imageWrapperDivs).forEach(element => {
+    element.addEventListener('click', function() { 
+      // element.style.cssText += "animation: .3s ease-in-out clickAboutImage;"; //hmm it's not working for some reason idk.
+      ;
+    })
+
+  })
   Array.from(imageGalleryImages).forEach(element => {
+    element.addEventListener('click', function() { // this is the goofyClick thing, adding a random click thing somewhere. why? idk.
+      goofyClickDiv.remove();
+
+      randomTop = getRandomNumber(0, winHeight*.75); //75% of the height
+      randomLeft = getRandomNumber(0, winWidth*.75); //75% of the width
+      goofyClickDiv.style.cssText += ("top: " +randomTop + "px;"); //this and the next line randomly move click somewhere, 
+      goofyClickDiv.style.cssText += ("left: " +randomLeft + "px;"); //has to use style.cssText for some reason idk.
+
+      descriptionTextDiv.appendChild(goofyClickDiv);
+      let goofyClick = document.getElementById('goofyClick')
+
+
+    })
     element.addEventListener('mouseenter', function() {
+      hoverMeDiv.style.cssText = "opacity: 0; transition: all 10s ease-out;"// if the user hovers an image, the reminder text goes away!
+
       element.style.cssText = "transform: translateY(0px);";
       // currentImageDescription = document.getElementById(element.id+"1");
       isHovering = true;
+      hoverMeDiv.style.cssText = "opacity: 0; transition: all 1s ease;"
       element.dataset.hovered = true;
       if(element.dataset.hovered){ //if they've hovered the picture before{
         element.classList.add('aboutimage-hovered'); //hey!
