@@ -116,7 +116,7 @@
                 </div>
 
                 <div class="project-card-hidden" id="project-ImageAligner"data-is-clicked="False">
-                    <div class="project-card-image" id="project-image"><img src="../images/projects/DailyScaleandTransform.gif"></div>
+                    <div class="project-card-image" id="project-image"><img src="../images/projects/RecentDailyGif.gif"></div>
                     <div class="project-title" id="project-ImageAligner">
                         Image Aligner Automation
                     </div>
@@ -126,13 +126,11 @@
                     </div>
                     <div class="project-extended-description" id="project-ImageAligner">
                         From the moment I saw <a href="https://www.youtube.com/watch?v=65nfbW-27ps">Hugo Cornellier's video,</a> I knew I had to make my own daily picture video, but it wasn't until I started manually editing the pictures that I realized this process needed to be automated.
-                        <br>The concept was simple (but took me a few years of working on and off to figure out): take every image in a directory, grab each images eye coordinates (through some facial recognition library), and then do some basic math (thank you Mr. Hornbeck! I'm actually applying what I learned in Pre-cal to project) to align the coordinates to some set coordinate (which would be some initial photo you choose). Then save the image to the adjusted images directory. After getting this concept to work, I realized more transformations of the images were necessary to achieve a great result, such as scale and rotation.
-                        <br> When I started this project in 2019, I barely knew how to open files in python let alone work with OpenCV and Mediapipe.
-                        However, through my facial recognition research project, I gained skills along the way that helped me in this project.
-                        <br>As of 10/29/23, I've converted the code to be object oriented, but more importantly I've finished with the translation and scaling functions to make sure each image is aligned and scaled to the baseimage (in the case you took a picture slightly further or closer than the base image). I'm proud to say I made the scaling function on my own without resorting to StackOverflow, and I was surprised that my math to find the % needed to scale an image actually worked just on my second try! 
-                        It looks much better, even with just these two transformations, however, I want to add a final transformation: rotation (this would be my first real-life application of sine/cosine functions- I think it would add the final layer of polish needed). I hope to accomplish this within the next few weeks (it seems simple enough as I recently learned how opencv matrix transformations work, so time is my limiting factor) and start building out a GUI for this project or some sort of user-friendly script. 
-                        You can check out how the alignment looked with only the translation transformation and no scaling transformation right <a href="../assets/TransformationOnly.gif" target="_blank">here.</a> I hope you notice it didn't look nearly as nice now.
-                        <br> You can check out how the project's going right <a href="https://github.com/Noah6544/Daily-Picture-Aligner/tree/Development"target="_blank">here (development branch).</a> *10/29/23 completed rotational transformation as well, updating soon!
+                        <br>The concept was simple (but took me a few years of working on and off to figure out): take every image in a directory, grab each images eye coordinates, and then do some basic math to align the coordinates to some set coordinate (which would be some initial photo you choose). Then, save the new image. After getting this concept to work, I realized more transformations of the images were necessary to achieve a great result, such as scale and rotation. This led me to apply some math I learned in my pre-calculus class, such as arctangent (thank you Mr. Hornbeck)!
+                        <br> When I started this project in 2019, I barely knew how to open files in python let alone work with OpenCV and Mediapipe. However, as I've learned more through my facial recognition research project, object oriented pygame project, and many other projects along the way, I gained skills along the way that helped me bring this idea to life. This project is almost a direct depiction of my coding progress over the years.
+                        <br> 
+                        <br> December 12, 2023 update: The project has reached a near complete state! I've written the documentation and contributing guidelines on the repository. 
+                        <br> Check out the repository <a href="https://github.com/Noah6544/Daily-Picture-Aligner/tree/Development"target="_blank">here!</a> 
                     </div>
                 </div>
 
