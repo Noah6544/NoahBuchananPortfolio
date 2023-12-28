@@ -532,7 +532,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: rgba(50, 59, 68, 0.911); /* hey, this controls opacity if you're looking for it */
-    box-shadow: rgba(204, 88, 88, 0.1) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
+    box-shadow: rgba(255, 255, 255, .2) 0px 0px 150px, rgba(65, 136, 217, 0.2)0px 0px 10px;
     border-radius: 10px;
     border: solid .02px rgba(107, 148, 169, 0.648);
     animation: 2s cubic-bezier(.76,0,.29,1) forwards scaleXY .5s;
@@ -609,14 +609,16 @@ body {
     overflow: hidden; 
     aspect-ratio: 12/12;
     transform: translateX(0%);
-    opacity: 1;
+    opacity: .6;
     width: 25vw;
     height: 20vw;
     background-color: rgba(125, 125, 125, .2);
-    box-shadow: rgba(255, 255, 255, .1) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
+    box-shadow: rgba(255, 255, 255, .1) 0px 0px , rgba(240, 13, 13, 0.23) 0px 3px 6px;
     border-radius: 3%;
     border: solid .02px rgba(194, 194, 194, 0.9);
     transition: all .45s ease;
+    transform: scale(.99);
+
 }
 
 
@@ -628,10 +630,11 @@ body {
 
 
 .project-card:hover {
-    transform: scale(.99);
+    transform: scale(1);
     /* filter: blur(2px); */
-    box-shadow: rgba(255, 255, 255, .5) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
+    box-shadow: rgba(255, 255, 255, .6) 0px 0px 50px, rgba(65, 136, 217, 0.5)0px 0px 10px;
     cursor: pointer;
+    opacity: 1;
 }
 
 .project-card:hover  .project-title {
