@@ -8,6 +8,7 @@ else{
 }
 
 script.type = 'text/javascript';
+script.defer = true;
 
 document.getElementsByTagName('head')[0].appendChild(script);
 
