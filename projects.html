@@ -5,9 +5,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" media="" href="../styles.css">
-    <script src="https://kit.fontawesome.com/182e289974.js" crossorigin="anonymous"></script>    
-    <script src="../javascript/script.js"></script>
+    <link rel="stylesheet" href="styles.css" media="screen and (min-width: 700px)">
+    <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 699px)"><script src="https://kit.fontawesome.com/182e289974.js" crossorigin="anonymous"></script>    
+    <script src="../javascript/loader.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&family=Fira+Sans:wght@200&family=Nanum+Myeongjo&family=Neucha&family=PT+Sans&display=swap" rel="stylesheet"><body>
@@ -16,15 +16,25 @@
 
 </head>
 <body>
-    <div class="navbar-container">
-        <div class="navbar">
-            <a href="about"><div class="navbar-item-hidden" id="abouticon"><img src="../images/icons/person.png"></div> </a>
-            <a href="projects"><div class="navbar-item-hidden" id="projects-icon"><img src="images/icons/folder_openFilled.png"></div> </a>
-            <a href="experience"><div class="navbar-item-hidden" id="experience-icon"><img src="../images/icons/description.png"></div> </a>
-            <a href="contact"><div class="navbar-item-hidden" id="contact-icon"><img src="../images/icons/email.png"></div> </a>
-            <a href="/"><div class="navbar-item-hidden" id="home-icon"><img src="../images/icons/home.png"></div> </a>
+    <div class="menu-hug">
+
+    <div class="menu-closed" id="menu">
+        <i></i>
+        <i></i>
+        <i></i>
+        </div>    
         </div>
-    </div>
+        <div class="navbar-hidden" id="navbar">
+            <div class="navbar-item" id="abouticon"> <a href="about">about</a></div>
+            <div class="navbar-item" id="projects-icon"><a href="projects">projects </a></div>
+            <div class="navbar-item" id="experience-icon"><a href="experience">experience </a></div>
+            <div class="navbar-item" id="contact-icon"><a href="contact">contact </a></div>
+            <div class="navbar-item" id="home-icon"><a href="/">home</a></div> 
+        </div>
+    <div class="circle" id="circle" defer></div>
+    <script src="./javascript/circle.js"></script>
+    
+
     <div class="container" id="projectspage-container">
 
         <!-- <div class="titletext" id="my-projects-title">
@@ -48,12 +58,12 @@
                     <div class="project-extended-description" id="project-DJANGO">
                         For my final research project at magnet, I naively decided to build an educational webapp 
                         using Django, a web-framework that I- within context of what I know now -knew truly nothing about (aside from it being professional). 
-                        I wanted to demystify coding for kids, teaching python in the way I would've taught my younger self. Even if the user didn't retain any information about programming,
-                        if they learn that it is simpler than it was, I would be satisfied. In other words, I wanted to "Bridge The Gap," hence the name.
+                        I wanted to demystify coding for students, teaching python in the way I would've taught my younger self. Even if the user didn't retain any information about programming,
+                        if they understood that it is simpler than it seemed, I would be satisfied. In other words, I wanted to "Bridge The Gap," hence the name.
                         <br>At the time I didn't even know what a web-framework really was, let alone the beast that was Django. I had my work cut out for me.
                         <br>So I got to work. I started with the Django poll-app tutorial. After hours of coding on bus rides, car rides, late nights, early mornings, things working, COUNTLESS things breaking 
                         and being troublesome, and creating 3,000+ words of course content, I finished the website and looked up with weary proud eyes that I learned Django, and better yet, I understood what I was doing.
-                        <br>While I had no time left to learn ANYTHING about making the website look good, it worked, all 30+ pages of spontaneously rendered content.
+                        <br>While I had no time left to learn ANYTHING about making the website look good, it worked, all 30+ pages of dynamically rendered content.
                         I went to the Georgia State Science Fair with this project, where I received 5th place honors. 
                         But the real accomplishment for me was definitely learning a professional web-framework which I hope will serve me well. Even if I never touch Django again, I am much more confident in my learning abilities!
                         <br>Although it might not be up, you can try to check out the site <a href="https://noah6544.pythonanywhere.com/" target="_blank">here.</a>
@@ -121,15 +131,16 @@
                         Image Aligner Automation
                     </div>
                     <div class="project-description" id="project-ImageAligner">
-                        Awarded Top 20 Projects in 'OpenCV AI Competition 2023.' This program can align thousands of selfies in minutes.
+                        December 31, 2018 is when I started taking a picture of myself everyday. I gave up after manually aligning 40 pictures. But I kept taking pictures anyways, 
+                        having faith in myself that one day, someday, I would code something to automatically align the pictures for me.
                     </div>
                     <div class="project-extended-description" id="project-ImageAligner">
-                        <br>From the moment I saw <a href="https://www.youtube.com/watch?v=65nfbW-27ps">Hugo Cornellier's video,</a> I knew I had to make my own daily picture video. I started taking pictures in 2019, but I gave up after aligning a few, but the idea to automate the process was born.
+                        From the moment I saw <a href="https://www.youtube.com/watch?v=65nfbW-27ps">Hugo Cornellier's video,</a> I knew I had to make my own daily picture video, but it wasn't until I started manually editing the pictures that I realized this process needed to be automated.
                         <br>The concept was simple (but took me a few years of working on and off to figure out): take every image in a directory, grab each images eye coordinates, and then do some basic math to align the coordinates to some set coordinate (which would be some initial photo you choose). Then, save the new image. After getting this concept to work, I realized more transformations of the images were necessary to achieve a great result, such as scale and rotation. This led me to apply some math I learned in my pre-calculus class, such as arctangent (thank you Mr. Hornbeck)!
-                        <br> When I started this project in 2019, I barely knew how to open files in python let alone work with OpenCV and Mediapipe. However, as I've learned more through my facial recognition research project, object oriented pygame project, and many other projects along the way, I gained skills that helped me bring this idea to life. This project is almost a direct depiction of my coding progress over the years.
+                        <br> When I started this project in 2019, I barely knew how to open files in python let alone work with OpenCV and Mediapipe. However, as I've learned more through my facial recognition research project, object oriented pygame project, and many other projects along the way, I gained skills along the way that helped me bring this idea to life. This project is almost a direct depiction of my coding progress over the years.
                         <br> 
-                        <br> December 28, 2023 update: The project is 100% functional! I'm working on polishing it now. I entered the project in OpenCV's Ai Competition, and I received the <a href=https://youtu.be/T6AMa_at2N8?t=1426>'Top 20 Projects' award!</a> Please vote for me in the popular vote (as "Daily Picture Aligner") <a href="https://www.jotform.com/form/233544823564157" target="_blank">here.</a>
-                        <br> Check out the repository <a href="https://github.com/Noah6544/Daily-Picture-Aligner/"target="_blank">here!</a> 
+                        <br> December 12, 2023 update: The project has reached a near complete state! I've written the documentation and contributing guidelines on the repository. 
+                        <br> Check out the repository <a href="https://github.com/Noah6544/Daily-Picture-Aligner/tree/Development"target="_blank">here!</a> 
                     </div>
                 </div>
 
@@ -204,7 +215,7 @@
         <div class="container" id="my-projects-container">
             
             <div class="project-card-hidden" id="project-guitar-container" data-is-clicked="False">
-                <div class="project-card-image" id="project-image"><img src="../images/projects/guitar.jpg" id="testing"></div>
+                <div class="project-card-image" id="project-image"><img src="../images/projects/guitar.png" id="testing"></div>
                 <div class="project-title" id="project-guitar">
                     Guitar
                 </div>
@@ -265,8 +276,8 @@
                     At the regional race in October, I finally managed to <del>break</del> shatter the 20 minute barrier as I ran 19:15, the race before was 21:16. 
                     This year I decided to run AAU track, and I soon learned that track workouts are a different beast. I managed to run a 4:27 1500m, and my most proud achievement was winning the AAU Regional 3k race in a 9:50, which is two 4:55 1500m's stringed back to back...which was my early season time trial.
                     <br>Senior Year: I'm running more miles than I ever had, pushing 40 mile weeks (honestly my first year being a semi-decent runner unfortunately, I wish I had more time...but no excuses) and lots of hard sessions.
-                     My goal is to go sub 17 in the 5k, <a href="https://youtu.be/Yw0YFvoU2TQ?t=97" target="_blank">a foolish dream</a> but I wouldn't be working half as hard if I was working toward a realistic dream.
-                    <br>You can find my Strava <a href="https://www.strava.com/athletes/noahbuchanan" target="_blank">here,</a> but I don't currently post all my runs like I used to, only my races. Rest assured that I'm running everyday though, I haven't given up on my dream yet.
+                    <br>You can find my Strava <a href="https://www.strava.com/athletes/noahbuchanan" target="_blank">here,</a> but I don't currently post all my runs like I used to, only my races.
+                    <br>I finished the season with a PR of 17:46, and a state time almost exactly 2 minutes faster than the previous year: 18:49. I'll remember this time of my life forever.
                     <br>Finally, check out this running quote I thought was interesting, right <a href="/assets/quote.txt" target="_blank">here.</a>
                     <br>(All these great cross country pictures were taken by my friend and fellow athlete, Jonathan. If you're in the Rockdale area, talk to him! Here's his <a href="https://www.instagram.com/jonathanr_pv/" target="_blank">instagram.</a>
                 </div>

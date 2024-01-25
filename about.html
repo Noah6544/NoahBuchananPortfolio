@@ -5,27 +5,35 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" media="screen and (min-width:401px)" href="styles.css">
+    <link rel="stylesheet" href="styles.css" media="screen and (min-width: 700px)">
+    <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 699px)">
+    <script src="../javascript/loader.js"></script>
     <script src="https://kit.fontawesome.com/182e289974.js" crossorigin="anonymous"></script>    
-    <script src="javascript/script.js"></script>
     <title>About Noah Buchanan</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&family=Fira+Sans:wght@200;400&family=Nanum+Myeongjo&family=Neucha&family=PT+Sans&display=swap" rel="stylesheet">
-    <div class="navbar-container">
-        <div class="navbar-container">
-            <div class="navbar">
-                <a href="about"><div class="navbar-item-hidden" id="abouticon"><img src="../images/icons/personFilled.png"></div> </a>
-                <a href="projects"><div class="navbar-item-hidden" id="projects-icon"><img src="../images/icons/folder.png"></div> </a>
-                <a href="experience"><div class="navbar-item-hidden" id="experience-icon"><img src="../images/icons/description.png"></div> </a>
-                <a href="contact"><div class="navbar-item-hidden" id="contact-icon"><img src="../images/icons/email.png"></div> </a>
-                <a href="/"><div class="navbar-item-hidden" id="home-icon"><img src="../images/icons/home.png"></div> </a>
-            </div>
-        </div>
-</body>
+    
+</head>
+<body>
+    <div class="menu-closed" id="menu">
+        <i></i>
+        <i></i>
+        <i></i>
+    </div>    
+    <div class="navbar-hidden" id="navbar">
+        <div class="navbar-item" id="abouticon"> <a href="about">about</a></div>
+        <div class="navbar-item" id="projects-icon"><a href="projects">projects </a></div>
+        <div class="navbar-item" id="experience-icon"><a href="experience">experience </a></div>
+        <div class="navbar-item" id="contact-icon"><a href="contact">contact </a></div>
+        <div class="navbar-item" id="home-icon"><a href="/">home</a></div> 
+    </div>
 
 
 <div class="container" id="about-container">    
+    <div class="circle" id="circle"></div>
+    <script src="./javascript/circle.js"></script>
+    
     <div class="container" id="about-text-container">
         <div class="titletext" id="aboutme-title">About Me<hr></div>
         <div class="description-text">
@@ -209,6 +217,7 @@
     </div>  
 </div>
 </div>
+</body>
 </html>
 
 

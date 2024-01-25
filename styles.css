@@ -12,6 +12,14 @@
 }
 
 
+.show-mobile {
+    display: none;
+}
+
+.hide-mobile {
+    display: flex;
+}
+
 *, *::selection, *::-moz-selection {
     user-select: none;
 }
@@ -23,6 +31,7 @@
     to {
         filter: blur(0);
         transform: translateX(0);
+        opacity: 1;
 
     }
 
@@ -67,7 +76,7 @@
         opacity: 1;
     }
 }
-@keyframes fade-in {
+@keyframes body-fade-in {
     from {
         opacity: 0;
         transform: translateY(-40px);
@@ -77,6 +86,8 @@
         transform: translateY(0px);
    }
 }
+
+
 @keyframes fade-in-arrow {
     0% {
         opacity: 0;
@@ -85,13 +96,20 @@
    50% {
         opacity: 1;
         transform: translateY(0px);
-
-
     }
     100%{
         opacity: 0;
         transform: translateY(200px);
 
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0
+    }
+    100%{
+        opacity: 1
     }
 }
 
@@ -253,7 +271,7 @@ body {
     height: 100vh;
     overflow-x: hidden;
     font-smooth: always;
-    animation: 1s fade-in;
+    animation: 1s body-fade-in;
 }
 
 
@@ -261,47 +279,163 @@ body {
     display: flex;
 }
 
+/*menu closed*/
+
+.menu-closed {
+    z-index: 9998;
+    margin: 40px;
+    position: absolute;
+    padding: 4px;
+    opacity: 0;
+    border-radius: 100%;
+    animation: fade-in 3s 5s forwards;
+}
+
+.menu-closed:hover{
+    cursor: pointer;
+  
+}
+
+.menu-closed:hover i{
+    background-color: var(--t3);
+}
+
+.menu-closed i{
+    display: block;
+    width: clamp(30px,4.5vw,45px);
+    height: 2px;
+    margin: 10px;
+    background-color: rgba(255,255,255,1);
+    transition: all .45s cubic-bezier(.43,.77,.15,1.5); 
+}
+
+/*default closed menu*/
+.menu-closed i:nth-child(1){ /*taken straight from https://caferati.me/'s sweet portfolio.*/ 
+    transform: translateX(5px); /*selects first bar, moves it up*/
+    }
+
+
+.menu-closed i:nth-child(3){
+    transform: translateX(-5px); /*selects second bar, moves it down*/
+
+}
+
+.menu-closed:hover i:nth-child(1){ /*taken straight from https://caferati.me/'s sweet portfolio.*/ 
+    transform: translate(2px,3px); /*selects first bar, moves it up*/
+    }
+
+
+.menu-closed:hover i:nth-child(3){
+    transform: translate(-2px,-3px); /*selects second bar, moves it down*/
+
+}
+
+/*menu open*/
+
+.menu-open i{
+    display: block;
+    width: clamp(30px,5vw,50px);
+    height: 2px;
+    margin: 10px;
+    background-color: var(--t3);
+    transition: all .45s cubic-bezier(.43,.77,.15,1.5); 
+}
+
+
+.menu-open i:nth-child(1){
+    transform: translate(0px,-7px);
+}
+
+.menu-open i:nth-child(3){
+    transform: translate(0px,7px);
+}
+
+.menu-open:hover i:nth-child(1){
+    transform: translate(0px,-12px);
+}
+
+.menu-open:hover i:nth-child(3){
+    transform: translate(0px,12px);
+}
 
 .navbar {
-    color: rgba(255, 255, 255, 0.153);
+    z-index: 9996;
     position: fixed;
+    background-color: #0606066f;
+    backdrop-filter: blur(10px);
+    opacity: 1;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    width: 100%;
     height: 100%;
-    transition: all 1s ease;
-    left: -35px;
+    transform: translateY(0);
+    margin: 0 auto; /*aligns 85% div in the middle instead of just left- still don't know why this works.*/
+    transition: all .45s cubic-bezier(.17,.2,.23,1.01);
+    font-size: clamp(30px,6vh,75px);
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 800;
+
+}
+
+.navbar-hidden{
+    z-index: 2;
+    position: fixed;
+    background-color: var--(--primary-color);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-110%);
+    margin: 0 auto; /*aligns 85% div in the middle instead of just left- still don't know why this works.*/
+    font-size: clamp(30px,6vh,75px);
+    transition: all .45s cubic-bezier(.25,-0.01,1,.7);
+
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 800;
+
 }
 
 .navbar-item-hidden {
     opacity: 0;
-    transform: translateX(-20%);
+    /*  padding: top right bottom left; */
+    border-radius: 20px;
 }
 
 .navbar-item {
     opacity: 1;
-    border-radius: 300px;
-    padding: 12px; /*  padding: top right bottom left; */
-    background-color: var(--t1);  
-    transform: tranlateX(0);
-    border: 1px solid var(--t4);
+    border-radius: 20px;
+    padding: clamp(5px,3vh,35px);    /*  padding: top right bottom left; */
+    transform: translateY(0%);
     transition: all cubic-bezier(0.22, 0, 0.11, 1) .5s;
 }
 
-.navbar-item:hover  {
-    transform: translateX(35px);
+.navbar-item a:hover {
+    
+    color: #5788beff !important;
+    transition: all .45s ease;
+}
 
+
+.navbar a:link, .navbar-hidden a:link {
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    transition: all .45s ease;
+    color: rgb(166, 166, 166);
+}
+
+
+.navbar a:visited, .navbar-hidden a:visited {
+    color: rgb(166, 166, 166);
+    text-decoration: none;
 }
 
 .navbar-item:hover img {
-    opacity: 1;
-}
-
-.navbar-item img {
-    width: 35px;
-    opacity: 0;
-    transition: all 1s ease;
-
+    opacity: .5;
 }
 
 /* HOME PAGE STUFF */
@@ -313,12 +447,13 @@ body {
     height: 100vh;
     width: 100%;
     gap: clamp(5px, 7vw, 50px);
+    overflow: hidden;
 }
 
 
 .Portrait img {
     z-index: 2;
-    filter: blur(1.5vw);
+    filter: blur(5px);
     transform: translateX(-400%);
     height: clamp(100px, 21.5vw, 500px);
     animation: 3s ease forwards 0s 1 slidein; 
@@ -339,23 +474,31 @@ body {
 }
 #hey {
     transform: translateX(-200%);
-    font-size: clamp(.5em,4vw,6em);
+    font-size: clamp(.5em,3vw,5.3em);
     animation: 3s ease forwards 0s 1 slidein;
     transition: filter 1s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
 }
 
 #myname {
     transform: translateX(-200%);
     font-size: clamp(.5em,4vw,6em);
+    color: rgb(207, 207, 255);
     animation: 3s ease forwards 1s 1 slidein;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
 }
 
 #description {
     text-align: left;
     transform: translateX(-200%);
     max-width: 45vw;
-    font-size: 2.5vw;
+    font-size: clamp(.5em,2.5vw,5.5em);
     animation: 4s ease forwards 1s 1 slidein;
+    font-weight: 600;
+
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* ABOUT PAGE STUFF */
@@ -443,7 +586,7 @@ body {
     font-weight: 400;
     color: var(--t5);
     text-shadow: var(--text-shadow);
-    font-size: clamp(16px,1vw,19.2px);
+    font-size: clamp(12px,1vw,19.2px);
 }
 
 
@@ -805,9 +948,6 @@ hr {
 }
 
 
-
-
-
 #icon-container {
     gap: 12px;
     margin-top: 25px;
@@ -816,21 +956,22 @@ hr {
 
 .icon{ 
     display: flex; 
-    opacity: 1;
-    transform: translateX(0px);
-    transition: all 1s ease;
+    opacity: 0;
+    transform: translateX(-25%);
+    animation: slidein .5s 5s ease forwards;
+}
 
+.icon:nth-child(2){
+    animation-delay: 5.2s;
+}
+.icon:nth-child(3){
+    animation-delay: 5.4s;
 }
 .icon img{
     aspect-ratio: 1/1;
     height: clamp(25px, 4vw, 50px); /*needs to stay clamped to work in firefox*/
     /* max-width: 100%; */
     filter: grayscale(30%);
-}
-
-.icon-hidden {
-    opacity: 0;
-    transform: translateX(-25%);
 }
 
 .icon:hover{
@@ -930,8 +1071,7 @@ a:visited {
     color: var(--t4)
 }
 a:hover {
-    opacity: .7;
-    transition: all .2s ease;
+    transition: all .45s ease;
 }
 ul {
     list-style: none;
@@ -981,3 +1121,24 @@ input[type="range"]::-moz-range-thumb {
     border: solid rgb(35, 35, 35) 1px;
 }
 
+.circle{
+    z-index: 9997;
+    pointer-events: none;
+    position: fixed; /* for some reason, if it's absolute, it can overflow the div*/
+    top: 0;
+    left: 0;
+    height: 35px;
+    width: 35px;
+    border: 1.2px solid rgb(255, 255, 255);
+    border-radius: 4000px;
+    overflow: hidden;   
+    transition: height .2s ease, width .2s ease, border .2s ease;
+}
+
+.circle-hovering {
+    height: 25px;
+    width: 25px;
+    border: 1.2px solid var(--t1); 
+    border-radius: 4000px;
+    overflow: hidden;
+}

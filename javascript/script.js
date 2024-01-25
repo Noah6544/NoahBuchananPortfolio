@@ -1,7 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
-
-
-
+// removed the EventListner because it works now for some reason without it!
 function CheckItemInView(item){
   const rectangle = item.getBoundingClientRect();
   return (
@@ -160,11 +157,6 @@ function sleep(ms) {
 
 
 
-
-function onMouseMove(mouse){
-  // console.log(mouse.x +  mouse.y);
-}
-
 function staggerAnimation(elementlist,hiddenclass,showclass,delay,delayincrement,duration,typeOfDelay){
   elementlist.forEach(element => {
     if( CheckItemInView(element)){ //todo: implement this feature when you get some time so that when they scroll ot the bottom it also will staagger again.
@@ -199,26 +191,26 @@ const CheckItemInViewnew = new IntersectionObserver((entries) => { //figure out 
 });
 
 //GETTING ITEMS
-// const rootStyles = getComputedStyle(document.head);
+const menu = document.getElementById("menu");
+const navbar = document.getElementById("navbar")
+var isOpen = false;
+console.log(window.innerWidth);
+menu.addEventListener("click", function(){
+  menu.classList.toggle("menu-open");
 
-// const heymynameAnimationDuration = rootStyles.getPropertyValue('--heymyname-animation-duration');
-// const mynameDescriptionDelay = rootStyles.getPropertyValue('--');
-
-//for icons
-const linkedinLogo = document.querySelector('#linkedinlogo');
-const linkedininfo = document.querySelector('#linkedininfo');
-const githublogo = document.querySelector('#githublogo');
-const githubinfo = document.querySelector('#githubinfo');
-const emailLogo = document.querySelector('#imessagelogo');
-const emailinfo = document.querySelector('#emailinfo');
-const iconLogoList = [linkedinLogo,githublogo,emailLogo];
-const iconInfoList = [linkedininfo,githubinfo,emailinfo];
+  if(isOpen){
+    navbar.classList.remove("navbar")
+    navbar.classList.add("navbar-hidden")
+    isOpen = false;
+  }
+  else{
+    navbar.classList.remove("navbar-hidden")
+    navbar.classList.add("navbar")
+    isOpen = true;
+  }
 
 
-
-
-//for the landing page scroll down animations
-const landingpagesubdivs = document.querySelectorAll("#landingpagecontainer div");
+})
 
 // for the fun fact animations
 const factlist = document.getElementsByClassName('list-item');
@@ -231,27 +223,15 @@ const xmark = document.querySelector('#xmark');
 projectPopup = document.querySelector('#popup-Project');
 
 //RUNNING CODE
- //NAVBAR LOADING
-const aboutIcon = document.querySelector('#abouticon');
-const projectsIcon = document.querySelector('#projects-icon');
-const experienceIcon = document.querySelector('#experience-icon');
-const homeIcon = document.querySelector('#home-icon');
-const contactIcon = document.querySelector('#contact-icon');
-const navbarIcons = [aboutIcon,projectsIcon,experienceIcon,contactIcon,homeIcon];
-
-staggerAnimation(navbarIcons,'navbar-item-hidden','navbar-item',5,.2,0,'transition');
 
 
 let currentPage = (((window.location.pathname).split('/'))).pop() //omits the parent directory and just return the file name.
-console.log(!currentPage);
-if (screen.width <= 699) {
-  document.location = 'mobile.html';
-}
+// console.log(!currentPage);
+// if (screen.width <= 1s  ) {
+//   document.location = '/mobile/mobile.html';
+// }
 if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all the homepage stuff. !currentPage checks basically if the string is empty. its 3am not sure about the logic of the boolean, it just works. sit down and shut up.
 
-  window.addEventListener("mousemove",onMouseMove)
-
-  staggerAnimation(iconLogoList,'icon-hidden','icon',4,.2,1,'transition');
 
 } else if (currentPage == 'about' || currentPage == 'about.html'){ //do all the about page stuff
   const winWidth = window.innerWidth;
@@ -262,7 +242,7 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
 
   let goofyClickDiv = document.getElementById('goofyClick')
   
-  let scrollAmount = 0;
+  let scrollAmount = 0; 
   let scrollSpeed = 0.01;
   let scrollSpeedInitial = 0.06; // Initial speed to reset back to later on
   let maxSpeed = 1 // Maximum speed, has to do with adding 20 to the scroll idk y.
@@ -435,7 +415,5 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
   else if(currentPage =='contact' || currentPage == 'contact.html'){
     window.addEventListener('load', onload());
 
-  }
-
-});
+  };
 

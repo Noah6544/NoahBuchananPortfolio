@@ -5,22 +5,37 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" media="" href="styles.css">
+    <link rel="stylesheet" href="styles.css" media="screen and (min-width: 700px)">
+    <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 699px)">
+    <script src="/javascript/loader.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital@1&display=swap" rel="stylesheet">
+
     <script src="https://kit.fontawesome.com/182e289974.js" crossorigin="anonymous"></script>    
-    <script src="/javascript/script.js"></script>
+    
+
     <title>Noah Buchanan</title>
 </head>
 <body>
-    <div class="navbar-container">
-        <div class="navbar">
-            <a href="about"><div class="navbar-item-hidden" id="abouticon"><img src="../images/icons/person.png"></div> </a>
-            <a href="projects"><div class="navbar-item-hidden" id="projects-icon"><img src="../images/icons/folder.png"></div> </a>
-            <a href="experience"><div class="navbar-item-hidden" id="experience-icon"><img src="../images/icons/description.png"></div> </a>
-            <a href="contact"><div class="navbar-item-hidden" id="contact-icon"><img src="../images/icons/email.png"></div> </a>
-            <a href="/"><div class="navbar-item-hidden" id="home-icon"><img src="../images/icons/homeFilled.png"></div> </a>
-        </div>
+    <div class="menu-closed" id="menu">
+    <i></i>
+    <i></i>
+    <i></i>
+    </div>    
+    <div class="navbar-hidden" id="navbar">
+        <div class="navbar-item" id="abouticon"> <a href="about">about</a></div>
+        <div class="navbar-item" id="projects-icon"><a href="projects">projects </a></div>
+        <div class="navbar-item" id="experience-icon"><a href="experience">experience </a></div>
+        <div class="navbar-item" id="contact-icon"><a href="contact">contact </a></div>
+        <div class="navbar-item" id="home-icon"><a href="/">home</a></div> 
     </div>
+    
     <div class="container" id="landingpagecontainer">
+        <div class="circle" id="circle"></div>
+        <script src="./javascript/circle.js"></script>
+    
         <div class="titletext" id="landingpage">
             <div id="hey">
                 Hey!
@@ -32,32 +47,52 @@
             <div id="description">
                 I'm a rising Georgia Tech student! I'm pursuing a career in Computer Science, and I plan on doing big things!
 
-                <div class="container" id="icon-container">
+                <div class="hide-mobile">
+                    <div class="container" id="icon-container">
 
-                    <div class="icon-hidden" id="linkedinlogo">
-                        <span><a href="https://www.linkedin.com/in/noah-b-6321b6248/" target="_blank"><img src="/images/logos/linkedinlogo.png"></a></span>
-                        <div class="hovericons" id="linkedininfo">Noah Buchanan</div>
-                    </div>
-                    <div class="icon-hidden" id="githublogo">
-                        <span><a href="https://Github.com/Noah6544" target="_blank"><img src="/images/logos/githublogo.jpg"></a></span>
-                        <div class="hovericons" id="githubinfo">Noah6544</div>
-                    </div>
-                    <div class="icon-hidden" id="imessagelogo">
-                        <span><a href="mailto:buchanannoah100@gmail.com" target="_blank"><img src="/images/logos/imessagelogo.png"></a></span>
-                        <div class="hovericons" id="emailinfo">BuchananNoah100@gmail.com</div>
-                    </div>
-                    <div class="hiddeninfo-show" id="hiddeninfo"></div>
+                        <div class="icon" id="linkedinlogo">
+                            <span><a href="https://www.linkedin.com/in/noah-b-6321b6248/" target="_blank"><img src="/images/logos/linkedinlogo.png"></a></span>
+                            <div class="hovericons" id="linkedininfo">Noah Buchanan</div>
+                        </div>
+                        <div class="icon" id="githublogo">
+                            <span><a href="https://Github.com/Noah6544" target="_blank"><img src="/images/logos/githublogo.jpg"></a></span>
+                            <div class="hovericons" id="githubinfo">Noah6544</div>
+                        </div>
+                        <div class="icon" id="imessagelogo">
+                            <span><a href="mailto:buchanannoah100@gmail.com" target="_blank"><img src="/images/logos/imessagelogo.png"></a></span>
+                            <div class="hovericons" id="emailinfo">BuchananNoah100@gmail.com</div>
+                        </div>
+                        <div class="hiddeninfo-show" id="hiddeninfo"></div>
 
+                    </div>
                 </div>
 
             </div>
 
         </div>
         
-        <div class="Portrait" id="noneditedPortrait" data-duration="3s" data-delay="0s"><img src="../images/PortraitTransparent.png"></div>
+        <div class="Portrait" id="noneditedPortrait" data-duration="3s" data-delay="0s"><img src="../images/NoahBuchananSeniorPortrait.jpg"></div>
+        
+        <div class="show-mobile">
+            <div class="container" id="icon-container">
 
-    </div>
+                <div class="icon-hidden" id="linkedinlogo">
+                    <span><a href="https://www.linkedin.com/in/noah-b-6321b6248/" target="_blank"><img src="/images/logos/linkedinlogo.png"></a></span>
+                    <div class="hovericons" id="linkedininfo">Noah Buchanan</div>
+                </div>
+                <div class="icon-hidden" id="githublogo">
+                    <span><a href="https://Github.com/Noah6544" target="_blank"><img src="/images/logos/githublogo.jpg"></a></span>
+                    <div class="hovericons" id="githubinfo">Noah6544</div>
+                </div>
+                <div class="icon-hidden" id="imessagelogo">
+                    <span><a href="mailto:buchanannoah100@gmail.com" target="_blank"><img src="/images/logos/imessagelogo.png"></a></span>
+                    <div class="hovericons" id="emailinfo">BuchananNoah100@gmail.com</div>
+                </div>
+                <div class="hiddeninfo-show" id="hiddeninfo"></div>
 
+            </div>
+        </div>
+</div>
     
 </body>
 </html>

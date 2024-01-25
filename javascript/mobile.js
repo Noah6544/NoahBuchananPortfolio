@@ -1,8 +1,3 @@
-
-document.addEventListener('DOMContentLoaded', function() {
-
-
-
 function CheckItemInView(item){
   const rectangle = item.getBoundingClientRect();
   return (
@@ -14,6 +9,11 @@ function CheckItemInView(item){
  
 }
 
+function getRandomNumber(min, max) {
+    
+  return Math.random() * (max - min) + min;
+    
+}
 function BlurEverythingExcept(exceptionObject){
   const navbarClassNames = ['navbar-item-hidden','navbar','navbar-container','navbar-item'];
   let allDivs = document.querySelectorAll("div");
@@ -156,11 +156,6 @@ function sleep(ms) {
 
 
 
-
-function onMouseMove(mouse){
-  // console.log(mouse.x +  mouse.y);
-}
-
 function staggerAnimation(elementlist,hiddenclass,showclass,delay,delayincrement,duration,typeOfDelay){
   elementlist.forEach(element => {
     element.classList.remove(hiddenclass);
@@ -179,29 +174,6 @@ function staggerAnimation(elementlist,hiddenclass,showclass,delay,delayincrement
 }
 
 
-function onIconHover(){  
-
-  let hiddendiv = document.querySelector('#hiddeninfo');
-  for(let i = 0;i<iconLogoList.length;i++){
-    icon = iconLogoList[i];
-    if(this==icon){
-      hiddendiv.innerHTML = "*"+ iconInfoList[i].innerHTML;
-    }
-    else{
-    }
-  }
-  hiddendiv.innerHtml = "";
-
-}
-
-function navbarIconHoverIn(){
-  this.style.cssText = 'position: absolute; transition: all 1s ease; left 55px;';
-}
-
-function navbarIconHoverOut(){
-  this.style.cssText = 'left: 0px;';
-}
-
 const CheckItemInViewnew = new IntersectionObserver((entries) => { //figure out this issue and why it's not working
   entries.forEach(element => {
     if(element.isIntersecting){
@@ -215,26 +187,26 @@ const CheckItemInViewnew = new IntersectionObserver((entries) => { //figure out 
 });
 
 //GETTING ITEMS
-// const rootStyles = getComputedStyle(document.head);
+const menu = document.getElementById("menu");
+const navbar = document.getElementById("navbar")
+var isOpen = false;
+console.log(window.innerWidth);
+menu.addEventListener("click", function(){
+  menu.classList.toggle("menu-open");
 
-// const heymynameAnimationDuration = rootStyles.getPropertyValue('--heymyname-animation-duration');
-// const mynameDescriptionDelay = rootStyles.getPropertyValue('--');
-
-//for icons
-const linkedinLogo = document.querySelector('#linkedinlogo');
-const linkedininfo = document.querySelector('#linkedininfo');
-const githublogo = document.querySelector('#githublogo');
-const githubinfo = document.querySelector('#githubinfo');
-const emailLogo = document.querySelector('#imessagelogo');
-const emailinfo = document.querySelector('#emailinfo');
-const iconLogoList = [linkedinLogo,githublogo,emailLogo];
-const iconInfoList = [linkedininfo,githubinfo,emailinfo];
+  if(isOpen){
+    navbar.classList.remove("navbar")
+    navbar.classList.add("navbar-hidden")
+    isOpen = false;
+  }
+  else{
+    navbar.classList.remove("navbar-hidden")
+    navbar.classList.add("navbar")
+    isOpen = true;
+  }
 
 
-
-
-//for the landing page scroll down animations
-const landingpagesubdivs = document.querySelectorAll("#landingpagecontainer div");
+})
 
 // for the fun fact animations
 const factlist = document.getElementsByClassName('list-item');
@@ -247,38 +219,31 @@ const xmark = document.querySelector('#xmark');
 projectPopup = document.querySelector('#popup-Project');
 
 //RUNNING CODE
- //NAVBAR LOADING
-const aboutIcon = document.querySelector('#abouticon');
-const projectsIcon = document.querySelector('#projects-icon');
-const experienceIcon = document.querySelector('#experience-icon');
-const homeIcon = document.querySelector('#home-icon');
-const contactIcon = document.querySelector('#contact-icon');
-const navbarIcons = [aboutIcon,projectsIcon,experienceIcon,homeIcon,contactIcon];
-
-staggerAnimation(navbarIcons,'navbar-item-hidden','navbar-item',2,.2,1,'transition');
-
+ 
 
 let currentPage = (((window.location.pathname).split('/'))).pop() //omits the parent directory and just return the file name.
-if (screen.width <= 699) {
+// if (screen.width <= 699) {
+//   document.location = 'mobile.html';
+// }
+if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all the homepage stuff
+
+
+} else if (currentPage == 'about' || currentPage == 'about.html'){ //do all the about page stuff
   document.location = 'mobile.html';
-}
-if (currentPage == 'home.html'){ //do all the homepage stuff
+  const winWidth = window.innerWidth;
+  const winHeight = window.innerHeight;
 
-  window.addEventListener("mousemove",onMouseMove)
-  iconLogoList.forEach(element => {
-    element.addEventListener('mouseover',onIconHover);  
-   
-  });
-  staggerAnimation(iconLogoList,'icon-hidden','icon',5,.2,0,'transition');
+  let hoverMeDiv = document.getElementById('hoverme');
+  let descriptionTextDiv = document.querySelector('.description-text')
 
-} else if (currentPage == 'about.html'){ //do all the about page stuff
+  let goofyClickDiv = document.getElementById('goofyClick')
  
   let scrollAmount = 0;
   let scrollSpeed = 0.01;
-  const scrollSpeedInitial = 0.06; // Initial speed to reset back to later on
-  const maxSpeed = 1 // Maximum speed, has to do with adding 20 to the scroll idk y.
-  const growthRate = 1.04; // RATE of acceleratoin
-  const slowRate = 1.02; //RATE of deceleration (idek how to spell that...)
+  let scrollSpeedInitial = 0.06; // Initial speed to reset back to later on
+  let maxSpeed = 1 // Maximum speed, has to do with adding 20 to the scroll idk y.
+  const growthRate = 1.025; // RATE of acceleratoin
+  const slowRate = 1.015; //RATE of deceleration (idek how to spell that...)
   let isHovering = false;
   let imageGallery = document.querySelector('#about-image-gallery');
   let imageGalleryImages = document.getElementsByClassName('aboutimage');
@@ -373,7 +338,5 @@ if (currentPage == 'home.html'){ //do all the homepage stuff
   else if(currentPage =='contact.html'){
     window.addEventListener('load', onload());
 
-  }
-
-});
+  };
 
