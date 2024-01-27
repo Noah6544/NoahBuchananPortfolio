@@ -34,6 +34,7 @@ divsToHover = ['#menu','#abouticon','#projects-icon','#experience-icon','#contac
 console.log(divsToHover);
 
 Array.from(divsToHover).forEach(element => {
+    
     element = document.querySelector(element)
     console.log(element);
     element.addEventListener('mouseover', function(){
@@ -41,15 +42,24 @@ Array.from(divsToHover).forEach(element => {
    })   
    element.addEventListener('mouseout', function(){
         circle.classList.toggle("circle-hovering");
-})    
+})})    
 
 
-});
 
-// Array.from(HoverDivs).forEach(element => {
-//     console.log(element)
-//     div = document.querySelector(element)
-//     div.addEventListener('mouseover',function(){
-//         circle.style.cssText = "transform: scale(50%);";
-//     })
-// });
+
+try {
+    Array.from(divsToHover).forEach(element => {
+    
+        element = document.querySelector(element)
+        console.log(element);
+        element.addEventListener('mouseover', function(){
+            circle.classList.toggle("circle-hovering");
+       })   
+       element.addEventListener('mouseout', function(){
+            circle.classList.toggle("circle-hovering");
+    })})    
+    
+  } catch (error) {
+    console.error(error);
+  }
+  
