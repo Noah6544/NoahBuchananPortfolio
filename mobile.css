@@ -571,7 +571,7 @@ body {
     z-index: 2;
     height: 100vh;
     width: 500px;
-    padding-left: 50px;
+    padding: 20px;
     flex-direction: column;
     justify-content: center;
     overflow-y: auto;
@@ -658,7 +658,7 @@ body {
     font-weight: 400;
     color: var(--t5);
     text-shadow: var(--text-shadow);
-    font-size: clamp(16px,1vw,19.2px);
+    font-size: clamp(12px,1vw,19.2px);
 }
 
 
