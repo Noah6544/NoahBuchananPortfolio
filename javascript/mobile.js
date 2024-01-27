@@ -352,7 +352,7 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
 
 
 }
-  else if (currentPage == 'projects.html' || currentPage == 'projects')){
+  else if (currentPage == 'projects.html' || currentPage == 'projects'){
     
     let isFirstScroll = true;
     let projectCardIndex = 1;
