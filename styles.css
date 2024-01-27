@@ -1103,3 +1103,7 @@ input[type="range"]::-moz-range-thumb {
     border-radius: 4000px;
     overflow: hidden;
 }
+
+.text-toggle {
+display: none;
+}
