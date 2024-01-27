@@ -576,6 +576,7 @@ body {
     justify-content: center;
     overflow-y: auto;
     transition: all 1s ease;
+    overflow: hidden;
 }
 .about-text-container-toggle{
 
