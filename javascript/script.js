@@ -406,11 +406,7 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
     window.addEventListener('load', onload());
 
   }
-  else if (currentPage == 'funfacts'){
 
-    window.addEventListener('load', onload);
-
-  }
 
   else if(currentPage =='contact' || currentPage == 'contact.html'){
     window.addEventListener('load', onload());

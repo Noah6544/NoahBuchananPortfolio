@@ -352,7 +352,7 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
 
 
 }
-  else if (currentPage == 'projects.html'){
+  else if (currentPage == 'projects.html' || currentPage == 'projects')){
     
     let isFirstScroll = true;
     let projectCardIndex = 1;
@@ -371,12 +371,12 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
       xmark.addEventListener('click', () => Click_Xmark());
 
   }
-  else if (currentPage == 'experience.html'){
+  else if (currentPage == 'experience' || currentPage == 'experience.html'){
     window.addEventListener('load', onload());
 
   }
  
-  else if(currentPage =='contact.html'){
+  else if(currentPage =='contact' || currentPage == 'contact.html'){
     window.addEventListener('load', onload());
 
   };
