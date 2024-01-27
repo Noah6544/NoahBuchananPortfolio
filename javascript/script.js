@@ -351,8 +351,8 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
         imageGallery.appendChild(parentDiv);
         Array.from(imageGalleryImages).forEach(img => {
           let imageGallery = document.querySelector('#about-image-gallery');
-
-          imageGallery.style.cssText = "transform: translateY(" + (scrollAmount + window.scrollY +20)  + "px);"; /* FIRST TRY WITH THE SCROLL Y LETS GO IT WORKED IM...not that smart.. BUT ALMOST!!!!*/
+                                                                                                  // + 20 because of 20px gap.
+          imageGallery.style.cssText = "transform: translateY(" + (scrollAmount + window.scrollY +20)  + "px);"; // FIRST TRY WITH THE SCROLL Y LETS GO IT WORKED IM...not that smart.. BUT ALMOST!!!!
         });
       }
       else

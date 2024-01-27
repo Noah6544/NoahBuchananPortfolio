@@ -377,8 +377,7 @@ body {
 .navbar {
     z-index: 9996;
     position: fixed;
-    background-color: #0606066f;
-    backdrop-filter: blur(10px);
+    background-color: #060606ca;
     opacity: 1;
     display: flex;
     flex-wrap: wrap;
@@ -399,11 +398,12 @@ body {
 .navbar-hidden{
     z-index: 2;
     position: fixed;
-    background-color: var--(--primary-color);
-    backdrop-filter: blur(10px);
+    background-color: #060606ca;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+
     width: 100%;
     height: 100vh;
     bottom: 100vh;
@@ -420,6 +420,9 @@ body {
     opacity: 0;
     padding: 12px; /*  padding: top right bottom left; */
     border-radius: 20px;
+}
+.current-tab a{
+    color:  rgba(87, 137, 190, 0.683) !important;
 }
 
 .navbar-item {
@@ -530,6 +533,30 @@ body {
 
 #aboutme-title {
     font-weight: 100;
+    padding-bottom: 20px;
+}
+
+.text-toggle {
+    z-index: 9000;
+    position: fixed;
+    opacity: .6;
+    top: 50px;
+    right: 50px;
+    padding: 7px;
+    border-radius: 15px;
+    margin: 0;
+    color: white;
+    background-color: rgba(112, 177, 237, 0.777);
+    font-family: 'Montserrat', sans-serif;
+    text-shadow: var(--text-shadow);
+    transition: all 1s ease;
+}
+
+
+
+.text-toggle-on {
+    background-color: rgb(112, 177, 237);
+    opacity: 1;
 }
 
 #about-container{
@@ -539,59 +566,77 @@ body {
     overflow:hidden; /* keep it this way, trust */
 }
 
+
 #about-text-container{
+    z-index: 2;
     height: 100vh;
     width: 500px;
     padding-left: 50px;
     flex-direction: column;
     justify-content: center;
     overflow-y: auto;
+    transition: all 1s ease;
+}
+.about-text-container-toggle{
+
+    opacity: 0;
 }
 
+
+
 #about-image-gallery{
+    position: fixed;
+    left: 0;
     height: 100vh; /* lets go, overflow-hidden doesn't work to disable scroll, so just make the height 100%! */
-    flex-direction: column;
-    justify-content: flex-start;
+    flex-direction: row;
     /* align-items: flex-start; */
     gap: 20px;
-
+    justify-content: center;
+    align-items: center;
 
 }
 
 .imageWrapper {
     position: relative; /*LETS GO, this needs to stay here so that the absolutely positioned description has something to base the top postiion on!!! this one took me a second */
-    
-    
 }
 
 .aboutimage {
-    width: clamp(150px, 27vw, 450px);
-    height: auto;    
+    pointer-events: none;
+    height: 80vh;  
+    width: 95vw;
+    object-fit: cover;
     border-radius: 25px;
     border: 2px solid var(--t5);
-    transition: all 1s ease;
-    filter: grayscale(.8);
-    opacity: .7;
+    transition: all 2s ease;
+    opacity: .2;
 }
-    
-.aboutimage:hover {
+
+.aboutimage-toggle {
     opacity: .6;
-    cursor: pointer;
-    background: linear-gradient(0deg, rgba(0,0,0,0.8743698162858894) 0%, rgba(0,0,0,0.5382353625043768) 100%); 
 }
 
 
-.aboutimage-hovered {
-    filter: grayscale(0);
-    opacity: 1;
-
-
+#hoverme {
+    display: none;
 }
+
+
 
 .imageDescription {
     position: absolute;
+   opacity: 0;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%,-50%);
+   font-family: 'Neucha',sans-serif;
+}
+
+.imageDescription-toggle {
+    font-family: 'Neucha',sans-serif;
+
+    position: absolute;
     color: white;
-    opacity: 0;
+    opacity: 1;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
@@ -600,6 +645,8 @@ body {
     word-wrap: break-word;
     transition: all 1s ease;
     pointer-events: none; /* need this so that when you hover the image, it doesn't unhover by hovering the description u know */
+    transition: all 1s ease;
+
 }
 
 .aboutimage:hover + .imageDescription {
@@ -615,11 +662,6 @@ body {
 }
 
 
-.imageDescription {
-    font-family: 'Neucha',sans-serif;
-
-}
-
 #goofyClick {
     font-size: clamp(18px,1.2vw,25px);
     font-weight: 0;
@@ -634,10 +676,7 @@ body {
 
 
 .downarrow {
-    position:absolute;
-    left: clamp(50px,5vw,155px);
-    filter: invert();
-    animation: fade-in-arrow 5s linear infinite;
+    display: none;
 }
 
 #personal{    
@@ -931,10 +970,6 @@ body {
 }
 
 
-#experience-list {
-    width: clamp(300px,75vw,900px);
-}
-
 #experience-lists-container { 
     display: flex;
     height: 100%;
@@ -1154,7 +1189,7 @@ li:before {
     background-color: rgb(85, 85, 85);
     border-radius: 50px;
     border: 1px solid rgb(55, 55, 55);
-    width: 20%;
+    width: 50%;
     height: clamp(6px, 1.5%, 10px);
 }
 

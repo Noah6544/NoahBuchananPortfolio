@@ -193,46 +193,7 @@
     }
 }
 
-@keyframes navbarLoadinAndHover {
-    0% {
-        opacity:0;
-        transform: translateX(-50%)
-    }
-    /* ... */
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-    90%, 100% {
-        transform: translateX(100px);
-    }
-}
-@keyframes navbarLoadin {
-    0% {
-        opacity:0;
-        transform: translateX(-50%)
-    }
-    45%{
-        transform: translateX(5%);
-    }
-    55%{
-        transform: translateX(5%);
 
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes scroll {
-    0% {
-      transform: translateY(0);
-    }
-    100% {
-      transform: translateY(-100%);
-    }
-  }
 @keyframes goofyClick {
     0%{
         opacity: 1;
@@ -244,24 +205,9 @@
     }
 }
 
-@keyframes clickAboutImage {
-    0%{
-        
-    }
-    50%{
-        transform: scale(99%);
-
-    }
-    100%{
-        transform: scale(100%);
-    }
-}
-
 html {
     font-size: 16px;
 }
-
-
 
 body { 
     margin: 0;
@@ -378,6 +324,7 @@ body {
     font-family: 'Montserrat', sans-serif; 
     font-weight: 800;
 
+
 }
 
 .navbar-hidden{
@@ -387,17 +334,22 @@ body {
     backdrop-filter: blur(10px);
     display: flex;
     flex-direction: column;
+    justify-content: center;
+
     align-items: center;
     width: 100%;
     height: 100%;
-    transform: translateY(-110%);
+    transform: translateY(-100%);
     margin: 0 auto; /*aligns 85% div in the middle instead of just left- still don't know why this works.*/
     font-size: clamp(30px,6vh,75px);
-    transition: all .45s cubic-bezier(.25,-0.01,1,.7);
+    transition: all .45s cubic-bezier(.17,.2,.23,1.01);
 
     font-family: 'Montserrat', sans-serif; 
     font-weight: 800;
 
+}
+.current-tab a{
+    color:  rgba(87, 137, 190, 0.683) !important;
 }
 
 .navbar-item-hidden {
@@ -418,6 +370,8 @@ body {
     
     color: #5788beff !important;
     transition: all .45s ease;
+    text-shadow: 0px 0px 100px rgba(36, 222, 213, 0.228);
+
 }
 
 
@@ -468,8 +422,8 @@ body {
     color: rgb(var(--font-color));
     font-size: clamp(25px,2vw,35px);
     text-shadow: var(--text-shadow);
-    font-family: 'Almarai',sans-serif;
-    font-weight: 400;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 800;
 
 }
 #hey {
@@ -503,8 +457,9 @@ body {
 
 /* ABOUT PAGE STUFF */
 
+
 #aboutme-title {
-    font-weight: 100;
+    font-weight: 800;
 }
 
 #about-container{
@@ -586,7 +541,7 @@ body {
     font-weight: 400;
     color: var(--t5);
     text-shadow: var(--text-shadow);
-    font-size: clamp(12px,1vw,19.2px);
+    font-size: clamp(14px,1.75vw,19.2px);
 }
 
 
@@ -876,30 +831,36 @@ body {
     padding: 10px 20px 20px 100px;
 }
 
-#experience-images-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
-.experience-image img{
-    border: 2px solid var(--t5);
-    border-radius: 25px;
-    
-    width: clamp(200px, 45vw,500px);
-}
-
-
-#experience-list {
-    width: clamp(300px,60vw,1000px);
-}
-
 #experience-lists-container { 
     display: flex;
     height: 100%;
-
     flex-direction: column;
+
 }
+
+#experience-list {
+    width: clamp(300px,50vw,1000px);
+}
+
+
+#experience-images-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+.experience-image {
+    border: 1px solid var(--t5);
+    border-radius: 50px;
+    aspect-ratio: 9/10;
+    width: 60%;
+    object-fit: cover;
+
+}
+
+
 
 .list{
     flex-direction: column;

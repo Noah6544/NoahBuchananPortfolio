@@ -137,9 +137,9 @@ function Click_Xmark(){
   }
 
 function onload(){ //changed it so that it loads all list items on load in conjunction with all other items.
-  const viewportHeight = window.innerHeight; //check height of window.
   //checking for fact list stuff
   let delay = 0; 
+  const factlist = document.getElementsByClassName('list-item');
   Array.from(factlist).forEach(factitem => {
     factitem.style.cssText = "opacity: 1; filter: blur(0px); transform: translateX(0); transition-delay: " + delay + "s";
       delay += .1; 
@@ -213,7 +213,7 @@ const factlist = document.getElementsByClassName('list-item');
 let allDivs = document.querySelectorAll("div");
 
 //for projects_list
-const ignoredDivs = ['project-image','projectspage-container','my-projects-container','xmark','popup-Project','popup-Project-Description','popup-Project-Title','popup-Project-Extended-Description','popup-subelement','Label'];    
+const ignoredDivs = ['downarrow','project-image','projectspage-container','my-projects-container','xmark','popup-Project','popup-Project-Description','popup-Project-Title','popup-Project-Extended-Description','popup-subelement','Label'];    
 const projectCardList = document.querySelectorAll('.project-card-hidden'); //finally, don't do get elements by classname - AND DON'T USE DOUBLE QUOTES
 const xmark = document.querySelector('#xmark');
 projectPopup = document.querySelector('#popup-Project');
@@ -229,37 +229,83 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
 
 
 } else if (currentPage == 'about' || currentPage == 'about.html'){ //do all the about page stuff
-  document.location = 'mobile.html';
+  // document.location = 'mobile.html';
   const winWidth = window.innerWidth;
   const winHeight = window.innerHeight;
-
   let hoverMeDiv = document.getElementById('hoverme');
   let descriptionTextDiv = document.querySelector('.description-text')
-
   let goofyClickDiv = document.getElementById('goofyClick')
- 
   let scrollAmount = 0;
-  let scrollSpeed = 0.01;
+  let scrollSpeed = 0.0005;
   let scrollSpeedInitial = 0.06; // Initial speed to reset back to later on
-  let maxSpeed = 1 // Maximum speed, has to do with adding 20 to the scroll idk y.
+  let maxSpeed = .5 // Maximum speed, has to do with adding 20 to the scroll idk y.
   const growthRate = 1.025; // RATE of acceleratoin
   const slowRate = 1.015; //RATE of deceleration (idek how to spell that...)
   let isHovering = false;
   let imageGallery = document.querySelector('#about-image-gallery');
   let imageGalleryImages = document.getElementsByClassName('aboutimage');
+  let speedModifierSlider = document.getElementById('speedModifier')
+  let modifierText = document.getElementById('speedModifierDiv')
+  const toggleButton = document.getElementById('image-toggle-button');
+  speedModifierSlider.max = "8";
+  modifierText.innerHTML = "Modify the scroll speed: 0.5x."; //just for mobile
+
+  //for toggle button stuff
+  const aboutTextContainter = document.getElementById('about-text-container')
+  const imageDescriptions = document.getElementsByClassName('imageDescription');
+
+
+  toggleButton.addEventListener('click', function(){
+    console.log("pressed!");
+    Array.from(imageDescriptions).forEach(imageDescription => {
+      imageDescription.classList.toggle('imageDescription-toggle');
+    })
+    Array.from(imageGalleryImages).forEach(image => {
+      image.classList.toggle('aboutimage-toggle');
+    })
+    aboutTextContainter.classList.toggle('about-text-container-toggle')
+    toggleButton.classList.toggle('text-toggle-on');
+
+  })
+
+
   Array.from(imageGalleryImages).forEach(element => {
     element.addEventListener('mouseenter', function() {
       element.style.cssText = "transform: translateY(0px);";
-      // currentImageDescription = document.getElementById(element.id+"1");
       isHovering = true;
     })
     element.addEventListener('mouseleave', function() {
       isHovering = false;
     })
   });
+  timeStamp = 0 //simple binary checker thing to see if we go from 0 slider position to literally anything else.
+  speedModifierSlider.oninput = function(){
+    diceRoll = Math.random() //random number 0-1
+    modifierValue = speedModifierSlider.value;
+    modifierText.innerHTML = "Modify the scroll speed: " + modifierValue/8 + "x.";
+    maxSpeed = modifierValue
+ 
+
+    if(timeStamp == 1){ //if the slider WAS at 0, then we need to encourage the speed to change a little.
+      timeStamp = 0;
+      scrollSpeed += .08;
+
+    }
+    if(maxSpeed == 0 ){ //if the user is on 0, and they increase it:
+      timeStamp = 1;
+    }
+   
+    if(modifierValue == 0 && diceRoll < .1){ // 1/10 chance to show easter egg
+      modifierText.innerHTML = "What are you wanting to look at so closely? 🤨";
+    }
+  
+
+
+  }
+ 
 
   function scrollGallery() {
-    let currentTopImage = document.querySelector('.imageWrapper');
+    let currentTopImage = document.querySelector('.imageWrapper'); //get's the first one, as we just do querySelector.
     let currentTopImageRect = currentTopImage.getBoundingClientRect();
 
     if(scrollSpeed == maxSpeed) {
@@ -272,7 +318,7 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
     count = 1;
 
     Array.from(imageGalleryImages).forEach(element => {
-      if (currentTopImageRect.bottom <= 0) {
+      if (currentTopImageRect.right <= 0) {
         // // actualElement = document.querySelector('.aboutimage #'+ );
         let parentDiv = currentTopImage;
 
@@ -280,12 +326,12 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
         Array.from(imageGalleryImages).forEach(img => {
           let imageGallery = document.querySelector('#about-image-gallery');
 
-          imageGallery.style.cssText = "transform: translateY(" + (scrollAmount + window.scrollY + 19)  + "px);"; /* FIRST TRY WITH THE SCROLL Y LETS GO IT WORKED IM...not that smart.. BUT ALMOST!!!!*/
+          imageGallery.style.cssText = "transform: translateX(" + (scrollAmount + window.scrollY + 20)  + "px);"; /* FIRST TRY WITH THE SCROLL Y LETS GO IT WORKED IM...not that smart.. BUT ALMOST!!!!*/
         });
       }
       else
       {
-       element.parentElement.style.cssText = "transform: translateY(-"+scrollAmount+"px);";    
+       element.parentElement.style.cssText = "transform: translateX(-"+scrollAmount+"px);";    
 
       }
       });
@@ -329,12 +375,7 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
     window.addEventListener('load', onload());
 
   }
-  else if (currentPage == 'funfacts.html'){
-
-    window.addEventListener('load', onload);
-
-  }
-
+ 
   else if(currentPage =='contact.html'){
     window.addEventListener('load', onload());
 
