@@ -16,7 +16,7 @@ function getRandomNumber(min, max) {
 }
 function BlurEverythingExcept(exceptionObject){
   const navbarClassNames = ['navbar-item-hidden','navbar','navbar-container','navbar-item'];
-  let allDivs = document.querySelectorAll("div");
+  var allDivs = document.querySelectorAll("div");
   allDivs.forEach(element => {      
     if(element == exceptionObject){ // Ithink this might be redundant because of the next else if, but whatever.
       element.style.cssText = "filter: blur(0px); z-index: 2;"   //the problem has to do with trying to blur a gif. it just goes away if you try to blur a gif.
@@ -41,7 +41,7 @@ function BlurEverythingExcept(exceptionObject){
     
 function UnblurEverything(){
   const navbarClassNames = ['navbar-item-hidden','navbar','navbar-container','navbar-item'];
-  let allDivs = document.querySelectorAll("div");
+  var allDivs = document.querySelectorAll("div");
 
   allDivs.forEach(element => { 
     if(ignoredDivs.includes(element.id)){
@@ -138,7 +138,7 @@ function Click_Xmark(){
 
 function onload(){ //changed it so that it loads all list items on load in conjunction with all other items.
   //checking for fact list stuff
-  let delay = 0; 
+  var delay = 0; 
   const factlist = document.getElementsByClassName('list-item');
   Array.from(factlist).forEach(factitem => {
     factitem.style.cssText = "opacity: 1; filter: blur(0px); transform: translateX(0); transition-delay: " + delay + "s";
@@ -230,22 +230,18 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
 
 } else if (currentPage == 'about' || currentPage == 'about.html'){ //do all the about page stuff
   // document.location = 'mobile.html';
-  const winWidth = window.innerWidth;
-  const winHeight = window.innerHeight;
-  let hoverMeDiv = document.getElementById('hoverme');
-  let descriptionTextDiv = document.querySelector('.description-text')
-  let goofyClickDiv = document.getElementById('goofyClick')
-  let scrollAmount = 0;
-  let scrollSpeed = 0.0005;
-  let scrollSpeedInitial = 0.06; // Initial speed to reset back to later on
-  let maxSpeed = .5 // Maximum speed, has to do with adding 20 to the scroll idk y.
+
+  var scrollAmount = 0;
+  var scrollSpeed = 0.001;
+  var scrollSpeedInitial = 0.06; // Initial speed to reset back to later on
+  var maxSpeed = .5 // Maximum speed, has to do with adding 20 to the scroll idk y.
   const growthRate = 1.025; // RATE of acceleratoin
   const slowRate = 1.015; //RATE of deceleration (idek how to spell that...)
-  let isHovering = false;
-  let imageGallery = document.querySelector('#about-image-gallery');
-  let imageGalleryImages = document.getElementsByClassName('aboutimage');
-  let speedModifierSlider = document.getElementById('speedModifier')
-  let modifierText = document.getElementById('speedModifierDiv')
+  var isHovering = false;
+  var imageGallery = document.querySelector('#about-image-gallery');
+  var imageGalleryImages = document.getElementsByClassName('aboutimage');
+  var speedModifierSlider = document.getElementById('speedModifier')
+  var modifierText = document.getElementById('speedModifierDiv')
   const toggleButton = document.getElementById('image-toggle-button');
   speedModifierSlider.max = "8";
   modifierText.innerHTML = "Modify the scroll speed: 0.5x."; //just for mobile
@@ -270,11 +266,11 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
 
 
   Array.from(imageGalleryImages).forEach(element => {
-    element.addEventListener('mouseenter', function() {
+    element.addEventListener('touchstart', function() {
       element.style.cssText = "transform: translateY(0px);";
       isHovering = true;
     })
-    element.addEventListener('mouseleave', function() {
+    element.addEventListener('touchend', function() {
       isHovering = false;
     })
   });
@@ -305,8 +301,8 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
  
 
   function scrollGallery() {
-    let currentTopImage = document.querySelector('.imageWrapper'); //get's the first one, as we just do querySelector.
-    let currentTopImageRect = currentTopImage.getBoundingClientRect();
+    var currentTopImage = document.querySelector('.imageWrapper'); //get's the first one, as we just do querySelector.
+    var currentTopImageRect = currentTopImage.getBoundingClientRect();
 
     if(scrollSpeed == maxSpeed) {
       scrollAmount += parseFloat(scrollSpeed.toFixed(1));
@@ -320,11 +316,11 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
     Array.from(imageGalleryImages).forEach(element => {
       if (currentTopImageRect.right <= 0) {
         // // actualElement = document.querySelector('.aboutimage #'+ );
-        let parentDiv = currentTopImage;
+        var parentDiv = currentTopImage;
 
-        imageGallery.appendChild(parentDiv);
-        Array.from(imageGalleryImages).forEach(img => {
-          let imageGallery = document.querySelector('#about-image-gallery');
+        imageGallery.appendChild(parentDiv); 
+        Array.from(imageGalleryImages).forEach(img => { // why...am i doin this loop?
+          var imageGallery = document.querySelector('#about-image-gallery');
 
           imageGallery.style.cssText = "transform: translateX(" + (scrollAmount + window.scrollY + 20)  + "px);"; /* FIRST TRY WITH THE SCROLL Y LETS GO IT WORKED IM...not that smart.. BUT ALMOST!!!!*/
         });
@@ -354,15 +350,12 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
 }
   else if (currentPage == 'projects.html' || currentPage == 'projects'){
     
-    let isFirstScroll = true;
-    let projectCardIndex = 1;
 
-    for(let i = 0; i<projectCardList.length; i++){
-      let card = projectCardList[i]; //must have "LET/const CARD" not just card. if not doesn't work.
+    for(var i = 0; i<projectCardList.length; i++){
+      var card = projectCardList[i]; //must have "LET/const CARD" not just card. if not doesn't work.
       card.addEventListener('click', Click_projectcard);
     };                      // U NEED THIS ANONYMOUS FUNCTION ARROW.
       staggerAnimation(projectCardList,'project-card-hidden','project-card',.2,0.1,10,'transition');
-      isFirstScroll = true;
   
 
       // projectCardList.forEach(element => {
