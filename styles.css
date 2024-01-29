@@ -541,7 +541,7 @@ body {
     font-weight: 400;
     color: var(--t5);
     text-shadow: var(--text-shadow);
-    font-size: clamp(14px,1.75vw,19.2px);
+    font-size: clamp(14px,1vw,19.2px);
 }
 
 
