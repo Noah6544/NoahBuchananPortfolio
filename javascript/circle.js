@@ -1,7 +1,5 @@
 const circle = document.getElementById('circle');
 
-console.log(document.getElementsByClassName('project-card'));
-
 window.addEventListener('mousemove', function(e){
     const mouseX = e.clientX;
     const mouseY = e.clientY; 
@@ -10,7 +8,7 @@ window.addEventListener('mousemove', function(e){
     circle.animate(keyframes,{duration: 1500})
 })
 
-divsToHover = ['#menu','#abouticon','#projects-icon','#experience-icon','#contact-icon','#home-icon','#linkedinlogo','#githublogo','#imessagelogo','#speedModifierDiv','#project-django-container']
+divsToHover = ['#menu','#my-projects-container','.experience-image','#about-image-gallery','#abouticon','#projects-icon','#experience-icon','#contact-icon','#home-icon','#linkedinlogo','#githublogo','#imessagelogo','#speedModifierDiv','#project-django-container']
 
 // was trying to make it so that i don't have to manually type each id, but rather one class, take all those class objects and put them back into divs to hover, working on it.
 
@@ -31,17 +29,26 @@ divsToHover = ['#menu','#abouticon','#projects-icon','#experience-icon','#contac
 // }
 // })
 
-console.log(divsToHover);
 
 try {
     Array.from(divsToHover).forEach(element => {
     
         element = document.querySelector(element)
         if(element == null){
-            console.log("passing");
+            ;
+        }
+        else if(element=='.experience-image'){
+            const imageDivs = Array.from(document.getElementsByClassName('experience-image'));
+            Array.from(imageDivs).forEach(image => {
+                image.addEventListener('mouseover', function(){
+                    circle.classList.toggle("circle-hovering");
+                })   
+                image.addEventListener('mouseout', function(){
+                    circle.classList.toggle("circle-hovering");
+                })
+            })
         }
         else{
-            console.log(element);
             element.addEventListener('mouseover', function(){
                 circle.classList.toggle("circle-hovering");
             })   

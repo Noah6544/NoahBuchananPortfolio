@@ -1094,6 +1094,7 @@ input[type="range"]::-moz-range-thumb {
     border-radius: 4000px;
     overflow: hidden;   
     transition: height .2s ease, width .2s ease, border .2s ease;
+    
 }
 
 .circle-hovering {
@@ -1102,6 +1103,8 @@ input[type="range"]::-moz-range-thumb {
     border: 1.2px solid var(--t1); 
     border-radius: 4000px;
     overflow: hidden;
+    cursor: pointer;
+    pointer-events: all;
 }
 
 .text-toggle {
