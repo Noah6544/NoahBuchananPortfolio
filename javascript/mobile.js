@@ -232,7 +232,7 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
   // document.location = 'mobile.html';
 
   var scrollAmount = 0;
-  var scrollSpeed = 0.001;
+  var scrollSpeed = 0.01;
   var scrollSpeedInitial = 0.06; // Initial speed to reset back to later on
   var maxSpeed = .5 // Maximum speed, has to do with adding 20 to the scroll idk y.
   const growthRate = 1.025; // RATE of acceleratoin
@@ -279,12 +279,12 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
     diceRoll = Math.random() //random number 0-1
     modifierValue = speedModifierSlider.value;
     modifierText.innerHTML = "Modify the scroll speed: " + modifierValue/8 + "x.";
-    maxSpeed = modifierValue
+    maxSpeed = modifierValue/4;
  
 
     if(timeStamp == 1){ //if the slider WAS at 0, then we need to encourage the speed to change a little.
       timeStamp = 0;
-      scrollSpeed += .08;
+      scrollSpeed += .1;
 
     }
     if(maxSpeed == 0 ){ //if the user is on 0, and they increase it:
@@ -322,7 +322,7 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
         Array.from(imageGalleryImages).forEach(img => { // why...am i doin this loop?
           var imageGallery = document.querySelector('#about-image-gallery');
 
-          imageGallery.style.cssText = "transform: translateX(" + (scrollAmount + window.scrollY + 20)  + "px);"; /* FIRST TRY WITH THE SCROLL Y LETS GO IT WORKED IM...not that smart.. BUT ALMOST!!!!*/
+          imageGallery.style.cssText = "transform: translateX(" + (scrollAmount + window.scrollX + 20)  + "px);"; /* FIRST TRY WITH THE SCROLL Y LETS GO IT WORKED IM...not that smart.. BUT ALMOST!!!!*/
         });
       }
       else
@@ -334,12 +334,22 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
 
    
     if(isHovering){
+      if(speedModifierSlider.value == 0){ //if the user chooses 0, then when they hover it won't move
+        scrollSpeedInitial = 0;}
+        else{
+          scrollSpeedInitial = .06
+        }
       scrollSpeed = Number(Math.max(scrollSpeedInitial, scrollSpeed / slowRate));}
     else {
       scrollSpeed = Number(Math.min(maxSpeed, scrollSpeed * growthRate));
     }
-  
+    
+    
+  console.log(scrollSpeed);
+  console.log("scroll speed");
 
+  console.log(scrollAmount);
+  console.log("scroll amount");
   requestAnimationFrame(scrollGallery);
 
 }
