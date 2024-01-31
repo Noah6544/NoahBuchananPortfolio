@@ -239,7 +239,9 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
   const slowRate = 1.015; //RATE of deceleration (idek how to spell that...)
   var isHovering = false;
   var imageGallery = document.querySelector('#about-image-gallery');
+
   var imageGalleryImages = document.getElementsByClassName('aboutimage');
+  console.log(imageGalleryImages);
   var speedModifierSlider = document.getElementById('speedModifier')
   var modifierText = document.getElementById('speedModifierDiv')
   const toggleButton = document.getElementById('image-toggle-button');
@@ -299,11 +301,12 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
 
   }
  
-
+  console.log("before scroll gallery");
   function scrollGallery() {
+    console.log("made it into scroll gallery");
     var currentTopImage = document.querySelector('.imageWrapper'); //get's the first one, as we just do querySelector.
     var currentTopImageRect = currentTopImage.getBoundingClientRect();
-
+    
     if(scrollSpeed == maxSpeed) {
       scrollAmount += parseFloat(scrollSpeed.toFixed(1));
     }
@@ -312,7 +315,7 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
     }
 
     count = 1;
-
+    console.log(imageGalleryImages);
     Array.from(imageGalleryImages).forEach(element => {
       if (currentTopImageRect.right <= 0) {
         // // actualElement = document.querySelector('.aboutimage #'+ );
@@ -350,11 +353,11 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
 
   console.log(scrollAmount);
   console.log("scroll amount");
+  
   requestAnimationFrame(scrollGallery);
 
 }
-
-  scrollGallery();
+scrollGallery();
 
 
 }
