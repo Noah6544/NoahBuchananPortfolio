@@ -1095,6 +1095,7 @@ input[type="range"]::-moz-range-thumb {
     border-radius: 4000px;
     overflow: hidden;   
     transition: height .2s ease, width .2s ease, border .2s ease;
+    pointer-events: none;
     
 }
 
@@ -1105,7 +1106,7 @@ input[type="range"]::-moz-range-thumb {
     border-radius: 4000px;
     overflow: hidden;
     cursor: pointer;
-    pointer-events: all;
+    pointer-events: none; /*why did i set it to all before?*/
 }
 
 .text-toggle {
