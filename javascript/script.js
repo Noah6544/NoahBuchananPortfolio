@@ -376,7 +376,7 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
 
   
 
-  requestAnimationFrame(scrollGallery);
+  window.requestAnimationFrame(scrollGallery);
 
 }
 
