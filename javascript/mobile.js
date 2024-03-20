@@ -348,9 +348,8 @@ if (currentPage == 'index.html' || !currentPage || currentPage == ""){ //do all 
   console.log(scrollSpeed);
   console.log("scroll speed");
 
-  console.log(scrollAmount);
-  console.log("scroll amount");
-  requestAnimationFrame(scrollGallery);
+
+  window.requestAnimationFrame(scrollGallery);
 
 }
 

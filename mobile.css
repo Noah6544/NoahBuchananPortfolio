@@ -560,7 +560,7 @@ body {
 }
 
 #about-container{
-
+    height: 100dvh; /*learned this from rca carshow!! */
     /* gap: clamp(0px,10vw,300px); */
     justify-content: space-evenly;
     overflow:hidden; /* keep it this way, trust */
@@ -569,7 +569,7 @@ body {
 
 #about-text-container{
     z-index: 2;
-    height: 90vh; /* only 90 because mobile viewport is alittle long idk y*/
+    height: 100dvh; /* learned this from rca car show! takes into account the navbar on mobile browsesre!!! wooo*/
     width: 500px;
     padding: 20px;
     flex-direction: column;
