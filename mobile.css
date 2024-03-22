@@ -593,6 +593,7 @@ body {
     gap: 20px;
     justify-content: center;
     align-items: center;
+    overflow-y: scroll;
 
 }
 
@@ -604,7 +605,7 @@ body {
     pointer-events: none;
     height: 80vh;  
     width: 95vw;
-    object-fit: cover;
+    object-fit:contain;
     border-radius: 25px;
     border: 2px solid var(--t5);
     transition: all 2s ease;

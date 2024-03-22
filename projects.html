@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    
+
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
     <link rel="stylesheet" href="styles.css" media="screen and (min-width: 700px)">
     <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 699px)"><script src="https://kit.fontawesome.com/182e289974.js" crossorigin="anonymous"></script>    
     <script src="../javascript/loader.js" defer></script>
@@ -68,7 +71,43 @@
                         <br>You can check out the source code for the site on my Github, <a href="https://github.com/Noah6544/BridgeTheGap"target="_blank">here.</a>
                     </div>
                 </div>
+                <div class="project-card-hidden" id="project-ImageAligner"data-is-clicked="False">
+                    <div class="project-card-image" id="project-image"><img src="../images/projects/RecentDailyGif.gif"></div>
+                    <div class="project-title" id="project-ImageAligner">
+                        Image Aligner Automation
+                    </div>
+                    <div class="project-description" id="project-ImageAligner">
+                        December 31, 2018 is when I started taking a picture of myself everyday. I gave up after manually aligning 40 pictures. But I kept taking pictures anyways, 
+                        having faith in myself that one day, someday, I would code something to automatically align the pictures for me.
+                    </div>
+                    <div class="project-extended-description" id="project-ImageAligner">
+                        From the moment I saw <a href="https://www.youtube.com/watch?v=65nfbW-27ps">Hugo Cornellier's video,</a> I knew I had to make my own daily picture video, but it wasn't until I started manually editing the pictures that I realized this process needed to be automated.
+                        <br>The concept was simple (but took me a few years of working on and off to figure out): take every image in a directory, grab each images eye coordinates, and then do some basic math to align the coordinates to some set coordinate (which would be some initial photo you choose). Then, save the new image. After getting this concept to work, I realized more transformations of the images were necessary to achieve a great result, such as scale and rotation. This led me to apply some math I learned in my pre-calculus class, such as arctangent (thank you Mr. Hornbeck)!
+                        <br> When I started this project in 2019, I barely knew how to open files in python let alone work with OpenCV and Mediapipe. However, as I've learned more through my facial recognition research project, object oriented pygame project, and many other projects along the way, I gained skills along the way that helped me bring this idea to life. This project is almost a direct depiction of my coding progress over the years.
+                        <br> 
+                        <br> December 12, 2023 update: The project has reached a near complete state! I've written the documentation and contributing guidelines on the repository. 
+                        <br> Check out the repository <a href="https://github.com/Noah6544/Daily-Picture-Aligner/tree/Development"target="_blank">here!</a> 
+                    </div>
+                </div>
+                <div class="project-card-hidden" id="project-rcacarshow" data-is-clicked="False">
+                    <div class="project-card-image" id="project-image"><img src="../images/projects/carshow.gif"></div>
 
+                    <div class="project-title" id="project-TBD">
+                        RCA Car Show Website<br>(Freelance WebDev)
+                    </div>
+                    <div class="project-description" id="project-TBD">
+                        I created the event website for Rockdale Career Academy's car show on May 11th 2024, from scratch. This is my first freelancing job, it was made possible by my teacher advocating for me: Mr. Jesse Smith, thank you so much. Check it out <a href="https://rcacarshow.com">here</a> (RcaCarShow.com).
+                    </div>
+                    <div class="project-extended-description" id="project-TBD">
+                        Recently, I began my first freelancing project for Rockdale Career Academy's upcoming car show. This opportunity was made possible because of Mr. Jesse Smith advocating for me, thank you so much!
+                        <br>I build this website from scratch using HTML, CSS, and JS, as that is what I'm most comfortable with currently. In the future, I want to learn other javascript libraries, and pick up tailwindcss as well (even though it seems odd, I think it's worth a shot! Let me know what you think if you have experience with tailwind).
+                        <br>I was allowed full control over this site, from design, to building, to hosting: what you see was all created by myself.
+                        <br>I tried to pay great attention to detail, from perfecting animation delays, to mastering the responsive design: I wanted to make sure that whoever comes across this page notices the effort I put into it. 
+                        <br>This project is nearing it's end, you can view the website <a href="https://rcacarshow.com">here</a>, or head to RcaCarShow.com! 
+                        <br>If you're interested in hiring a freelance web developer, please reach out! I'm looking to work on a bigger project with a fully functional backend as well! 
+                        <br>Let me know what feedback you have, and I hope to see you at the car show!
+                    </div>
+                </div>
                 <div class="project-card-hidden" id="project-IT" data-is-clicked="False">
                     <div class="project-card-image" id="project-image"><img src="../images/projects/inspire.gif"></div>
                     <div class="project-title" id="project-IT">
@@ -93,6 +132,36 @@
                     </div>
                 </div>
 
+            
+            
+                <div class="project-card-hidden" id="project-Portfolio" data-is-clicked="False">
+                    <div class="project-card-image" id="project-image"><img src="../images/projects/thissite.gif"></div>
+
+                    <div class="project-title" id="project-Portfolio">
+                        This Website!
+                    </div>
+                    <div class="project-description" id="project-Portfolio">
+                    My portfolio website built from scratch with vanilla HTML, CSS, and JS! 
+                    </div>
+                    <div class="project-extended-description" id="project-Portfolio">
+                    I started messing around with HTML, CSS and JS about a year ago after working on my Django site. 
+                    I spent maybe a few weeks learning CSS and immediately felt super cool, so I quickly hosted a website I was working onto github pages- it was really bad. Don't believe me? Check out my initial portfolio page right <a href="/assets/Noah Buchanan Webpage(old).html" target="_blank">here.</a> 
+                    <br>But, going into the summer, I was motivated by my good friend Roderick Sneed to make some moves and continue to learn more about a weakness of mine: front-end. 
+                    The plan was for me to learn ReactJS, and javascript- 2 things which I knew little about. I started this website in April, working on and off for a few months. 
+                    <br>I never planned for the website to look like this, every feature I've added has just slowly evolved the website more and more until it took on a shape of its own that just seemed to fit.
+                        <br>I'm most proud of:
+                        <br>(1), making this website, in my naive opinion, quite complex. I didn't have much of a guide to learn about the proper HTML, CSS, or JS 
+                        structures, so I really am just learning as I go along, and it seemed to have turned out alright.
+                        <br>(2) The scroll effect. I didn't have a tutorial, but I had perseverance and A LOT of patience with myself (seriously, this effect was super buggy at the start, nearly gave up).
+                        The only assistance I had was AI to help me come up with a way to slowly increase a value such that my images would slowly speed up and slow down on hover! I thought this effect was clean and very fun to interact with as a user. 
+                        <br>(3) The project card effect. I once again didn't have a tutorial for this effect, I had an idea and with it a vague notion as to what the structure of the effect would need to be, so I got to work. 
+                        This project card effect was the first lengthy effect I created on this page. It had a ton of bugs so I'm not even going to mess with the nasty CSS I created.
+                        <br> Please let me know what you think of this website, what some improvements could be, or just what you like about it!
+                        <br> Finally, I would like to thank my friends who gave me feedback when I asked for it, I would like to give a special thanks to Prakash who inspired a lot and held me to a higher standard and was
+                        brutally honest, and to Roderick Sneed, who is kind of the reason I decided to revamp this website in the first place given our great conversation on the bus ride home that one day.
+                        I would also like to thank Mr. Jesse Smith who taught us Java in my AP CS class. It made transitioning to JS pretty simple, as JS and Java are syntactically very similiar- who knew.
+                        <br> P.S. this website was inspired by many portfolio websites, but none more than <a href="https://oliverqiu.cool" target="_blank">Oliver Qiu's,</a> it's really a coincidence how many interests we share (guitar, coding, and music artists)...                </div>
+                </div>   
                 <div class="project-card-hidden" id="project-Facial" data-is-clicked="False">
                     <div class="project-card-image" id="project-image"><img src="../images/projects/facialrec.gif"></div>
 
@@ -123,67 +192,9 @@
                     </div>
                 </div>
 
-                <div class="project-card-hidden" id="project-ImageAligner"data-is-clicked="False">
-                    <div class="project-card-image" id="project-image"><img src="../images/projects/RecentDailyGif.gif"></div>
-                    <div class="project-title" id="project-ImageAligner">
-                        Image Aligner Automation
-                    </div>
-                    <div class="project-description" id="project-ImageAligner">
-                        December 31, 2018 is when I started taking a picture of myself everyday. I gave up after manually aligning 40 pictures. But I kept taking pictures anyways, 
-                        having faith in myself that one day, someday, I would code something to automatically align the pictures for me.
-                    </div>
-                    <div class="project-extended-description" id="project-ImageAligner">
-                        From the moment I saw <a href="https://www.youtube.com/watch?v=65nfbW-27ps">Hugo Cornellier's video,</a> I knew I had to make my own daily picture video, but it wasn't until I started manually editing the pictures that I realized this process needed to be automated.
-                        <br>The concept was simple (but took me a few years of working on and off to figure out): take every image in a directory, grab each images eye coordinates, and then do some basic math to align the coordinates to some set coordinate (which would be some initial photo you choose). Then, save the new image. After getting this concept to work, I realized more transformations of the images were necessary to achieve a great result, such as scale and rotation. This led me to apply some math I learned in my pre-calculus class, such as arctangent (thank you Mr. Hornbeck)!
-                        <br> When I started this project in 2019, I barely knew how to open files in python let alone work with OpenCV and Mediapipe. However, as I've learned more through my facial recognition research project, object oriented pygame project, and many other projects along the way, I gained skills along the way that helped me bring this idea to life. This project is almost a direct depiction of my coding progress over the years.
-                        <br> 
-                        <br> December 12, 2023 update: The project has reached a near complete state! I've written the documentation and contributing guidelines on the repository. 
-                        <br> Check out the repository <a href="https://github.com/Noah6544/Daily-Picture-Aligner/tree/Development"target="_blank">here!</a> 
-                    </div>
-                </div>
-
-                <div class="project-card-hidden" id="project-Portfolio" data-is-clicked="False">
-                    <div class="project-card-image" id="project-image"><img src="../images/projects/thissite.gif"></div>
-
-                    <div class="project-title" id="project-Portfolio">
-                        This Website!
-                    </div>
-                    <div class="project-description" id="project-Portfolio">
-                    My portfolio website built from scratch with vanilla HTML, CSS, and JS! 
-                    </div>
-                    <div class="project-extended-description" id="project-Portfolio">
-                    I started messing around with HTML, CSS and JS about a year ago after working on my Django site. 
-                    I spent maybe a few weeks learning CSS and immediately felt super cool, so I quickly hosted a website I was working onto github pages- it was really bad. Don't believe me? Check out my initial portfolio page right <a href="/assets/Noah Buchanan Webpage(old).html" target="_blank">here.</a> 
-                    <br>But, going into the summer, I was motivated by my good friend Roderick Sneed to make some moves and continue to learn more about a weakness of mine: front-end. 
-                    The plan was for me to learn ReactJS, and javascript- 2 things which I knew little about. I started this website in April, working on and off for a few months. 
-                    <br>I never planned for the website to look like this, every feature I've added has just slowly evolved the website more and more until it took on a shape of its own that just seemed to fit.
-                        <br>I'm most proud of:
-                        <br>(1), making this website, in my naive opinion, quite complex. I didn't have much of a guide to learn about the proper HTML, CSS, or JS 
-                        structures, so I really am just learning as I go along, and it seemed to have turned out alright.
-                        <br>(2) The scroll effect. I didn't have a tutorial, but I had perseverance and A LOT of patience with myself (seriously, this effect was super buggy at the start, nearly gave up).
-                        The only assistance I had was AI to help me come up with a way to slowly increase a value such that my images would slowly speed up and slow down on hover! I thought this effect was clean and very fun to interact with as a user. 
-                        <br>(3) The project card effect. I once again didn't have a tutorial for this effect, I had an idea and with it a vague notion as to what the structure of the effect would need to be, so I got to work. 
-                        This project card effect was the first lengthy effect I created on this page. It had a ton of bugs so I'm not even going to mess with the nasty CSS I created.
-                        <br> Please let me know what you think of this website, what some improvements could be, or just what you like about it!
-                        <br> Finally, I would like to thank my friends who gave me feedback when I asked for it, I would like to give a special thanks to Prakash who inspired a lot and held me to a higher standard and was
-                        brutally honest, and to Roderick Sneed, who is kind of the reason I decided to revamp this website in the first place given our great conversation on the bus ride home that one day.
-                        I would also like to thank Mr. Jesse Smith who taught us Java in my AP CS class. It made transitioning to JS pretty simple, as JS and Java are syntactically very similiar- who knew.
-                        <br> P.S. this website was inspired by many portfolio websites, but none more than <a href="https://oliverqiu.cool" target="_blank">Oliver Qiu's,</a> it's really a coincidence how many interests we share (guitar, coding, and music artists)...                </div>
-                </div>
                 
-                <div class="project-card-hidden" id="project-TBD" data-is-clicked="False">
-                    <div class="project-card-image" id="project-image"><img src="../images/projects/toby.gif"></div>
-
-                    <div class="project-title" id="project-TBD">
-                        Coming Soon!
-                    </div>
-                    <div class="project-description" id="project-TBD">
-                        I'm working on many projects, but I'm not sure which is the best fit for this page yet!
-                    </div>
-                    <div class="project-extended-description" id="project-TBD">
-                        I'm often take on smaller, less notable projects, instead of the large impressive ones. I don't feel that the smaller ones are worth their own entire project entry on my website, so I keep them on <a href="https://github.com/Noah6544" target="_blank">my github</a> instead. Until my next big thing comes along, why not toby? You're welcome.
-                    </div>
-                </div>
+                
+                
                 
         
                 
