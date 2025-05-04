@@ -15,7 +15,7 @@
           content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/x-icon" href="/images/favicon.png">
-    <link rel="stylesheet" href="styles.css" media="screen and (min-width: 700px)">
+    <link rel="stylesheet" href="Manualstyles.css" media="screen and (min-width: 700px)">
     <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 699px)">
     <script src="/javascript/loader.js" defer></script>
 
@@ -39,11 +39,13 @@
     <i></i>
     </div>    
     <div class="navbar-hidden" id="navbar">
+        <!-- <div class="navbar-item" id="blogicon"> <a href="about">blog</a></div> -->
         <div class="navbar-item" id="abouticon"> <a href="about">about</a></div>
         <div class="navbar-item" id="projects-icon"><a href="projects">projects </a></div>
         <div class="navbar-item" id="experience-icon"><a href="experience">experience </a></div>
         <div class="navbar-item" id="contact-icon"><a href="contact">contact </a></div>
         <div class="navbar-item  current-tab" id="home-icon"><a href="/">home</a></div> 
+
     </div>
     
     <div class="container" id="landingpagecontainer">
@@ -51,60 +53,87 @@
     
         <div class="titletext" id="landingpage">
             <div id="hey">
-                Hey!
+                Hey,
             </div>
             <div id="myname">
                 I'm Noah Buchanan!
             </div>
             <hr>
             <div id="description">
-            I'm a first year student at Georgia Tech! I am pursuing a career in computer science! I plan on doing big things!
-                <div class="hide-mobile">
+                I'm a student at Georgia Tech who loves solving real problems with code. I'm in Seattle this summer @ Amazon. Feel free to reach out, especially if you want to talk code (or just be friends!).
+
+            <div class="hide-mobile">
                     <div class="container" id="icon-container">
 
-                        <div class="icon" id="linkedinlogo">
-                            <span><a href="https://www.linkedin.com/in/noah-b-6321b6248/" target="_blank"><img src="/images/logos/linkedinlogo.png"></a></span>
-                            <div class="hovericons" id="linkedininfo">Noah Buchanan</div>
-                        </div>
+                        <div class="icon" id="linkedinlogo"><span><a href="https://linkedin.com/in/noah-buchanan" target="_blank">LinkedIn</a></span></div>
+
                         <div class="icon" id="githublogo">
-                            <span><a href="https://Github.com/Noah6544" target="_blank"><img src="/images/logos/githublogo.jpg"></a></span>
-                            <div class="hovericons" id="githubinfo">Noah6544</div>
+                            <span><a href="https://Github.com/Noah6544" target="_blank">Github</a></span>
                         </div>
+
+                        <div class="icon" id="email">
+                            <span><a href="mailto:buchanannoah100@gmail.com" target="_blank">Email</a></span>
+                            <div class="subtext" id="emailinfo">
+                                <p>BuchananNoah100 at gmail</p>
+                            </div>
+                        </div>
+
                         <div class="icon" id="imessagelogo">
-                            <span><a href="mailto:buchanannoah100@gmail.com" target="_blank"><img src="/images/logos/imessagelogo.png"></a></span>
-                            <div class="hovericons" id="emailinfo">BuchananNoah100@gmail.com</div>
+                            <span><a href="./assets/NoahBuchananResume.pdf" target="_blank">Resume</a></span>
                         </div>
-                        <div class="hiddeninfo-show" id="hiddeninfo"></div>
+
+                        <div class="icon">
+                            <span><a href="https://www.strava.com/athletes/noahbuchanan" target="_blank">Strava</a></span>
+                        </div>
+
+                        <div class="icon">
+                            <span><a href="https://www.youtube.com/@Noah6544" target="_blank">YouTube</a></span>
+                        </div>
 
                     </div>
-                </div>
-
+            </div>
+            
             </div>
 
         </div>
+       
         
         <div class="Portrait" id="noneditedPortrait" data-duration="3s" data-delay="0s"><img src="../images/NoahBuchananSeniorPortrait.jpg"></div>
-        
-        <div class="show-mobile">
+      
+        <div class="show-mobile" id="landingpageLinks">
             <div class="container" id="icon-container">
 
-                <div class="icon-hidden" id="linkedinlogo">
-                    <span><a href="https://www.linkedin.com/in/noah-b-6321b6248/" target="_blank"><img src="/images/logos/linkedinlogo.png"></a></span>
-                    <div class="hovericons" id="linkedininfo">Noah Buchanan</div>
+                <div class="icon" id="linkedinlogo"><span><a href="https://linkedin.com/in/noah-buchanan" target="_blank">LinkedIn</a></span></div>
+
+                <div class="icon" id="githublogo">
+                    <span><a href="https://Github.com/Noah6544" target="_blank">Github</a></span>
                 </div>
-                <div class="icon-hidden" id="githublogo">
-                    <span><a href="https://Github.com/Noah6544" target="_blank"><img src="/images/logos/githublogo.jpg"></a></span>
-                    <div class="hovericons" id="githubinfo">Noah6544</div>
+
+                <div class="icon" id="email">
+                    <span><a href="mailto:buchanannoah100@gmail.com" target="_blank">Email</a></span>
                 </div>
-                <div class="icon-hidden" id="imessagelogo">
-                    <span><a href="mailto:buchanannoah100@gmail.com" target="_blank"><img src="/images/logos/imessagelogo.png"></a></span>
-                    <div class="hovericons" id="emailinfo">BuchananNoah100@gmail.com</div>
+
+                <div class="icon" id="imessagelogo">
+                    <span><a href="./assets/NoahBuchananResume.pdf" target="_blank">Resume</a></span>
                 </div>
-                <div class="hiddeninfo-show" id="hiddeninfo"></div>
+
+                <div class="icon">
+                    <span><a href="https://www.strava.com/athletes/noahbuchanan" target="_blank">Strava</a></span>
+                </div>
+
+                <div class="icon">
+                    <span><a href="https://www.youtube.com/@Noah6544" target="_blank">YouTube</a></span>
+                </div>
 
             </div>
+    </div>
+        <div class="update">
+            <p>Last <span style="font-style: italic;">major</span> update: December 2023.</p>
+            <p></p>Last <span style="font-style: italic;">minor</span> update: May 2025.</p>
+            <p>See my LinkedIn for updated project updates.</p>
         </div>
-</div>
+    </div>
+  
 <div class="circle" id="circle"></div>
 <script src="./javascript/circle.js"></script>
 </body>

@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
-
 :root {
     --font-color: 255, 255, 255;
-    --text-shadow: 2px 0px 5px rgba(0, 0, 0, 0.691);
+    --text-shadow: 2px 3px 5px rgba(0, 0, 0,.7);
     /* --primary-color: #589bff;  */
     --primary-color: #242d37;
     --t1: #95BBE6;
@@ -14,14 +12,12 @@
 }
 
 
-.show-mobile{
-    display: flex;
+.show-mobile {
+    display: none;
 }
 
-
-
 .hide-mobile {
-    display: none;
+    display: flex;
 }
 
 *, *::selection, *::-moz-selection {
@@ -35,7 +31,7 @@
     to {
         filter: blur(0);
         transform: translateX(0);
-    opacity: 1;
+        opacity: 1;
 
     }
 
@@ -197,46 +193,7 @@
     }
 }
 
-@keyframes navbarLoadinAndHover {
-    0% {
-        opacity:0;
-        transform: translateX(-50%)
-    }
-    /* ... */
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-    90%, 100% {
-        transform: translateX(100px);
-    }
-}
-@keyframes navbarLoadin {
-    0% {
-        opacity:0;
-        transform: translateX(-50%)
-    }
-    45%{
-        transform: translateX(5%);
-    }
-    55%{
-        transform: translateX(5%);
 
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes scroll {
-    0% {
-      transform: translateY(0);
-    }
-    100% {
-      transform: translateY(-100%);
-    }
-  }
 @keyframes goofyClick {
     0%{
         opacity: 1;
@@ -248,31 +205,16 @@
     }
 }
 
-@keyframes clickAboutImage {
-    0%{
-        
-    }
-    50%{
-        transform: scale(99%);
-
-    }
-    100%{
-        transform: scale(100%);
-    }
-}
-
 html {
     font-size: 16px;
 }
-
-
 
 body { 
     margin: 0;
     background: var(--primary-color); /*rgb(162, 201, 240);*/
     /*rgb(41, 42, 43);*/
     font-family: 'Manrope', sans-serif; 
-    height: 100dvh;
+    height: 100vh;
     overflow-x: hidden;
     font-smooth: always;
     animation: 1s body-fade-in;
@@ -287,12 +229,21 @@ body {
 
 .menu-closed {
     z-index: 9998;
-    margin: 40px;
+    margin: 23px;
     position: absolute;
     padding: 4px;
-    opacity: 1;
+    opacity: 0;
     border-radius: 100%;
-    animation: fade-in 2s 0s forwards;
+    animation: fade-in 3s .5s forwards;
+}
+
+.menu-closed:hover{
+    cursor: pointer;
+  
+}
+
+.menu-closed:hover i{
+    background-color: var(--t3);
 }
 
 .menu-closed i{
@@ -353,33 +304,10 @@ body {
     transform: translate(0px,12px);
 }
 
-/* mobile.html page*/
-
-#mobile{
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    justify-self: center;
-    flex-direction: column;
-
-}
-#andingpage {
-    font-family: 'Manrope', sans-serif; 
-    display: flex;
-    padding: 50px;
-    align-items: center;
-    font-size: 16px;
-    justify-content: center;
-    flex-direction: column;
-    height: 100dvh;
-
-}
-
-
 .navbar {
     z-index: 9996;
     position: fixed;
-    background-color: #060606e3;
+    background-color: #0606066f;
     backdrop-filter: blur(10px);
     opacity: 1;
     display: flex;
@@ -388,65 +316,69 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100dvh;
-    bottom: 0;
+    height: 100%;
+    transform: translateY(0);
     margin: 0 auto; /*aligns 85% div in the middle instead of just left- still don't know why this works.*/
     transition: all .45s cubic-bezier(.17,.2,.23,1.01);
     font-size: clamp(30px,6vh,75px);
     font-family: 'Manrope', sans-serif; 
     font-weight: 800;
 
+
 }
 
 .navbar-hidden{
     z-index: 2;
     position: fixed;
-    background-color: #060606e3;
+    background-color: var--(--primary-color);
+    backdrop-filter: blur(10px);
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
 
+    align-items: center;
     width: 100%;
-    height: 100vh;
-    bottom: 100vh;
+    height: 100%;
+    transform: translateY(-100%);
     margin: 0 auto; /*aligns 85% div in the middle instead of just left- still don't know why this works.*/
     font-size: clamp(30px,6vh,75px);
-    transition: all .45s cubic-bezier(.25,-0.01,1,.7);
+    transition: all .45s cubic-bezier(.17,.2,.23,1.01);
 
     font-family: 'Manrope', sans-serif; 
     font-weight: 800;
 
 }
+.current-tab a{
+    color:  rgba(87, 137, 190, 0.683) !important;
+}
 
 .navbar-item-hidden {
     opacity: 0;
-    padding: 12px; /*  padding: top right bottom left; */
+    /*  padding: top right bottom left; */
     border-radius: 20px;
-}
-.current-tab a{
-    color:  rgba(87, 137, 190, 0.683) !important;
 }
 
 .navbar-item {
     opacity: 1;
     border-radius: 20px;
-    padding: clamp(5px,3vh,5px);    /*  padding: top right bottom left; */
+    padding: clamp(5px,3vh,35px);    /*  padding: top right bottom left; */
     transform: translateY(0%);
     transition: all cubic-bezier(0.22, 0, 0.11, 1) .5s;
 }
 
-
-.navbar-item img {
-    width: 35px;
-    opacity: 0;
-    transition: all 1s ease;
+.navbar-item a:hover {
+    
+    color: #5788beff !important;
+    transition: all .45s ease;
+    text-shadow: 0px 0px 40px rgba(36, 222, 213, 0.228);
 
 }
 
+
 .navbar a:link, .navbar-hidden a:link {
-    font-family: 'Manrope', sans-serif; 
+    font-family: 'Manrope', sans-serif;
     text-decoration: none;
+    transition: all .45s ease;
     color: rgb(166, 166, 166);
 }
 
@@ -462,153 +394,143 @@ body {
 
 /* HOME PAGE STUFF */
 
-#landingpageLinks{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 #landingpagecontainer {
-    
-    text-align: center;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    height: 100dvh;
-    width: 75%;
-    margin-left: auto;
-    margin-right: auto;
-    gap: clamp(10px,5vh,30px);
-
-
+    height: 100vh;
+    width: 100%;
+    gap: clamp(5px, 7vw, 50px);
+    overflow: hidden;
 }
 
 
 .Portrait img {
     z-index: 2;
-
+    filter: blur(5px);
+    transform: translateX(-400%);
+    height: clamp(100px, 21.5vw, 500px);
+    animation: 3s ease forwards 0s 1 slidein; 
     border-radius: 100%;
-    height: clamp(200px, 35vw, 300px);
-
     border: solid rgb(255, 255, 255) .2vw;
     transition: height .1s ease;
     
 }
 
-#landingpage {
-    display:flex;
-    flex-direction: column;
-    gap: 4px;
+.update {
+    opacity: 0;
+    color: white;
+    text-align: center;
+    position: fixed;
+    bottom: 20px; /* Adjust padding as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    animation: fade-in 1s ease forwards 3s;
 }
+
 .titletext {
     color: rgb(var(--font-color));
     font-size: clamp(25px,2vw,35px);
     text-shadow: var(--text-shadow);
+    font-family: 'Manrope',sans-serif;
+    font-weight: 800;
 
 }
 #hey {
-    /* transform: translateX(-200%); */
-    font-size: clamp(20px,5vw,30px);
-    /* animation: 3s ease forwards 0s 1 slidein; */
+    transform: translateX(-200%);
+    font-size: clamp(.5em,3vw,5.3em);
+    animation: 2s ease forwards .2s slidein;
     transition: filter 1s ease;
-    font-family: 'Manrope', sans-serif; 
-    font-weight: 800;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
 }
-    
+
 #myname {
-    /* transform: translateX(-200%); */
-    display: inline-block;
-
-    font-size: clamp(25px,6vw,30px);
-    color:#00d5ff;
-    white-space: nowrap;
-
-    font-family: 'Manrope', sans-serif; 
+    transform: translateX(-200%);
+    font-size: clamp(16px,4vw,6em);
+    color: rgb(207, 207, 255);
+    animation: 3s ease forwards .8s slidein;
+    font-family: 'Manrope', sans-serif;
     font-weight: 800;
-    margin-left: -100%;
-    margin-right: -100%;
-    /* animation: 3s ease forwards 1s 1 slidein; */
 }
 
 #description {
-    /* transform: translateX(-200%); */
-    font-size: clamp(16px,3vw,30px);
-    white-space: normal;
-    
-    color: white;
-    font-weight: 500;
-    
+    text-align: left;
+    transform: translateX(-200%);
+    max-width: 45vw;
+    font-size: clamp(12px,2vw,30px);
+    animation: 2.5s ease forwards 1.5s slidein;
+    font-weight: 600;
 
-
-    /* animation: 4s ease forwards 1s 1 slidein; */
+    font-family: 'Manrope', sans-serif;
 }
 
 /* ABOUT PAGE STUFF */
 
+
 #aboutme-title {
     font-weight: 100;
-    padding-bottom: 20px;
 }
-
-.text-toggle {
-    display: none;
-}
-
-
 
 #about-container{
-    height: auto; /*learned this from rca carshow!! */
-    /* gap: clamp(0px,10vw,300px); */
-    padding-top: 90px;
-    justify-content: space-evenly;
-    overflow: auto; /* keep it this way, trust (apparently i said that for overflow:hidden but i changed it back may 4 2025*/
-}
 
+    /* gap: clamp(0px,10vw,300px); */
+    justify-content: space-evenly;
+    overflow:hidden; /* keep it this way, trust */
+}
 
 #about-text-container{
-    z-index: 2;
-    height: auto;/* learned this from rca car show! takes into account the navbar on mobile browsesre!!! wooo*/
-    padding: 20px;
+    height: 100vh;
+    width: 500px;
+    padding-left: 50px;
     flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    overflow-y: auto;
 }
-.about-text-container-toggle{
-
-    opacity: 0;
-}
-
-
 
 #about-image-gallery{
-    display: none;
+    height: 100vh; /* lets go, overflow-hidden doesn't work to disable scroll, so just make the height 100%! */
+    flex-direction: column;
+    justify-content: flex-start;
+    /* align-items: flex-start; */
+    gap: 20px;
+
+
+}
+
+.imageWrapper {
+    position: relative; /*LETS GO, this needs to stay here so that the absolutely positioned description has something to base the top postiion on!!! this one took me a second */
+}
+
+.aboutimage {
+    width: clamp(150px, 27vw, 450px);
+    height: auto;    
+    border-radius: 25px;
+    border: 2px solid var(--t5);
+    transition: all 1s ease;
+    filter: grayscale(.8);
+    opacity: .7;
+}
+    
+.aboutimage:hover {
+    opacity: .6;
+    cursor: pointer;
+    background: linear-gradient(0deg, rgba(0,0,0,0.8743698162858894) 0%, rgba(0,0,0,0.5382353625043768) 100%); 
 }
 
 
+.aboutimage-hovered {
+    filter: grayscale(0);
+    opacity: 1;
 
 
-#hoverme {
-    display: none;
 }
-
-
-#speedModifierDiv {
-    display: none;
-}
-
 
 .imageDescription {
     position: absolute;
-   opacity: 0;
-   left: 50%;
-   top: 50%;
-   transform: translate(-50%,-50%);
-   font-family: 'Manrope',sans-serif;
-}
-
-.imageDescription-toggle {
-    font-family: 'Manrope',sans-serif;
-
-    position: absolute;
     color: white;
-    opacity: 1;
+    opacity: 0;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
@@ -617,8 +539,6 @@ body {
     word-wrap: break-word;
     transition: all 1s ease;
     pointer-events: none; /* need this so that when you hover the image, it doesn't unhover by hovering the description u know */
-    transition: all 1s ease;
-
 }
 
 .aboutimage:hover + .imageDescription {
@@ -630,9 +550,14 @@ body {
     font-weight: 400;
     color: var(--t5);
     text-shadow: var(--text-shadow);
-    font-size: clamp(12px,4vw,19.2px);
+    font-size: clamp(14.5px,1.2vw,19.2px);
 }
 
+
+.imageDescription {
+    font-family: 'Manrope',sans-serif;
+
+}
 
 #goofyClick {
     font-size: clamp(18px,1.2vw,25px);
@@ -648,7 +573,10 @@ body {
 
 
 .downarrow {
-    display: none;
+    position:absolute;
+    left: clamp(50px,5vw,155px);
+    filter: invert();
+    animation: fade-in-arrow 5s linear infinite;
 }
 
 #personal{    
@@ -665,16 +593,15 @@ body {
 }
 
 #projectspage-container{
-    margin-top: 50px;
-    height: auto;
+    height: 100vh;
     width: 100vw;
-    overflow: auto;
+    overflow: hidden;
     flex-direction: column;
     justify-content: center;
 }
 
 #my-projects-container {
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: .6em;
     width: 100vw;
 
@@ -712,7 +639,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: rgba(50, 59, 68, 0.911); /* hey, this controls opacity if you're looking for it */
-    box-shadow: rgba(204, 88, 88, 0.1) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
+    box-shadow: rgba(255, 255, 255, .2) 0px 0px 150px, rgba(65, 136, 217, 0.2)0px 0px 10px;
     border-radius: 10px;
     border: solid .02px rgba(107, 148, 169, 0.648);
     animation: 1s cubic-bezier(.76,0,.29,1) forwards scaleXY 0s;
@@ -723,7 +650,7 @@ body {
     height: 70vh;
     width: 70vw;
     padding: clamp(30px, 70px, 100px);
-    animation: 2s cubic-bezier(.76,0,.29,1) 3s reverse forwards scaleXY; /*needs this delay for some reason even tho it doesn't do anything*/
+    animation: 4s cubic-bezier(.76,0,.29,1) 3s reverse forwards scaleXY; /*needs this delay for some reason even tho it doesn't do anything*/
 }
 
 
@@ -750,7 +677,7 @@ body {
 
 .extended-description {
     /* opacity: 0; */
-    font-size: clamp(12px, 1.4vw, 20px);
+    font-size: clamp(16px, 1.4vw, 20px);
     padding: clamp(10px, 20px,30px) 0px clamp(10px, 20px,30px) 0px;
     /* animation: .5s ease forwards 2.4s staggerdown; */
 }
@@ -789,14 +716,16 @@ body {
     overflow: hidden; 
     aspect-ratio: 12/12;
     transform: translateX(0%);
-    opacity: 1;
-    width: 75vw;
-    height: 75vw;
+    opacity: .6;
+    width: 25vw;
+    height: 20vw;
     background-color: rgba(125, 125, 125, .2);
-    box-shadow: rgba(255, 255, 255, .1) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
+    box-shadow: rgba(255, 255, 255, .1) 0px 0px , rgba(240, 13, 13, 0.23) 0px 3px 6px;
     border-radius: 3%;
     border: solid .02px rgba(194, 194, 194, 0.9);
     transition: all .45s ease;
+    transform: scale(.99);
+
 }
 
 
@@ -808,10 +737,11 @@ body {
 
 
 .project-card:hover {
-    transform: scale(.99);
+    transform: scale(1);
     /* filter: blur(2px); */
-    box-shadow: rgba(255, 255, 255, .5) 0px 3px 6px, rgba(240, 13, 13, 0.23) 0px 3px 6px;
+    box-shadow: rgba(255, 255, 255, .6) 0px 0px 50px, rgba(65, 136, 217, 0.5)0px 0px 10px;
     cursor: pointer;
+    opacity: 1;
 }
 
 .project-card:hover  .project-title {
@@ -863,7 +793,6 @@ body {
 }
 
 #xmark{
-    z-index: 9995;
     position: absolute;
     top: 20px;
     right: 20px;
@@ -894,61 +823,55 @@ body {
 }
 
 
-
+#disclaimer::before{
+}
 #disclaimer {
     font-family: 'Manrope',sans-serif;
     color: white;
     display: flex;
     justify-content: center;
     text-align: center;
+}
+
+.mobileDisclaimer{
     display: none;
 }
-
-
-
 /* EXPERIENCE AND FUN FACTS */
-.menu-hug .menu-closed{
-    position: fixed;
-    top: 5px;
-    right: 0px;
-    padding: 10px;
-    margin: 0;
-    background-color: rgba(43, 43, 43, 0.607);
-}
-.menu-hug .menu-open{
-    position: fixed;
-    top: 5px;
-    right: 0px;
-    padding: 10px;
-    margin: 0;
-}
-
 #experience-page-container {
     display: flex;
-    padding: 5px 5px 5px 10px;
+    padding: 10px 20px 20px 100px;
 }
-
-#experience-images-container{
-    display: none;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
-.experience-image img{
-    border: 2px solid var(--t5);
-    border-radius: 25px;
-    
-    width: clamp(200px, 45vw,500px);
-}
-
 
 #experience-lists-container { 
     display: flex;
     height: 100%;
-
-    width: 100%;
     flex-direction: column;
+
 }
+
+#experience-list {
+    width: clamp(300px,50vw,1000px);
+}
+
+
+#experience-images-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+.experience-image {
+    border: 1px solid var(--t5);
+    border-radius: 50px;
+    aspect-ratio: 9/10;
+    width: 60%;
+    object-fit: cover;
+
+}
+
+
 
 .list{
     flex-direction: column;
@@ -962,12 +885,12 @@ body {
     
 }
 .year {
-    font-family: 'Manrope',sans;
+    font-family: 'Manrope',sans-serif;
 
 }
 .list-item { 
     font-size: clamp(15px,1vw,19.2px);
-    margin-left: 2vw;
+    margin-left: 1.2vw;
     padding: 1vw;
     opacity: 0;
     filter: blur(5px);
@@ -988,22 +911,23 @@ body {
 
 /* specific class stuff */
 hr {
-    display: none;
+    transform-origin: left;
+    transform: scaleX(0);
+    border: none;
+    height: 2px;
+    background-color: rgb(245, 244, 244);
+    animation: 2s cubic-bezier(.14,.03,.26,1.01) forwards 3.4s openhr;
 }
 
 
 
 #icon-container {
     font-family: 'Manrope', sans-serif; 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 12px;
     font-weight: 200;
     margin-top: 25px;
     height: 20px;
-    font-size: 16px;
-    width: 75%;
+    font-size: 20px;
 }
 
 #icon-container a {
@@ -1023,7 +947,7 @@ hr {
     animation-delay: 3.7s;
 }
 .icon:nth-child(3){
-    animation-delay: 0s;
+    animation-delay: 3.9s;
 }
 .icon:nth-child(4){
     animation-delay: 4.1s;
@@ -1062,38 +986,23 @@ hr {
     transition: all .45s ease;
 }
 
+#emailinfo {
+    text-wrap: nowrap;
+    pointer-events: none;
+    color: white;
+    font-style: italic;
+}
 
-.icon{ 
-    display: flex; 
+#emailinfo a{
+    color: white;
+}
+
+#email:hover #emailinfo {
+    pointer-events: all;
     opacity: 1;
-    transform: translateX(0px);
-    transition: all 1s ease;
-
-}
-.icon img{
-    aspect-ratio: 1/1;
-    height: clamp(25px, 80vw, 100px); /*needs to stay clamped to work in firefox*/
-    /* max-width: 100%; */
-    filter: grayscale(30%);
-}
-
-.icon-hidden {
-    display: flex; 
-    opacity: 1;
-    transform: translateX(0px);
-    transition: all 1s ease;
-}
-
-.icon-hidden img {
-    aspect-ratio: 1/1;
-    height: clamp(25px, 9vw, 50px); /*needs to stay clamped to work in firefox*/
-    /* max-width: 100%; */
-    filter: grayscale(30%);
-}
-
-.icon:hover{
     cursor: pointer;
-    opacity: 60%;
+    color: var(--t4);
+    text-shadow: 0px 0px 40px rgba(36, 222, 213, 0.228);
 }
 
 
@@ -1144,7 +1053,7 @@ hr {
 #contact-container {
     flex-direction: column;
     gap: 25px;
-    height: 100dvh;
+    height: 100vh;
     width: clamp(400px,45vw,1000px);
     justify-content: center;
     align-items: center;
@@ -1162,17 +1071,9 @@ hr {
     text-shadow: var(--text-shadow);
 
 }
-#contact-page-list .list-item {
-    opacity: 1;
-    filter: blur(0px);
-
-}
-
 
 #contact-page-list .list-item:hover .list-item {
     opacity: .6;
-
-
 }
 
 
@@ -1184,7 +1085,9 @@ font-weight: 123321;
 /* Specific Image Adjustments */
 
 
-
+a {
+    font-family: 'Manrope',sans-serif;
+}
 a:link {
     color: var(--t4)
 }
@@ -1192,8 +1095,7 @@ a:visited {
     color: var(--t4)
 }
 a:hover {
-    opacity: .7;
-    transition: all .2s ease;
+    transition: all .45s ease;
 }
 ul {
     list-style: none;
@@ -1217,24 +1119,58 @@ li:before {
 }
 
 .slider {
-    display: none;
+    appearance: none;
+    background-color: rgb(85, 85, 85);
+    border-radius: 50px;
+    border: 1px solid rgb(55, 55, 55);
+    width: 20%;
+    height: clamp(6px, 1.5%, 10px);
+}
+
+.slider:hover{
+    cursor: pointer;
+    background-color: rgba(85, 85, 85, 0.474);
 
 }
 
+/* Chrome, Edge, Safari, Opera */
+input[type="range" i]::-webkit-slider-thumb {
+    background: rgb(106, 106, 106);
+    border: solid rgb(35, 35, 35) 1px;
 
-#circle {
-    display: none;
+ }
+/* Firefox */
+input[type="range"]::-moz-range-thumb { 
+    background: rgb(106, 106, 106);
+    border: solid rgb(35, 35, 35) 1px;
 }
 
-.update {
-    opacity: 0;
-    color: white;
-    text-align: center;
-    position: fixed;
-    text-wrap: nowrap;
-    bottom: 20px; /* Adjust padding as needed */
-    left: 50%;
-    transform: translateX(-50%);
-    animation: fade-in 1s ease forwards 0s;
-    font-size: 12px;
+.circle{
+    z-index: 9997;
+    pointer-events: none;
+    position: fixed; /* for some reason, if it's absolute, it can overflow the div*/
+    top: 0;
+    left: 0;
+    height: 35px;
+    width: 35px;
+    border: 1.2px solid rgb(255, 255, 255);
+    border-radius: 4000px;
+    overflow: hidden;   
+    transition: height .2s ease, width .2s ease, border .2s ease;
+    pointer-events: none;
+    
+}
+
+.circle-hovering {
+    height: 25px;
+    width: 25px;
+    border: 1.2px solid var(--t1); 
+    border-radius: 4000px;
+    overflow: hidden;
+    cursor: pointer;
+    pointer-events: none; /*why did i set it to all before?*/
+}
+
+.text-toggle {
+display: none;
 }
