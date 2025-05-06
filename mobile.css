@@ -468,18 +468,15 @@ body {
     align-items: center;
 }
 #landingpagecontainer {
-    
     text-align: center;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* This aligns items vertically in the center. Change this to 'flex-start' to move them up slightly. */
     justify-content: center;
     height: 100dvh;
     width: 75%;
     margin-left: auto;
     margin-right: auto;
     gap: clamp(10px,5vh,30px);
-
-
 }
 
 
@@ -487,7 +484,7 @@ body {
     z-index: 2;
 
     border-radius: 100%;
-    height: clamp(200px, 35vw, 300px);
+    height: clamp(150px, 30vw, 300px);
 
     border: solid rgb(255, 255, 255) .2vw;
     transition: height .1s ease;
@@ -1237,4 +1234,8 @@ li:before {
     transform: translateX(-50%);
     animation: fade-in 1s ease forwards 0s;
     font-size: 12px;
+}
+
+.update p{
+    margin: 2px;
 }
