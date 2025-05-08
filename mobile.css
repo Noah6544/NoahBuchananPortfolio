@@ -472,7 +472,7 @@ body {
     flex-direction: column;
     align-items: center; /* This aligns items vertically in the center. Change this to 'flex-start' to move them up slightly. */
     justify-content: center;
-    height: 100dvh;
+    height: 90dvh;
     width: 75%;
     margin-left: auto;
     margin-right: auto;
@@ -1000,7 +1000,7 @@ hr {
     margin-top: 25px;
     height: 20px;
     font-size: 16px;
-    width: 75%;
+    width: 100%;
 }
 
 #icon-container a {
@@ -1229,7 +1229,7 @@ li:before {
     text-align: center;
     position: fixed;
     text-wrap: nowrap;
-    bottom: 20px; /* Adjust padding as needed */
+    bottom: 10px; /* Adjust padding as needed */
     left: 50%;
     transform: translateX(-50%);
     animation: fade-in 1s ease forwards 0s;
@@ -1237,5 +1237,6 @@ li:before {
 }
 
 .update p{
+    text-wrap: nowrap;
     margin: 2px;
 }
